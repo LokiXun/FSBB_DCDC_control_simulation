@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EntryPoint Location="1852359d-3e01-431a-90ba-71d4169e6d20">
+  <Info File="scripts/startup.m" Icon="" Name="startup" Type="StartUp" Visible="0"/>
+</EntryPoint>

@@ -1,0 +1,1704 @@
+ Balancing_Logic_sfun
+
+ Timestamp is 635104bb (Thu Oct 20 16:20:11 2022)
+
+ Preferred load address is 0000000180000000
+
+ Start         Length     Name                   Class
+ 0001:00000000 00014980H .text$mn                CODE
+ 0001:00014980 00000036H .text$mn$00             CODE
+ 0001:000149b6 00000092H .text$x                 CODE
+ 0002:00000000 000004d0H .idata$5                DATA
+ 0002:000004d0 00000028H .00cfg                  DATA
+ 0002:000004f8 00000008H .CRT$XCA                DATA
+ 0002:00000500 00000008H .CRT$XCZ                DATA
+ 0002:00000508 00000008H .CRT$XIA                DATA
+ 0002:00000510 00000008H .CRT$XIZ                DATA
+ 0002:00000518 00000008H .CRT$XPA                DATA
+ 0002:00000520 00000008H .CRT$XPZ                DATA
+ 0002:00000528 00000008H .CRT$XTA                DATA
+ 0002:00000530 00000010H .CRT$XTZ                DATA
+ 0002:00000538 00000000H .gehcont$y              DATA
+ 0002:00000538 00000000H .gfids$y                DATA
+ 0002:00000540 000003c0H .rdata                  DATA
+ 0002:00000900 00000008H .rdata$CastGuardVftablesA DATA
+ 0002:00000908 00000008H .rdata$CastGuardVftablesC DATA
+ 0002:00000910 00000118H .rdata$voltmd           DATA
+ 0002:00000a28 00000278H .rdata$zzzdbg           DATA
+ 0002:00000ca0 00000008H .rtc$IAA                DATA
+ 0002:00000ca8 00000008H .rtc$IZZ                DATA
+ 0002:00000cb0 00000008H .rtc$TAA                DATA
+ 0002:00000cb8 00000008H .rtc$TZZ                DATA
+ 0002:00000cc0 00000ac0H .xdata                  DATA
+ 0002:00001780 00000080H .edata                  DATA
+ 0002:00001800 000000f0H .idata$2                DATA
+ 0002:000018f0 00000018H .idata$3                DATA
+ 0002:00001908 000004d0H .idata$4                DATA
+ 0002:00001dd8 00000dd0H .idata$6                DATA
+ 0003:00000000 00003d70H .data                   DATA
+ 0003:00003d70 00000f40H .bss                    DATA
+ 0004:00000000 00000d14H .pdata                  DATA
+
+  Address         Publics by Value              Rva+Base               Lib:Object
+
+ 0000:00000000       __guard_check_icall_a64n_fptr 0000000000000000     <absolute>
+ 0000:00000000       __guard_longjmp_count      0000000000000000     <absolute>
+ 0000:00000000       __guard_iat_count          0000000000000000     <absolute>
+ 0000:00000000       __hybrid_auxiliary_iat     0000000000000000     <absolute>
+ 0000:00000000       __hybrid_auxiliary_iat_copy 0000000000000000     <absolute>
+ 0000:00000000       __guard_iat_table          0000000000000000     <absolute>
+ 0000:00000000       __arm64x_redirection_metadata 0000000000000000     <absolute>
+ 0000:00000000       __x64_code_ranges_to_entry_points_count 0000000000000000     <absolute>
+ 0000:00000000       ___safe_se_handler_table   0000000000000000     <absolute>
+ 0000:00000000       __AbsoluteZero             0000000000000000     <absolute>
+ 0000:00000000       __dynamic_value_reloc_table 0000000000000000     <absolute>
+ 0000:00000000       __guard_fids_table         0000000000000000     <absolute>
+ 0000:00000000       __guard_longjmp_table      0000000000000000     <absolute>
+ 0000:00000000       __hybrid_code_map_count    0000000000000000     <absolute>
+ 0000:00000000       __x64_code_ranges_to_entry_points 0000000000000000     <absolute>
+ 0000:00000000       __guard_eh_cont_count      0000000000000000     <absolute>
+ 0000:00000000       __guard_fids_count         0000000000000000     <absolute>
+ 0000:00000000       __arm64x_extra_rfe_table   0000000000000000     <absolute>
+ 0000:00000000       __hybrid_code_map          0000000000000000     <absolute>
+ 0000:00000000       __arm64x_redirection_metadata_count 0000000000000000     <absolute>
+ 0000:00000000       __enclave_config           0000000000000000     <absolute>
+ 0000:00000000       __arm64x_extra_rfe_table_size 0000000000000000     <absolute>
+ 0000:00000000       ___safe_se_handler_count   0000000000000000     <absolute>
+ 0000:00000000       __guard_eh_cont_table      0000000000000000     <absolute>
+ 0000:00000000       __arm64x_native_entrypoint 0000000000000000     <absolute>
+ 0000:00000100       __guard_flags              0000000000000100     <absolute>
+ 0000:00000000       __ImageBase                0000000180000000     <linker-defined>
+ 0001:00000000       Balancing_Logic_initializer 0000000180001000 f   Balancing_Logic_sfun.obj
+ 0001:00000010       Balancing_Logic_terminator 0000000180001010 f   Balancing_Logic_sfun.obj
+ 0001:00000020       load_Balancing_Logic_optimization_info 0000000180001020 f   Balancing_Logic_sfun.obj
+ 0001:000000d0       unload_Balancing_Logic_optimization_info 00000001800010d0 f   Balancing_Logic_sfun.obj
+ 0001:00000100       sf_Balancing_Logic_method_dispatcher 0000000180001100 f   Balancing_Logic_sfun.obj
+ 0001:00000150       sf_Balancing_Logic_process_check_sum_call 0000000180001150 f   Balancing_Logic_sfun.obj
+ 0001:00000640       sf_Balancing_Logic_get_eml_resolved_functions_info 0000000180001640 f   Balancing_Logic_sfun.obj
+ 0001:00000820       sf_Balancing_Logic_third_party_uses_info 0000000180001820 f   Balancing_Logic_sfun.obj
+ 0001:000009f0       sf_Balancing_Logic_jit_fallback_info 00000001800019f0 f   Balancing_Logic_sfun.obj
+ 0001:00000bc0       sf_Balancing_Logic_get_post_codegen_info 0000000180001bc0 f   Balancing_Logic_sfun.obj
+ 0001:00000da0       sf_Balancing_Logic_updateBuildInfo_args_info 0000000180001da0 f   Balancing_Logic_sfun.obj
+ 0001:00000f70       Balancing_Logic_register_exported_symbols 0000000180001f70 f   Balancing_Logic_sfun.obj
+ 0001:00000f80       sf_c1_Balancing_Logic_get_eml_resolved_functions_info 0000000180001f80 f   c1_Balancing_Logic.obj
+ 0001:00001020       sf_c1_Balancing_Logic_getDebuggerHoverDataFor 0000000180002020 f   c1_Balancing_Logic.obj
+ 0001:00001230       sf_c1_Balancing_Logic_get_check_sum 0000000180002230 f   c1_Balancing_Logic.obj
+ 0001:00001300       c1_Balancing_Logic_method_dispatcher 0000000180002300 f   c1_Balancing_Logic.obj
+ 0001:00007b40       sf_c1_Balancing_Logic_third_party_uses_info 0000000180008b40 f   c1_Balancing_Logic.obj
+ 0001:00007b70       sf_c1_Balancing_Logic_jit_fallback_info 0000000180008b70 f   c1_Balancing_Logic.obj
+ 0001:00007d00       sf_c1_Balancing_Logic_updateBuildInfo_args_info 0000000180008d00 f   c1_Balancing_Logic.obj
+ 0001:000080f0       sf_c1_Balancing_Logic_get_post_codegen_info 00000001800090f0 f   c1_Balancing_Logic.obj
+ 0001:000086d0       mexFunction                00000001800096d0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000afa0       _ssSetInputPortDirectFeedThroughFcn 000000018000bfa0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000b110       _ssSetRWorkValueFcn        000000018000c110 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000b190       _ssGetRWorkValueFcn        000000018000c190 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000b200       _ssSetIWorkValueFcn        000000018000c200 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000b280       _ssGetIWorkValueFcn        000000018000c280 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000b2f0       _ssSetPWorkValueFcn        000000018000c2f0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000b370       _ssGetPWorkValueFcn        000000018000c370 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000b3e0       _ssGetInputPortSignalFcn   000000018000c3e0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000b770       _ssGetInputPortBufferDstPortFcn 000000018000c770 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000b7f0       _ssGetInputPortSignalPtrsFcn 000000018000c7f0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000bb80       ssGetParameterTuningCompliance 000000018000cb80 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000bbf0       _ssReadInputStringFcn      000000018000cbf0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000bc60       ssGetDTypeIdFromMxArray    000000018000cc60 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000bd80       ssWriteRTWMx2dMatParam     000000018000cd80 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000be10       ssWriteRTWMxVectParam      000000018000ce10 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000be90       ssWriteRTWParameters       000000018000ce90 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000c450       ssWriteRTWParamSettings    000000018000d450 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000cb40       ssWriteRTWStr              000000018000db40 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000cba0       ssWriteRTWWorkVect         000000018000dba0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000d100       ssWarning                  000000018000e100 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000d1f0       ssWriteRTWNameValuePair    000000018000e1f0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000d6f0       _ssSetInputPortMatrixDimensions 000000018000e6f0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000d840       _ssSetOutputPortMatrixDimensions 000000018000e840 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000d990       _ssSetInputPortVectorDimension 000000018000e990 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000da40       _ssSetOutputPortVectorDimension 000000018000ea40 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000daf0       ssIsRunTimeParamTunable    000000018000eaf0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000db60       ssGetSFuncBlockHandle      000000018000eb60 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000dbd0       _ssGetCallSystemNumFcnCallDestinations 000000018000ebd0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000dc40       _ssGetCurrentInputPortWidth 000000018000ec40 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000dd80       _ssGetCurrentOutputPortWidth 000000018000ed80 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000dec0       ssGetIsZeroCrossControlDisabled 000000018000eec0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000df30       ssSetIsInputPortUsedForContZcSignal 000000018000ef30 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000dfa0       ssSetZcSignalIsZcElementDisc 000000018000efa0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e050       ssSetZcSignalName          000000018000f050 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e0c0       ssSetZcSignalWidth         000000018000f0c0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e130       ssSetZcSignalZcEventType   000000018000f130 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e1a0       ssSetZcSignalType          000000018000f1a0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e210       ssSetZcSignalZcTol         000000018000f210 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e280       ssSetZcSignalNeedsEventNotification 000000018000f280 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e2f0       ssCreateAndAddZcSignalInfo 000000018000f2f0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e360       ssCloneAndAddZcSignalInfo  000000018000f360 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e3d0       ssGetNumZcSignals          000000018000f3d0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e440       ssGetZcSignalVector        000000018000f440 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e4b0       ssGetZcSignalName          000000018000f4b0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e520       ssGetZcSignalWidth         000000018000f520 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e590       ssGetZcSignalZcEventType   000000018000f590 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e600       ssGetZcSignalZcEvents      000000018000f600 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e670       ssGetZcSignalType          000000018000f670 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e6e0       ssGetZcSignalZcTol         000000018000f6e0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e760       ssGetZcSignalNeedsEventNotification 000000018000f760 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e7d0       ssGetZcSignalIsZcElementDisc 000000018000f7d0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e870       ssGetIsInputPortElementContinuous 000000018000f870 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e910       _ssGetAbsTol               000000018000f910 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000e980       _ssSetStateAbsTol          000000018000f980 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000ea60       _ssSetInputPortReusableFcn 000000018000fa60 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000eb60       _ssSetOutputPortReusableFcn 000000018000fb60 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000ec60       _ssSetSymbolicDimsSupport  000000018000fc60 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000ecd0       _ssRegisterSymbolicDimsExpr 000000018000fcd0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000ed50       _ssRegisterSymbolicDimsMATLABExpr 000000018000fd50 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000edf0       _ssRegisterSymbolicDims    000000018000fdf0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000ee90       _ssRegisterSymbolicDimsString 000000018000fe90 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000ef10       _ssRegisterSymbolicDimsIntValue 000000018000ff10 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000ef80       _ssRegisterSymbolicEqualRelation 000000018000ff80 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000eff0       _ssRegisterSymbolicEqualValue 000000018000fff0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f060       _ssAmendLeadingSymbolicDims 0000000180010060 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f0e0       _ssAmendTrailingSymbolicDims 00000001800100e0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f160       _ssRegisterSymbolicDimsPlus 0000000180010160 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f1e0       _ssRegisterSymbolicDimsMinus 00000001800101e0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f260       _ssRegisterSymbolicDimsMultiply 0000000180010260 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f2e0       _ssRegisterSymbolicDimsDivide 00000001800102e0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f360       _ssGetNumSymbolicDims      0000000180010360 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f3d0       _ssGetSymbolicDim          00000001800103d0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f450       _ssSetInputPortSymbolicDimsId 0000000180010450 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f4c0       _ssGetCompInputPortSymbolicDimsId 00000001800104c0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f530       _ssSetCompInputPortSymbolicDimsId 0000000180010530 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f5a0       _ssSetOutputPortSymbolicDimsId 00000001800105a0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f610       _ssGetCompOutputPortSymbolicDimsId 0000000180010610 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f680       _ssSetCompOutputPortSymbolicDimsId 0000000180010680 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f6f0       _ssGetDWorkSymbolicDimsId  00000001800106f0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f760       _ssSetDWorkSymbolicDimsId  0000000180010760 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f7d0       _ssGetCompDWorkSymbolicDimsId 00000001800107d0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f840       _ssSetCompDWorkSymbolicDimsId 0000000180010840 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f8b0       _ssCreateSLCGStringBuffer  00000001800108b0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f920       _ssAddToSLCGStringBuffer   0000000180010920 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000f990       _ssGetPointerContainedData 0000000180010990 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000fa20       _ssGetPointerContainedDataWidth 0000000180010a20 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000fab0       _ssRegisterDynamicArrayDataTypeFcn 0000000180010ab0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000fb50       _ssGetDynamicArrayContainedDataCurrentWidthFcn 0000000180010b50 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000fc20       _ssGetDynamicArrayContainedDataFcn 0000000180010c20 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000fcf0       _ssGetInputPortDynamicArrayDataFcn 0000000180010cf0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000fdb0       _ssGetOutputPortDynamicArrayDataFcn 0000000180010db0 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000fe70       _ssGetInputPortDynamicArrayContainedDataFcn 0000000180010e70 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000ff30       _ssGetOutputPortDynamicArrayContainedDataFcn 0000000180010f30 f   Balancing_Logic_sfun_registry.obj
+ 0001:0000fff0       sf_process_check_sum_call  0000000180010ff0 f   Balancing_Logic_sfun_registry.obj
+ 0001:00010040       sf_process_get_third_party_uses_info_call 0000000180011040 f   Balancing_Logic_sfun_registry.obj
+ 0001:00010270       sf_process_get_jit_fallback_info_call 0000000180011270 f   Balancing_Logic_sfun_registry.obj
+ 0001:000104a0       sf_process_get_post_codegen_info_call 00000001800114a0 f   Balancing_Logic_sfun_registry.obj
+ 0001:000106d0       sf_process_get_updateBuildInfo_args_info_call 00000001800116d0 f   Balancing_Logic_sfun_registry.obj
+ 0001:00010900       sf_process_get_eml_resolved_functions_info_call 0000000180011900 f   Balancing_Logic_sfun_registry.obj
+ 0001:00010b30       sf_mex_unlock_call         0000000180011b30 f   Balancing_Logic_sfun_registry.obj
+ 0001:00010d50       sf_machine_global_initializer_called 0000000180011d50 f   Balancing_Logic_sfun_registry.obj
+ 0001:00010d80       sf_machine_global_method_dispatcher 0000000180011d80 f   Balancing_Logic_sfun_registry.obj
+ 0001:00010de0       sf_machine_global_terminator 0000000180011de0 f   Balancing_Logic_sfun_registry.obj
+ 0001:00010e10       sf_register_machine_exported_symbols 0000000180011e10 f   Balancing_Logic_sfun_registry.obj
+ 0001:00010e30       callCustomFcn              0000000180011e30 f   Balancing_Logic_sfun_registry.obj
+ 0001:00010e40       sf_machine_global_initializer 0000000180011e40 f   Balancing_Logic_sfun_registry.obj
+ 0001:00010eb0       mdlGetSimState             0000000180011eb0 f   Balancing_Logic_sfun_registry.obj
+ 0001:00010ef0       mdlSetSimState             0000000180011ef0 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011860       ProcessMexSfunctionEveryCall 0000000180012860 f   Balancing_Logic_sfun_registry.obj
+ 0001:000129e0       __local_stdio_printf_options 00000001800139e0 f i Balancing_Logic_sfun_registry.obj
+ 0001:000129f0       _vsnprintf_l               00000001800139f0 f i Balancing_Logic_sfun_registry.obj
+ 0001:00012a70       _vsprintf_l                0000000180013a70 f i Balancing_Logic_sfun_registry.obj
+ 0001:00012ac0       sprintf                    0000000180013ac0 f i Balancing_Logic_sfun_registry.obj
+ 0001:00012b10       mexfilerequiredapiversion  0000000180013b10 f   c_mexapi_version.obj
+ 0001:00012b40       getBitfieldFromFloat       0000000180013b40 f   half_type.obj
+ 0001:00012b70       getFloatFromBitfield       0000000180013b70 f   half_type.obj
+ 0001:00012ba0       getBitfieldFromHalf        0000000180013ba0 f   half_type.obj
+ 0001:00012bc0       getHalfFromBitfield        0000000180013bc0 f   half_type.obj
+ 0001:00012bf0       halfToFloat                0000000180013bf0 f   half_type.obj
+ 0001:00012ca0       halfToDouble               0000000180013ca0 f   half_type.obj
+ 0001:00012cd0       floatToHalf                0000000180013cd0 f   half_type.obj
+ 0001:00012f30       doubleToHalf               0000000180013f30 f   half_type.obj
+ 0001:0001321c       sf_load_rtw_optimization_info 000000018001421c f   sf_runtime:sf_runtime.dll
+ 0001:00013222       sf_mex_decode              0000000180014222 f   sf_runtime:sf_runtime.dll
+ 0001:00013228       sf_init_ChartRunTimeInfo   0000000180014228 f   sf_runtime:sf_runtime.dll
+ 0001:0001322e       sf_free_ChartRunTimeInfo   000000018001422e f   sf_runtime:sf_runtime.dll
+ 0001:00013234       sfrtGetEmlrtCtx            0000000180014234 f   sf_runtime:sf_runtime.dll
+ 0001:0001323a       sfrtGetCovrtInstance       000000018001423a f   sf_runtime:sf_runtime.dll
+ 0001:00013240       sf_get_chart_instance_ptr  0000000180014240 f   sf_runtime:sf_runtime.dll
+ 0001:00013246       sim_mode_is_rtw_gen        0000000180014246 f   sf_runtime:sf_runtime.dll
+ 0001:0001324c       sim_mode_is_external       000000018001424c f   sf_runtime:sf_runtime.dll
+ 0001:00013252       sf_mex_get_sfun_param      0000000180014252 f   sf_runtime:sf_runtime.dll
+ 0001:00013258       sf_clear_rtw_identifier    0000000180014258 f   sf_runtime:sf_runtime.dll
+ 0001:0001325e       sf_get_output_port_reusable 000000018001425e f   sf_runtime:sf_runtime.dll
+ 0001:00013264       sf_get_time                0000000180014264 f   sf_runtime:sf_runtime.dll
+ 0001:0001326a       sfDoAnimationWrapper       000000018001426a f   sf_runtime:sf_runtime.dll
+ 0001:00013270       setDataBrowseFcn           0000000180014270 f   sf_runtime:sf_runtime.dll
+ 0001:00013276       setDebuggerFlag            0000000180014276 f   sf_runtime:sf_runtime.dll
+ 0001:0001327c       sf_warn_if_symbolic_dimension_param_changed 000000018001427c f   sf_runtime:sf_runtime.dll
+ 0001:00013282       sf_set_work_widths         0000000180014282 f   sf_runtime:sf_runtime.dll
+ 0001:00013288       sfListenerCacheSimStruct   0000000180014288 f   sf_runtime:sf_runtime.dll
+ 0001:0001328e       sfListenerLightTerminate   000000018001428e f   sf_runtime:sf_runtime.dll
+ 0001:00013294       sfListenerInitializeRuntimeVars 0000000180014294 f   sf_runtime:sf_runtime.dll
+ 0001:0001329a       sfListenerRegisterHover    000000018001429a f   sf_runtime:sf_runtime.dll
+ 0001:000132a0       sfAppendHoverData          00000001800142a0 f   sf_runtime:sf_runtime.dll
+ 0001:000132a6       sf_mex_error_message       00000001800142a6 f   sf_runtime:sf_runtime.dll
+ 0001:000132ac       sf_mex_create_enum         00000001800142ac f   sf_runtime:sf_runtime.dll
+ 0001:000132b2       sf_mex_create              00000001800142b2 f   sf_runtime:sf_runtime.dll
+ 0001:000132b8       sf_mex_createcellmatrix    00000001800142b8 f   sf_runtime:sf_runtime.dll
+ 0001:000132be       sf_mex_setcell             00000001800142be f   sf_runtime:sf_runtime.dll
+ 0001:000132c4       sf_mex_getcell             00000001800142c4 f   sf_runtime:sf_runtime.dll
+ 0001:000132ca       sf_mex_assign              00000001800142ca f   sf_runtime:sf_runtime.dll
+ 0001:000132d0       sf_mex_dup                 00000001800142d0 f   sf_runtime:sf_runtime.dll
+ 0001:000132d6       sf_mex_destroy             00000001800142d6 f   sf_runtime:sf_runtime.dll
+ 0001:000132dc       sf_mex_import              00000001800142dc f   sf_runtime:sf_runtime.dll
+ 0001:000132e2       sf_mex_import_named        00000001800142e2 f   sf_runtime:sf_runtime.dll
+ 0001:000132e8       sf_mex_sub                 00000001800142e8 f   sf_runtime:sf_runtime.dll
+ 0001:000132ee       sf_mex_duplicatearraysafe  00000001800142ee f   sf_runtime:sf_runtime.dll
+ 0001:000132f4       ssGetInputPortSignal_wrapper 00000001800142f4 f   sf_runtime:sf_runtime.dll
+ 0001:000132fa       ssGetOutputPortSignal_wrapper 00000001800142fa f   sf_runtime:sf_runtime.dll
+ 0001:00013300       sf_read_before_write_error 0000000180014300 f   sf_runtime:sf_runtime.dll
+ 0001:00013306       sf_temporal_value_range_check_min 0000000180014306 f   sf_runtime:sf_runtime.dll
+ 0001:0001330c       sdi_database_initialize    000000018001430c f   sf_runtime:sf_runtime.dll
+ 0001:00013312       sdi_database_terminate     0000000180014312 f   sf_runtime:sf_runtime.dll
+ 0001:00013318       sdi_register_self_activity_signal 0000000180014318 f   sf_runtime:sf_runtime.dll
+ 0001:0001331e       sdi_register_child_activity_signal 000000018001431e f   sf_runtime:sf_runtime.dll
+ 0001:00013324       sdi_register_leaf_activity_signal 0000000180014324 f   sf_runtime:sf_runtime.dll
+ 0001:0001332a       sdi_register_builtin_data_type_signal 000000018001432a f   sf_runtime:sf_runtime.dll
+ 0001:00013330       sdi_register_base_address  0000000180014330 f   sf_runtime:sf_runtime.dll
+ 0001:00013336       sdi_stream_child_activity_signal 0000000180014336 f   sf_runtime:sf_runtime.dll
+ 0001:0001333c       sdi_stream_data_signal     000000018001433c f   sf_runtime:sf_runtime.dll
+ 0001:00013342       sdi_update_self_activity_signal 0000000180014342 f   sf_runtime:sf_runtime.dll
+ 0001:00013348       sdi_update_leaf_activity_signal 0000000180014348 f   sf_runtime:sf_runtime.dll
+ 0001:0001334e       sf_get_ChartInfoStruct_CodeGen 000000018001434e f   sf_runtime:sf_runtime.dll
+ 0001:00013354       sf_get_hasSeparateUpdateOutputs 0000000180014354 f   sf_runtime:sf_runtime.dll
+ 0001:0001335a       callMdlMethodAndReportError 000000018001435a f   sf_runtime:sf_runtime.dll
+ 0001:00013360       call_sf_machine_global_method_dispatcher 0000000180014360 f   sf_runtime:sf_runtime.dll
+ 0001:00013366       getRuntimeInstanceInfoAsVoid 0000000180014366 f   sf_runtime:sf_runtime.dll
+ 0001:0001336c       sf_mex_error_direct_call   000000018001436c f   sf_runtime:sf_runtime.dll
+ 0001:00013372       sf_clear_error_manager_info 0000000180014372 f   sf_runtime:sf_runtime.dll
+ 0001:00013378       mxIsChar_800               0000000180014378 f   libmx:libmx.dll
+ 0001:0001337e       mxGetScalar_800            000000018001437e f   libmx:libmx.dll
+ 0001:00013384       mxGetPr_800                0000000180014384 f   libmx:libmx.dll
+ 0001:0001338a       mxDestroyArray_800         000000018001438a f   libmx:libmx.dll
+ 0001:00013390       mxCreateDoubleMatrix_800   0000000180014390 f   libmx:libmx.dll
+ 0001:00013396       mxGetString_800            0000000180014396 f   libmx:libmx.dll
+ 0001:0001339c       mxDuplicateArray_800       000000018001439c f   libmx:libmx.dll
+ 0001:000133a2       mxSetField_800             00000001800143a2 f   libmx:libmx.dll
+ 0001:000133a8       mxCreateString_800         00000001800143a8 f   libmx:libmx.dll
+ 0001:000133ae       mxCreateCellMatrix_800     00000001800143ae f   libmx:libmx.dll
+ 0001:000133b4       mxCreateStructMatrix_800   00000001800143b4 f   libmx:libmx.dll
+ 0001:000133ba       mxCalloc_800               00000001800143ba f   libmx:libmx.dll
+ 0001:000133c0       mxGetM_800                 00000001800143c0 f   libmx:libmx.dll
+ 0001:000133c6       mxGetClassID_800           00000001800143c6 f   libmx:libmx.dll
+ 0001:000133cc       mxIsNumeric_800            00000001800143cc f   libmx:libmx.dll
+ 0001:000133d2       mxIsComplex_800            00000001800143d2 f   libmx:libmx.dll
+ 0001:000133d8       mxGetN_800                 00000001800143d8 f   libmx:libmx.dll
+ 0001:000133de       mxCreateDoubleScalar_800   00000001800143de f   libmx:libmx.dll
+ 0001:000133e4       mexMakeArrayPersistent_800 00000001800143e4 f   libmex:libmex.dll
+ 0001:000133ea       mexErrMsgTxt_800           00000001800143ea f   libmex:libmex.dll
+ 0001:000133f0       mexWarnMsgTxt_800          00000001800143f0 f   libmex:libmex.dll
+ 0001:000133f6       mexCallMATLAB_800          00000001800143f6 f   libmex:libmex.dll
+ 0001:000133fc       mexLock_800                00000001800143fc f   libmex:libmex.dll
+ 0001:00013402       mexUnlock_800              0000000180014402 f   libmex:libmex.dll
+ 0001:00013408       mexIsLocked_800            0000000180014408 f   libmex:libmex.dll
+ 0001:0001340e       utMalloc                   000000018001440e f   libut:libut.dll
+ 0001:00013414       utFree                     0000000180014414 f   libut:libut.dll
+ 0001:0001341a       emlrtNameCaptureMxArrayR2016a 000000018001441a f   libemlrt:libemlrt.dll
+ 0001:00013420       covrtCreateStateflowInstanceData 0000000180014420 f   libcovrt:libcovrt.dll
+ 0001:00013426       covrtDeleteStateflowInstanceData 0000000180014426 f   libcovrt:libcovrt.dll
+ 0001:0001342c       covrtTransInitFcn          000000018001442c f   libcovrt:libcovrt.dll
+ 0001:00013432       covrtStateInitFcn          0000000180014432 f   libcovrt:libcovrt.dll
+ 0001:00013438       covrtChartInitFcn          0000000180014438 f   libcovrt:libcovrt.dll
+ 0001:0001343e       covrtRelationalopUpdateFcn 000000018001443e f   libcovrt:libcovrt.dll
+ 0001:00013444       covrtDecUpdateFcn          0000000180014444 f   libcovrt:libcovrt.dll
+ 0001:0001344a       covrtSigUpdateFcn          000000018001444a f   libcovrt:libcovrt.dll
+ 0001:00013450       covrtEmlInitFcn            0000000180014450 f   libcovrt:libcovrt.dll
+ 0001:00013456       covrtEmlIfInitFcn          0000000180014456 f   libcovrt:libcovrt.dll
+ 0001:0001345c       covrtEmlMCDCInitFcn        000000018001445c f   libcovrt:libcovrt.dll
+ 0001:00013462       covrtEmlRelationalInitFcn  0000000180014462 f   libcovrt:libcovrt.dll
+ 0001:00013468       covrtEmlIfEval             0000000180014468 f   libcovrt:libcovrt.dll
+ 0001:0001346e       covrtEmlCondEval           000000018001446e f   libcovrt:libcovrt.dll
+ 0001:00013474       covrtEmlMcdcEval           0000000180014474 f   libcovrt:libcovrt.dll
+ 0001:0001347c       __raise_securityfailure    000000018001447c f   MSVCRT:gs_report.obj
+ 0001:000134b0       __report_gsfailure         00000001800144b0 f   MSVCRT:gs_report.obj
+ 0001:00013584       __report_rangecheckfailure 0000000180014584 f   MSVCRT:gs_report.obj
+ 0001:00013598       __report_securityfailure   0000000180014598 f   MSVCRT:gs_report.obj
+ 0001:00013634       __report_securityfailureEx 0000000180014634 f   MSVCRT:gs_report.obj
+ 0001:00013828       __GSHandlerCheck           0000000180014828 f   MSVCRT:gshandler.obj
+ 0001:00013848       __GSHandlerCheckCommon     0000000180014848 f   MSVCRT:gshandler.obj
+ 0001:000138c0       __security_check_cookie    00000001800148c0 f   MSVCRT:amdsecgs.obj
+ 0001:00013c1c       _CRT_INIT                  0000000180014c1c f   MSVCRT:dll_dllmain.obj
+ 0001:00013c24       _DllMainCRTStartup         0000000180014c24 f   MSVCRT:dll_dllmain.obj
+ 0001:00013cd0       __security_init_cookie     0000000180014cd0 f   MSVCRT:gs_support.obj
+ 0001:00013d7c       DllMain                    0000000180014d7c f   MSVCRT:dll_dllmain_stub.obj
+ 0001:00013da0       ?__scrt_initialize_type_info@@YAXXZ 0000000180014da0 f   MSVCRT:tncleanup.obj
+ 0001:00013db0       ?__scrt_uninitialize_type_info@@YAXXZ 0000000180014db0 f   MSVCRT:tncleanup.obj
+ 0001:00013dbc       __local_stdio_scanf_options 0000000180014dbc f i MSVCRT:default_local_stdio_options.obj
+ 0001:00013dc4       __scrt_initialize_default_local_stdio_options 0000000180014dc4 f   MSVCRT:default_local_stdio_options.obj
+ 0001:00013de0       ?configure_argv@__scrt_narrow_argv_policy@@SAHXZ 0000000180014de0 f i MSVCRT:utility.obj
+ 0001:00013e40       ?initialize_environment@__scrt_narrow_environment_policy@@SAHXZ 0000000180014e40 f i MSVCRT:utility.obj
+ 0001:00013e78       NtCurrentTeb               0000000180014e78 f i MSVCRT:utility.obj
+ 0001:00013e84       __scrt_acquire_startup_lock 0000000180014e84 f   MSVCRT:utility.obj
+ 0001:00013ec0       __scrt_dllmain_after_initialize_c 0000000180014ec0 f   MSVCRT:utility.obj
+ 0001:00013ef4       __scrt_dllmain_before_initialize_c 0000000180014ef4 f   MSVCRT:utility.obj
+ 0001:00013f0c       __scrt_dllmain_crt_thread_attach 0000000180014f0c f   MSVCRT:utility.obj
+ 0001:00013f34       __scrt_dllmain_crt_thread_detach 0000000180014f34 f   MSVCRT:utility.obj
+ 0001:00013f4c       __scrt_dllmain_exception_filter 0000000180014f4c f   MSVCRT:utility.obj
+ 0001:00013fac       __scrt_dllmain_uninitialize_c 0000000180014fac f   MSVCRT:utility.obj
+ 0001:00013fdc       __scrt_dllmain_uninitialize_critical 0000000180014fdc f   MSVCRT:utility.obj
+ 0001:00013ff0       __scrt_initialize_crt      0000000180014ff0 f   MSVCRT:utility.obj
+ 0001:0001403c       __scrt_initialize_onexit_tables 000000018001503c f   MSVCRT:utility.obj
+ 0001:000140c8       __scrt_is_nonwritable_in_current_image 00000001800150c8 f   MSVCRT:utility.obj
+ 0001:00014160       __scrt_release_startup_lock 0000000180015160 f   MSVCRT:utility.obj
+ 0001:00014184       __scrt_uninitialize_crt    0000000180015184 f   MSVCRT:utility.obj
+ 0001:000141b0       _onexit                    00000001800151b0 f   MSVCRT:utility.obj
+ 0001:000141ec       at_quick_exit              00000001800151ec f   MSVCRT:utility.obj
+ 0001:0001420c       atexit                     000000018001520c f   MSVCRT:utility.obj
+ 0001:00014224       __scrt_get_dyn_tls_init_callback 0000000180015224 f   MSVCRT:dyn_tls_init.obj
+ 0001:0001422c       __crt_debugger_hook        000000018001522c f   MSVCRT:utility_desktop.obj
+ 0001:00014234       __scrt_fastfail            0000000180015234 f   MSVCRT:utility_desktop.obj
+ 0001:00014380       __scrt_get_show_window_mode 0000000180015380 f   MSVCRT:utility_desktop.obj
+ 0001:000143bc       __scrt_initialize_mta      00000001800153bc f   MSVCRT:utility_desktop.obj
+ 0001:000143c4       __scrt_initialize_winrt    00000001800153c4 f   MSVCRT:utility_desktop.obj
+ 0001:000143c8       __scrt_is_managed_app      00000001800153c8 f   MSVCRT:utility_desktop.obj
+ 0001:0001441c       __scrt_set_unhandled_exception_filter 000000018001541c f   MSVCRT:utility_desktop.obj
+ 0001:0001442c       __scrt_stub_for_initialize_mta 000000018001542c f   MSVCRT:utility_desktop.obj
+ 0001:0001442c       __scrt_exe_initialize_mta  000000018001542c f   MSVCRT:utility_desktop.obj
+ 0001:00014430       __scrt_unhandled_exception_filter 0000000180015430 f   MSVCRT:utility_desktop.obj
+ 0001:0001448c       _RTC_Initialize            000000018001548c f   MSVCRT:initsect.obj
+ 0001:000144c8       _RTC_Terminate             00000001800154c8 f   MSVCRT:initsect.obj
+ 0001:00014504       _guard_check_icall_nop     0000000180015504 f i MSVCRT:guard_support.obj
+ 0001:00014508       ReadNoFence64              0000000180015508 f i MSVCRT:guard_support.obj
+ 0001:0001450c       ReadPointerNoFence         000000018001550c f i MSVCRT:guard_support.obj
+ 0001:00014510       __castguard_check_failure_debugbreak 0000000180015510 f i MSVCRT:guard_support.obj
+ 0001:0001452c       __castguard_check_failure_fastfail 000000018001552c f i MSVCRT:guard_support.obj
+ 0001:00014550       __castguard_check_failure_nop 0000000180015550 f i MSVCRT:guard_support.obj
+ 0001:00014554       __castguard_check_failure_os_handled 0000000180015554 f i MSVCRT:guard_support.obj
+ 0001:000145b4       __castguard_slow_path_check_debugbreak 00000001800155b4 f i MSVCRT:guard_support.obj
+ 0001:000145e8       __castguard_slow_path_check_fastfail 00000001800155e8 f i MSVCRT:guard_support.obj
+ 0001:00014624       __castguard_slow_path_check_nop 0000000180015624 f i MSVCRT:guard_support.obj
+ 0001:00014628       __castguard_slow_path_check_os_handled 0000000180015628 f i MSVCRT:guard_support.obj
+ 0001:0001469c       _guard_icall_checks_enforced 000000018001569c f i MSVCRT:guard_support.obj
+ 0001:000146b4       _guard_rf_checks_enforced  00000001800156b4 f i MSVCRT:guard_support.obj
+ 0001:000146b8       __isa_available_init       00000001800156b8 f   MSVCRT:cpu_disp.obj
+ 0001:0001485c       _get_startup_argv_mode     000000018001585c f   MSVCRT:argv_mode.obj
+ 0001:00014864       __scrt_is_ucrt_dll_in_use  0000000180015864 f   MSVCRT:ucrt_detection.obj
+ 0001:00014870       RtlCaptureContext          0000000180015870 f   kernel32:KERNEL32.dll
+ 0001:00014876       RtlLookupFunctionEntry     0000000180015876 f   kernel32:KERNEL32.dll
+ 0001:0001487c       RtlVirtualUnwind           000000018001587c f   kernel32:KERNEL32.dll
+ 0001:00014882       UnhandledExceptionFilter   0000000180015882 f   kernel32:KERNEL32.dll
+ 0001:00014888       SetUnhandledExceptionFilter 0000000180015888 f   kernel32:KERNEL32.dll
+ 0001:0001488e       GetCurrentProcess          000000018001588e f   kernel32:KERNEL32.dll
+ 0001:00014894       TerminateProcess           0000000180015894 f   kernel32:KERNEL32.dll
+ 0001:0001489a       IsProcessorFeaturePresent  000000018001589a f   kernel32:KERNEL32.dll
+ 0001:000148a0       QueryPerformanceCounter    00000001800158a0 f   kernel32:KERNEL32.dll
+ 0001:000148a6       GetCurrentProcessId        00000001800158a6 f   kernel32:KERNEL32.dll
+ 0001:000148ac       GetCurrentThreadId         00000001800158ac f   kernel32:KERNEL32.dll
+ 0001:000148b2       GetSystemTimeAsFileTime    00000001800158b2 f   kernel32:KERNEL32.dll
+ 0001:000148b8       DisableThreadLibraryCalls  00000001800158b8 f   kernel32:KERNEL32.dll
+ 0001:000148be       InitializeSListHead        00000001800158be f   kernel32:KERNEL32.dll
+ 0001:000148c4       IsDebuggerPresent          00000001800158c4 f   kernel32:KERNEL32.dll
+ 0001:000148ca       GetStartupInfoW            00000001800158ca f   kernel32:KERNEL32.dll
+ 0001:000148d0       GetModuleHandleW           00000001800158d0 f   kernel32:KERNEL32.dll
+ 0001:000148d6       memset                     00000001800158d6 f   vcruntime:VCRUNTIME140.dll
+ 0001:000148dc       memcpy                     00000001800158dc f   vcruntime:VCRUNTIME140.dll
+ 0001:000148e2       __C_specific_handler       00000001800158e2 f   vcruntime:VCRUNTIME140.dll
+ 0001:000148e8       __std_type_info_destroy_list 00000001800158e8 f   vcruntime:VCRUNTIME140.dll
+ 0001:000148ee       __current_exception        00000001800158ee f   vcruntime:VCRUNTIME140.dll
+ 0001:000148f4       __current_exception_context 00000001800158f4 f   vcruntime:VCRUNTIME140.dll
+ 0001:000148fa       strcmp                     00000001800158fa f   ucrt:api-ms-win-crt-string-l1-1-0.dll
+ 0001:00014900       strcat                     0000000180015900 f   ucrt:api-ms-win-crt-string-l1-1-0.dll
+ 0001:00014906       __stdio_common_vsprintf    0000000180015906 f   ucrt:api-ms-win-crt-stdio-l1-1-0.dll
+ 0001:0001490c       free                       000000018001590c f   ucrt:api-ms-win-crt-heap-l1-1-0.dll
+ 0001:00014912       malloc                     0000000180015912 f   ucrt:api-ms-win-crt-heap-l1-1-0.dll
+ 0001:00014918       strlen                     0000000180015918 f   ucrt:api-ms-win-crt-string-l1-1-0.dll
+ 0001:0001491e       _initterm                  000000018001591e f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00014924       _initterm_e                0000000180015924 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:0001492a       _seh_filter_dll            000000018001592a f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00014930       _configure_narrow_argv     0000000180015930 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00014936       _initialize_narrow_environment 0000000180015936 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:0001493c       _initialize_onexit_table   000000018001593c f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00014942       _register_onexit_function  0000000180015942 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00014948       _execute_onexit_table      0000000180015948 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:0001494e       _crt_atexit                000000018001594e f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00014954       _crt_at_quick_exit         0000000180015954 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:0001495a       _cexit                     000000018001595a f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00014960       terminate                  0000000180015960 f   ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0001:00014968       __acrt_initialize          0000000180015968 f   MSVCRT:ucrt_stubs.obj
+ 0001:00014968       __vcrt_initialize          0000000180015968 f   MSVCRT:ucrt_stubs.obj
+ 0001:00014968       __scrt_stub_for_acrt_initialize 0000000180015968 f   MSVCRT:ucrt_stubs.obj
+ 0001:0001496c       __vcrt_thread_attach       000000018001596c f   MSVCRT:ucrt_stubs.obj
+ 0001:0001496c       __scrt_stub_for_acrt_thread_attach 000000018001596c f   MSVCRT:ucrt_stubs.obj
+ 0001:0001496c       __acrt_thread_attach       000000018001596c f   MSVCRT:ucrt_stubs.obj
+ 0001:00014970       __scrt_stub_for_acrt_thread_detach 0000000180015970 f   MSVCRT:ucrt_stubs.obj
+ 0001:00014970       __acrt_thread_detach       0000000180015970 f   MSVCRT:ucrt_stubs.obj
+ 0001:00014970       __vcrt_thread_detach       0000000180015970 f   MSVCRT:ucrt_stubs.obj
+ 0001:00014974       __acrt_uninitialize        0000000180015974 f   MSVCRT:ucrt_stubs.obj
+ 0001:00014974       __scrt_stub_for_acrt_uninitialize 0000000180015974 f   MSVCRT:ucrt_stubs.obj
+ 0001:00014974       __vcrt_uninitialize        0000000180015974 f   MSVCRT:ucrt_stubs.obj
+ 0001:00014978       __vcrt_uninitialize_critical 0000000180015978 f   MSVCRT:ucrt_stubs.obj
+ 0001:00014978       __scrt_stub_for_acrt_uninitialize_critical 0000000180015978 f   MSVCRT:ucrt_stubs.obj
+ 0001:00014978       __acrt_uninitialize_critical 0000000180015978 f   MSVCRT:ucrt_stubs.obj
+ 0001:0001497c       __scrt_stub_for_is_c_termination_complete 000000018001597c f   MSVCRT:ucrt_stubs.obj
+ 0001:0001497c       _is_c_termination_complete 000000018001597c f   MSVCRT:ucrt_stubs.obj
+ 0001:00014990       _guard_dispatch_icall_nop  0000000180015990 f   MSVCRT:guard_dispatch.obj
+ 0001:000149b0       _guard_xfg_dispatch_icall_nop 00000001800159b0 f   MSVCRT:guard_xfg_dispatch.obj
+ 0002:00000000       __imp_RtlCaptureContext    0000000180016000     kernel32:KERNEL32.dll
+ 0002:00000008       __imp_IsProcessorFeaturePresent 0000000180016008     kernel32:KERNEL32.dll
+ 0002:00000010       __imp_QueryPerformanceCounter 0000000180016010     kernel32:KERNEL32.dll
+ 0002:00000018       __imp_RtlLookupFunctionEntry 0000000180016018     kernel32:KERNEL32.dll
+ 0002:00000020       __imp_GetCurrentProcessId  0000000180016020     kernel32:KERNEL32.dll
+ 0002:00000028       __imp_GetCurrentThreadId   0000000180016028     kernel32:KERNEL32.dll
+ 0002:00000030       __imp_GetSystemTimeAsFileTime 0000000180016030     kernel32:KERNEL32.dll
+ 0002:00000038       __imp_DisableThreadLibraryCalls 0000000180016038     kernel32:KERNEL32.dll
+ 0002:00000040       __imp_InitializeSListHead  0000000180016040     kernel32:KERNEL32.dll
+ 0002:00000048       __imp_IsDebuggerPresent    0000000180016048     kernel32:KERNEL32.dll
+ 0002:00000050       __imp_GetStartupInfoW      0000000180016050     kernel32:KERNEL32.dll
+ 0002:00000058       __imp_GetModuleHandleW     0000000180016058     kernel32:KERNEL32.dll
+ 0002:00000060       __imp_GetCurrentProcess    0000000180016060     kernel32:KERNEL32.dll
+ 0002:00000068       __imp_SetUnhandledExceptionFilter 0000000180016068     kernel32:KERNEL32.dll
+ 0002:00000070       __imp_UnhandledExceptionFilter 0000000180016070     kernel32:KERNEL32.dll
+ 0002:00000078       __imp_RtlVirtualUnwind     0000000180016078     kernel32:KERNEL32.dll
+ 0002:00000080       __imp_TerminateProcess     0000000180016080     kernel32:KERNEL32.dll
+ 0002:00000088       \177KERNEL32_NULL_THUNK_DATA 0000000180016088     kernel32:KERNEL32.dll
+ 0002:00000090       __imp_memset               0000000180016090     vcruntime:VCRUNTIME140.dll
+ 0002:00000098       __imp_memcpy               0000000180016098     vcruntime:VCRUNTIME140.dll
+ 0002:000000a0       __imp___C_specific_handler 00000001800160a0     vcruntime:VCRUNTIME140.dll
+ 0002:000000a8       __imp___std_type_info_destroy_list 00000001800160a8     vcruntime:VCRUNTIME140.dll
+ 0002:000000b0       __imp___current_exception  00000001800160b0     vcruntime:VCRUNTIME140.dll
+ 0002:000000b8       __imp___current_exception_context 00000001800160b8     vcruntime:VCRUNTIME140.dll
+ 0002:000000c0       \177VCRUNTIME140_NULL_THUNK_DATA 00000001800160c0     vcruntime:VCRUNTIME140.dll
+ 0002:000000c8       __imp_malloc               00000001800160c8     ucrt:api-ms-win-crt-heap-l1-1-0.dll
+ 0002:000000d0       __imp_free                 00000001800160d0     ucrt:api-ms-win-crt-heap-l1-1-0.dll
+ 0002:000000d8       \177api-ms-win-crt-heap-l1-1-0_NULL_THUNK_DATA 00000001800160d8     ucrt:api-ms-win-crt-heap-l1-1-0.dll
+ 0002:000000e0       __imp__initterm_e          00000001800160e0     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:000000e8       __imp__seh_filter_dll      00000001800160e8     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:000000f0       __imp__initialize_narrow_environment 00000001800160f0     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:000000f8       __imp__configure_narrow_argv 00000001800160f8     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000100       __imp__register_onexit_function 0000000180016100     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000108       __imp__execute_onexit_table 0000000180016108     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000110       __imp__crt_atexit          0000000180016110     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000118       __imp__crt_at_quick_exit   0000000180016118     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000120       __imp__cexit               0000000180016120     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000128       __imp_terminate            0000000180016128     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000130       __imp__initialize_onexit_table 0000000180016130     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000138       __imp__initterm            0000000180016138     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000140       \177api-ms-win-crt-runtime-l1-1-0_NULL_THUNK_DATA 0000000180016140     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:00000148       __imp___stdio_common_vsprintf 0000000180016148     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
+ 0002:00000150       \177api-ms-win-crt-stdio-l1-1-0_NULL_THUNK_DATA 0000000180016150     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
+ 0002:00000158       __imp_strlen               0000000180016158     ucrt:api-ms-win-crt-string-l1-1-0.dll
+ 0002:00000160       __imp_strcat               0000000180016160     ucrt:api-ms-win-crt-string-l1-1-0.dll
+ 0002:00000168       __imp_strcmp               0000000180016168     ucrt:api-ms-win-crt-string-l1-1-0.dll
+ 0002:00000170       \177api-ms-win-crt-string-l1-1-0_NULL_THUNK_DATA 0000000180016170     ucrt:api-ms-win-crt-string-l1-1-0.dll
+ 0002:00000178       __imp_covrtDeleteStateflowInstanceData 0000000180016178     libcovrt:libcovrt.dll
+ 0002:00000180       __imp_covrtEmlMcdcEval     0000000180016180     libcovrt:libcovrt.dll
+ 0002:00000188       __imp_covrtEmlCondEval     0000000180016188     libcovrt:libcovrt.dll
+ 0002:00000190       __imp_covrtEmlIfEval       0000000180016190     libcovrt:libcovrt.dll
+ 0002:00000198       __imp_covrtEmlRelationalInitFcn 0000000180016198     libcovrt:libcovrt.dll
+ 0002:000001a0       __imp_covrtEmlMCDCInitFcn  00000001800161a0     libcovrt:libcovrt.dll
+ 0002:000001a8       __imp_covrtEmlIfInitFcn    00000001800161a8     libcovrt:libcovrt.dll
+ 0002:000001b0       __imp_covrtEmlInitFcn      00000001800161b0     libcovrt:libcovrt.dll
+ 0002:000001b8       __imp_covrtSigUpdateFcn    00000001800161b8     libcovrt:libcovrt.dll
+ 0002:000001c0       __imp_covrtDecUpdateFcn    00000001800161c0     libcovrt:libcovrt.dll
+ 0002:000001c8       __imp_covrtRelationalopUpdateFcn 00000001800161c8     libcovrt:libcovrt.dll
+ 0002:000001d0       __imp_covrtChartInitFcn    00000001800161d0     libcovrt:libcovrt.dll
+ 0002:000001d8       __imp_covrtTransInitFcn    00000001800161d8     libcovrt:libcovrt.dll
+ 0002:000001e0       __imp_covrtStateInitFcn    00000001800161e0     libcovrt:libcovrt.dll
+ 0002:000001e8       __imp_covrtCreateStateflowInstanceData 00000001800161e8     libcovrt:libcovrt.dll
+ 0002:000001f0       \177libcovrt_NULL_THUNK_DATA 00000001800161f0     libcovrt:libcovrt.dll
+ 0002:000001f8       __imp_emlrtNameCaptureMxArrayR2016a 00000001800161f8     libemlrt:libemlrt.dll
+ 0002:00000200       \177libemlrt_NULL_THUNK_DATA 0000000180016200     libemlrt:libemlrt.dll
+ 0002:00000208       __imp_mexUnlock_800        0000000180016208     libmex:libmex.dll
+ 0002:00000210       __imp_mexLock_800          0000000180016210     libmex:libmex.dll
+ 0002:00000218       __imp_mexCallMATLAB_800    0000000180016218     libmex:libmex.dll
+ 0002:00000220       __imp_mexWarnMsgTxt_800    0000000180016220     libmex:libmex.dll
+ 0002:00000228       __imp_mexErrMsgTxt_800     0000000180016228     libmex:libmex.dll
+ 0002:00000230       __imp_mexMakeArrayPersistent_800 0000000180016230     libmex:libmex.dll
+ 0002:00000238       __imp_mexIsLocked_800      0000000180016238     libmex:libmex.dll
+ 0002:00000240       \177libmex_NULL_THUNK_DATA 0000000180016240     libmex:libmex.dll
+ 0002:00000248       __imp_mxIsNumeric_800      0000000180016248     libmx:libmx.dll
+ 0002:00000250       __imp_mxIsComplex_800      0000000180016250     libmx:libmx.dll
+ 0002:00000258       __imp_mxGetClassID_800     0000000180016258     libmx:libmx.dll
+ 0002:00000260       __imp_mxGetString_800      0000000180016260     libmx:libmx.dll
+ 0002:00000268       __imp_mxSetField_800       0000000180016268     libmx:libmx.dll
+ 0002:00000270       __imp_mxGetM_800           0000000180016270     libmx:libmx.dll
+ 0002:00000278       __imp_mxCalloc_800         0000000180016278     libmx:libmx.dll
+ 0002:00000280       __imp_mxCreateStructMatrix_800 0000000180016280     libmx:libmx.dll
+ 0002:00000288       __imp_mxCreateCellMatrix_800 0000000180016288     libmx:libmx.dll
+ 0002:00000290       __imp_mxCreateString_800   0000000180016290     libmx:libmx.dll
+ 0002:00000298       __imp_mxGetPr_800          0000000180016298     libmx:libmx.dll
+ 0002:000002a0       __imp_mxGetN_800           00000001800162a0     libmx:libmx.dll
+ 0002:000002a8       __imp_mxDuplicateArray_800 00000001800162a8     libmx:libmx.dll
+ 0002:000002b0       __imp_mxGetScalar_800      00000001800162b0     libmx:libmx.dll
+ 0002:000002b8       __imp_mxIsChar_800         00000001800162b8     libmx:libmx.dll
+ 0002:000002c0       __imp_mxCreateDoubleMatrix_800 00000001800162c0     libmx:libmx.dll
+ 0002:000002c8       __imp_mxCreateDoubleScalar_800 00000001800162c8     libmx:libmx.dll
+ 0002:000002d0       __imp_mxDestroyArray_800   00000001800162d0     libmx:libmx.dll
+ 0002:000002d8       \177libmx_NULL_THUNK_DATA  00000001800162d8     libmx:libmx.dll
+ 0002:000002e0       __imp_utFree               00000001800162e0     libut:libut.dll
+ 0002:000002e8       __imp_utMalloc             00000001800162e8     libut:libut.dll
+ 0002:000002f0       \177libut_NULL_THUNK_DATA  00000001800162f0     libut:libut.dll
+ 0002:000002f8       __imp_sf_mex_decode        00000001800162f8     sf_runtime:sf_runtime.dll
+ 0002:00000300       __imp_sf_clear_error_manager_info 0000000180016300     sf_runtime:sf_runtime.dll
+ 0002:00000308       __imp_sf_mex_error_direct_call 0000000180016308     sf_runtime:sf_runtime.dll
+ 0002:00000310       __imp_getRuntimeInstanceInfoAsVoid 0000000180016310     sf_runtime:sf_runtime.dll
+ 0002:00000318       __imp_call_sf_machine_global_method_dispatcher 0000000180016318     sf_runtime:sf_runtime.dll
+ 0002:00000320       __imp_callMdlMethodAndReportError 0000000180016320     sf_runtime:sf_runtime.dll
+ 0002:00000328       __imp_sf_get_hasSeparateUpdateOutputs 0000000180016328     sf_runtime:sf_runtime.dll
+ 0002:00000330       __imp_sf_get_ChartInfoStruct_CodeGen 0000000180016330     sf_runtime:sf_runtime.dll
+ 0002:00000338       __imp_sdi_update_leaf_activity_signal 0000000180016338     sf_runtime:sf_runtime.dll
+ 0002:00000340       __imp_sdi_update_self_activity_signal 0000000180016340     sf_runtime:sf_runtime.dll
+ 0002:00000348       __imp_sdi_stream_data_signal 0000000180016348     sf_runtime:sf_runtime.dll
+ 0002:00000350       __imp_sdi_stream_child_activity_signal 0000000180016350     sf_runtime:sf_runtime.dll
+ 0002:00000358       __imp_sdi_register_base_address 0000000180016358     sf_runtime:sf_runtime.dll
+ 0002:00000360       __imp_sdi_register_builtin_data_type_signal 0000000180016360     sf_runtime:sf_runtime.dll
+ 0002:00000368       __imp_sdi_register_leaf_activity_signal 0000000180016368     sf_runtime:sf_runtime.dll
+ 0002:00000370       __imp_sdi_register_child_activity_signal 0000000180016370     sf_runtime:sf_runtime.dll
+ 0002:00000378       __imp_sdi_register_self_activity_signal 0000000180016378     sf_runtime:sf_runtime.dll
+ 0002:00000380       __imp_sdi_database_terminate 0000000180016380     sf_runtime:sf_runtime.dll
+ 0002:00000388       __imp_sdi_database_initialize 0000000180016388     sf_runtime:sf_runtime.dll
+ 0002:00000390       __imp_sf_temporal_value_range_check_min 0000000180016390     sf_runtime:sf_runtime.dll
+ 0002:00000398       __imp_sf_read_before_write_error 0000000180016398     sf_runtime:sf_runtime.dll
+ 0002:000003a0       __imp_ssGetOutputPortSignal_wrapper 00000001800163a0     sf_runtime:sf_runtime.dll
+ 0002:000003a8       __imp_ssGetInputPortSignal_wrapper 00000001800163a8     sf_runtime:sf_runtime.dll
+ 0002:000003b0       __imp_sf_mex_duplicatearraysafe 00000001800163b0     sf_runtime:sf_runtime.dll
+ 0002:000003b8       __imp_sf_mex_sub           00000001800163b8     sf_runtime:sf_runtime.dll
+ 0002:000003c0       __imp_sf_mex_import_named  00000001800163c0     sf_runtime:sf_runtime.dll
+ 0002:000003c8       __imp_sf_mex_import        00000001800163c8     sf_runtime:sf_runtime.dll
+ 0002:000003d0       __imp_sf_mex_destroy       00000001800163d0     sf_runtime:sf_runtime.dll
+ 0002:000003d8       __imp_sf_mex_dup           00000001800163d8     sf_runtime:sf_runtime.dll
+ 0002:000003e0       __imp_sf_mex_assign        00000001800163e0     sf_runtime:sf_runtime.dll
+ 0002:000003e8       __imp_sf_mex_getcell       00000001800163e8     sf_runtime:sf_runtime.dll
+ 0002:000003f0       __imp_sf_mex_setcell       00000001800163f0     sf_runtime:sf_runtime.dll
+ 0002:000003f8       __imp_sf_mex_createcellmatrix 00000001800163f8     sf_runtime:sf_runtime.dll
+ 0002:00000400       __imp_sf_mex_create        0000000180016400     sf_runtime:sf_runtime.dll
+ 0002:00000408       __imp_sf_mex_create_enum   0000000180016408     sf_runtime:sf_runtime.dll
+ 0002:00000410       __imp_sf_mex_error_message 0000000180016410     sf_runtime:sf_runtime.dll
+ 0002:00000418       __imp_sfAppendHoverData    0000000180016418     sf_runtime:sf_runtime.dll
+ 0002:00000420       __imp_sfListenerRegisterHover 0000000180016420     sf_runtime:sf_runtime.dll
+ 0002:00000428       __imp_sfListenerInitializeRuntimeVars 0000000180016428     sf_runtime:sf_runtime.dll
+ 0002:00000430       __imp_sfListenerLightTerminate 0000000180016430     sf_runtime:sf_runtime.dll
+ 0002:00000438       __imp_sfListenerCacheSimStruct 0000000180016438     sf_runtime:sf_runtime.dll
+ 0002:00000440       __imp_sf_set_work_widths   0000000180016440     sf_runtime:sf_runtime.dll
+ 0002:00000448       __imp_sf_warn_if_symbolic_dimension_param_changed 0000000180016448     sf_runtime:sf_runtime.dll
+ 0002:00000450       __imp_setDebuggerFlag      0000000180016450     sf_runtime:sf_runtime.dll
+ 0002:00000458       __imp_setDataBrowseFcn     0000000180016458     sf_runtime:sf_runtime.dll
+ 0002:00000460       __imp_sfDoAnimationWrapper 0000000180016460     sf_runtime:sf_runtime.dll
+ 0002:00000468       __imp_sf_get_time          0000000180016468     sf_runtime:sf_runtime.dll
+ 0002:00000470       __imp_sf_get_output_port_reusable 0000000180016470     sf_runtime:sf_runtime.dll
+ 0002:00000478       __imp_sf_clear_rtw_identifier 0000000180016478     sf_runtime:sf_runtime.dll
+ 0002:00000480       __imp_sf_mex_get_sfun_param 0000000180016480     sf_runtime:sf_runtime.dll
+ 0002:00000488       __imp_sim_mode_is_external 0000000180016488     sf_runtime:sf_runtime.dll
+ 0002:00000490       __imp_sim_mode_is_rtw_gen  0000000180016490     sf_runtime:sf_runtime.dll
+ 0002:00000498       __imp_sf_get_chart_instance_ptr 0000000180016498     sf_runtime:sf_runtime.dll
+ 0002:000004a0       __imp_sfrtGetCovrtInstance 00000001800164a0     sf_runtime:sf_runtime.dll
+ 0002:000004a8       __imp_sfrtGetEmlrtCtx      00000001800164a8     sf_runtime:sf_runtime.dll
+ 0002:000004b0       __imp_sf_free_ChartRunTimeInfo 00000001800164b0     sf_runtime:sf_runtime.dll
+ 0002:000004b8       __imp_sf_init_ChartRunTimeInfo 00000001800164b8     sf_runtime:sf_runtime.dll
+ 0002:000004c0       __imp_sf_load_rtw_optimization_info 00000001800164c0     sf_runtime:sf_runtime.dll
+ 0002:000004c8       \177sf_runtime_NULL_THUNK_DATA 00000001800164c8     sf_runtime:sf_runtime.dll
+ 0002:000004d0       __guard_check_icall_fptr   00000001800164d0     MSVCRT:guard_support.obj
+ 0002:000004d8       __guard_xfg_check_icall_fptr 00000001800164d8     MSVCRT:guard_support.obj
+ 0002:000004e0       __guard_dispatch_icall_fptr 00000001800164e0     MSVCRT:guard_support.obj
+ 0002:000004e8       __guard_xfg_dispatch_icall_fptr 00000001800164e8     MSVCRT:guard_support.obj
+ 0002:000004f0       __guard_xfg_table_dispatch_icall_fptr 00000001800164f0     MSVCRT:guard_support.obj
+ 0002:000004f8       __xc_a                     00000001800164f8     MSVCRT:initializers.obj
+ 0002:00000500       __xc_z                     0000000180016500     MSVCRT:initializers.obj
+ 0002:00000508       __xi_a                     0000000180016508     MSVCRT:initializers.obj
+ 0002:00000510       __xi_z                     0000000180016510     MSVCRT:initializers.obj
+ 0002:00000518       __xp_a                     0000000180016518     MSVCRT:initializers.obj
+ 0002:00000520       __xp_z                     0000000180016520     MSVCRT:initializers.obj
+ 0002:00000528       __xt_a                     0000000180016528     MSVCRT:initializers.obj
+ 0002:00000530       __xt_z                     0000000180016530     MSVCRT:initializers.obj
+ 0002:00000540       __real@41c4980e43800000    0000000180016540     Balancing_Logic_sfun.obj
+ 0002:00000548       __real@41c8073320800000    0000000180016548     Balancing_Logic_sfun.obj
+ 0002:00000550       __real@41cd875894000000    0000000180016550     Balancing_Logic_sfun.obj
+ 0002:00000558       __real@41cf8cecc7000000    0000000180016558     Balancing_Logic_sfun.obj
+ 0002:00000560       __real@41d73170c4c00000    0000000180016560     Balancing_Logic_sfun.obj
+ 0002:00000568       __real@41e067f384a00000    0000000180016568     Balancing_Logic_sfun.obj
+ 0002:00000570       __real@41e29be4cec00000    0000000180016570     Balancing_Logic_sfun.obj
+ 0002:00000578       __real@41e3cce89f200000    0000000180016578     Balancing_Logic_sfun.obj
+ 0002:00000580       __real@41e55e18f9c00000    0000000180016580     Balancing_Logic_sfun.obj
+ 0002:00000588       __real@41e565ff4d600000    0000000180016588     Balancing_Logic_sfun.obj
+ 0002:00000590       __real@41ea5b41cc400000    0000000180016590     Balancing_Logic_sfun.obj
+ 0002:00000598       __real@41eca571d6a00000    0000000180016598     Balancing_Logic_sfun.obj
+ 0002:000006f0       __real@0000000000000000    00000001800166f0     c1_Balancing_Logic.obj
+ 0002:000006f8       __real@3ff0000000000000    00000001800166f8     c1_Balancing_Logic.obj
+ 0002:00000700       __real@40000000            0000000180016700     c1_Balancing_Logic.obj
+ 0002:00000708       __real@4014000000000000    0000000180016708     c1_Balancing_Logic.obj
+ 0002:00000710       __real@40e0000000000000    0000000180016710     c1_Balancing_Logic.obj
+ 0002:00000718       __real@41c6fdaf66800000    0000000180016718     c1_Balancing_Logic.obj
+ 0002:00000720       __real@41d84c507fc00000    0000000180016720     c1_Balancing_Logic.obj
+ 0002:00000728       __real@41e66f818e800000    0000000180016728     c1_Balancing_Logic.obj
+ 0002:00000730       __real@41e98f02f2c00000    0000000180016730     c1_Balancing_Logic.obj
+ 0002:00000738       __real@bff0000000000000    0000000180016738     c1_Balancing_Logic.obj
+ 0002:00000740       __real@c0e0000000000000    0000000180016740     c1_Balancing_Logic.obj
+ 0002:00000748       DYNAMIC_DIMENSION_DEF      0000000180016748     Balancing_Logic_sfun_registry.obj
+ 0002:00000760       __real@4010000000000000    0000000180016760     Balancing_Logic_sfun_registry.obj
+ 0002:00000768       __real@41602cbca0000000    0000000180016768     Balancing_Logic_sfun_registry.obj
+ 0002:00000770       __real@77800000            0000000180016770     half_type.obj
+ 0002:00000788       _pDefaultRawDllMain        0000000180016788     MSVCRT:dll_dllmain.obj
+ 0002:00000788       _pRawDllMain               0000000180016788     MSVCRT:dll_dllmain.obj
+ 0002:00000790       __xmm@ffffffffffffffffffffffffffffffff 0000000180016790     MSVCRT:utility.obj
+ 0002:000007c0       _load_config_used          00000001800167c0     MSVCRT:loadcfg.obj
+ 0002:00000900       __CastGuardVftablesStart   0000000180016900     MSVCRT:guard_support.obj
+ 0002:00000908       __CastGuardVftablesEnd     0000000180016908     MSVCRT:guard_support.obj
+ 0002:00000910       __volatile_metadata        0000000180016910     <linker-defined>
+ 0002:00000ca0       __rtc_iaa                  0000000180016ca0     MSVCRT:initsect.obj
+ 0002:00000ca8       __rtc_izz                  0000000180016ca8     MSVCRT:initsect.obj
+ 0002:00000cb0       __rtc_taa                  0000000180016cb0     MSVCRT:initsect.obj
+ 0002:00000cb8       __rtc_tzz                  0000000180016cb8     MSVCRT:initsect.obj
+ 0002:00001800       __IMPORT_DESCRIPTOR_sf_runtime 0000000180017800     sf_runtime:sf_runtime.dll
+ 0002:00001814       __IMPORT_DESCRIPTOR_libmx  0000000180017814     libmx:libmx.dll
+ 0002:00001828       __IMPORT_DESCRIPTOR_libmex 0000000180017828     libmex:libmex.dll
+ 0002:0000183c       __IMPORT_DESCRIPTOR_libut  000000018001783c     libut:libut.dll
+ 0002:00001850       __IMPORT_DESCRIPTOR_libemlrt 0000000180017850     libemlrt:libemlrt.dll
+ 0002:00001864       __IMPORT_DESCRIPTOR_libcovrt 0000000180017864     libcovrt:libcovrt.dll
+ 0002:00001878       __IMPORT_DESCRIPTOR_KERNEL32 0000000180017878     kernel32:KERNEL32.dll
+ 0002:0000188c       __IMPORT_DESCRIPTOR_VCRUNTIME140 000000018001788c     vcruntime:VCRUNTIME140.dll
+ 0002:000018a0       __IMPORT_DESCRIPTOR_api-ms-win-crt-string-l1-1-0 00000001800178a0     ucrt:api-ms-win-crt-string-l1-1-0.dll
+ 0002:000018b4       __IMPORT_DESCRIPTOR_api-ms-win-crt-stdio-l1-1-0 00000001800178b4     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
+ 0002:000018c8       __IMPORT_DESCRIPTOR_api-ms-win-crt-heap-l1-1-0 00000001800178c8     ucrt:api-ms-win-crt-heap-l1-1-0.dll
+ 0002:000018dc       __IMPORT_DESCRIPTOR_api-ms-win-crt-runtime-l1-1-0 00000001800178dc     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0002:000018f0       __NULL_IMPORT_DESCRIPTOR   00000001800178f0     sf_runtime:sf_runtime.dll
+ 0003:000017d0       DYNAMIC_DIMENSION          000000018001a7d0     Balancing_Logic_sfun_registry.obj
+ 0003:00003d30       __security_cookie_complement 000000018001cd30     MSVCRT:gs_cookie.obj
+ 0003:00003d38       __security_cookie          000000018001cd38     MSVCRT:gs_cookie.obj
+ 0003:00003d40       _fltused                   000000018001cd40     MSVCRT:fltused.obj
+ 0003:00003d44       __scrt_native_dllmain_reason 000000018001cd44     MSVCRT:utility.obj
+ 0003:00003d48       __isa_available            000000018001cd48     MSVCRT:cpu_disp.obj
+ 0003:00003d4c       __isa_enabled              000000018001cd4c     MSVCRT:cpu_disp.obj
+ 0003:00003d50       __memcpy_nt_iters          000000018001cd50     MSVCRT:cpu_disp.obj
+ 0003:00003d58       __memset_nt_iters          000000018001cd58     MSVCRT:cpu_disp.obj
+ 0003:00003d60       __scrt_ucrt_dll_is_in_use  000000018001cd60     MSVCRT:ucrt_stubs.obj
+ 0003:00004c20       ?__type_info_root_node@@3U__type_info_node@@A 000000018001dc20     MSVCRT:tncleanup.obj
+ 0003:00004c30       ?_OptionsStorage@?1??__local_stdio_printf_options@@9@4_KA 000000018001dc30     MSVCRT:default_local_stdio_options.obj
+ 0003:00004c38       ?_OptionsStorage@?1??__local_stdio_scanf_options@@9@4_KA 000000018001dc38     MSVCRT:default_local_stdio_options.obj
+ 0003:00004c40       __scrt_current_native_startup_state 000000018001dc40     MSVCRT:utility.obj
+ 0003:00004c48       __scrt_native_startup_lock 000000018001dc48     MSVCRT:utility.obj
+ 0003:00004c88       __scrt_debugger_hook_flag  000000018001dc88     MSVCRT:utility_desktop.obj
+ 0003:00004c90       __castguard_check_failure_os_handled_fptr 000000018001dc90     MSVCRT:guard_support.obj
+ 0003:00004c98       __favor                    000000018001dc98     MSVCRT:cpu_disp.obj
+ 0003:00004ca0       ?_OptionsStorage@?1??__local_stdio_printf_options@@9@9 000000018001dca0     <common>
+ 0003:00004ca8       __dyn_tls_init_callback    000000018001dca8     <common>
+
+ entry point at        0001:00013c24
+
+ Static symbols
+
+ 0000:00000000       .debug$S                   0000000180000000     Balancing_Logic_sfun.exp
+ 0000:fffe1000       _volmd                     0000000180000000     Balancing_Logic_sfun.obj
+ 0000:fffe1000       _volmd                     0000000180000000     Balancing_Logic_sfun_registry.obj
+ 0000:fffe1000       _volmd                     0000000180000000     c1_Balancing_Logic.obj
+ 0000:00000000       .debug$S                   0000000180000000     ucrt:api-ms-win-crt-heap-l1-1-0.dll
+ 0000:00000000       .debug$S                   0000000180000000     ucrt:api-ms-win-crt-heap-l1-1-0.dll
+ 0000:00000000       .debug$S                   0000000180000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:00000000       .debug$S                   0000000180000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:00000000       .debug$S                   0000000180000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:00000000       .debug$S                   0000000180000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:00000000       .debug$S                   0000000180000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:00000000       .debug$S                   0000000180000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:00000000       .debug$S                   0000000180000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:00000000       .debug$S                   0000000180000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:00000000       .debug$S                   0000000180000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:00000000       .debug$S                   0000000180000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:00000000       .debug$S                   0000000180000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:00000000       .debug$S                   0000000180000000     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0000:00000000       .debug$S                   0000000180000000     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
+ 0000:00000000       .debug$S                   0000000180000000     ucrt:api-ms-win-crt-string-l1-1-0.dll
+ 0000:00000000       .debug$S                   0000000180000000     ucrt:api-ms-win-crt-string-l1-1-0.dll
+ 0000:00000000       .debug$S                   0000000180000000     ucrt:api-ms-win-crt-string-l1-1-0.dll
+ 0000:00000000       .debug$S                   0000000180000000     kernel32:KERNEL32.dll
+ 0000:00000000       .debug$S                   0000000180000000     kernel32:KERNEL32.dll
+ 0000:00000000       .debug$S                   0000000180000000     kernel32:KERNEL32.dll
+ 0000:00000000       .debug$S                   0000000180000000     kernel32:KERNEL32.dll
+ 0000:00000000       .debug$S                   0000000180000000     kernel32:KERNEL32.dll
+ 0000:00000000       .debug$S                   0000000180000000     kernel32:KERNEL32.dll
+ 0000:00000000       .debug$S                   0000000180000000     kernel32:KERNEL32.dll
+ 0000:00000000       .debug$S                   0000000180000000     kernel32:KERNEL32.dll
+ 0000:00000000       .debug$S                   0000000180000000     kernel32:KERNEL32.dll
+ 0000:00000000       .debug$S                   0000000180000000     kernel32:KERNEL32.dll
+ 0000:00000000       .debug$S                   0000000180000000     kernel32:KERNEL32.dll
+ 0000:00000000       .debug$S                   0000000180000000     kernel32:KERNEL32.dll
+ 0000:00000000       .debug$S                   0000000180000000     kernel32:KERNEL32.dll
+ 0000:00000000       .debug$S                   0000000180000000     kernel32:KERNEL32.dll
+ 0000:00000000       .debug$S                   0000000180000000     kernel32:KERNEL32.dll
+ 0000:00000000       .debug$S                   0000000180000000     kernel32:KERNEL32.dll
+ 0000:00000000       .debug$S                   0000000180000000     kernel32:KERNEL32.dll
+ 0000:00000000       .debug$S                   0000000180000000     libcovrt:libcovrt.dll
+ 0000:00000000       .debug$S                   0000000180000000     libcovrt:libcovrt.dll
+ 0000:00000000       .debug$S                   0000000180000000     libcovrt:libcovrt.dll
+ 0000:00000000       .debug$S                   0000000180000000     libcovrt:libcovrt.dll
+ 0000:00000000       .debug$S                   0000000180000000     libcovrt:libcovrt.dll
+ 0000:00000000       .debug$S                   0000000180000000     libcovrt:libcovrt.dll
+ 0000:00000000       .debug$S                   0000000180000000     libcovrt:libcovrt.dll
+ 0000:00000000       .debug$S                   0000000180000000     libcovrt:libcovrt.dll
+ 0000:00000000       .debug$S                   0000000180000000     libcovrt:libcovrt.dll
+ 0000:00000000       .debug$S                   0000000180000000     libcovrt:libcovrt.dll
+ 0000:00000000       .debug$S                   0000000180000000     libcovrt:libcovrt.dll
+ 0000:00000000       .debug$S                   0000000180000000     libcovrt:libcovrt.dll
+ 0000:00000000       .debug$S                   0000000180000000     libcovrt:libcovrt.dll
+ 0000:00000000       .debug$S                   0000000180000000     libcovrt:libcovrt.dll
+ 0000:00000000       .debug$S                   0000000180000000     libcovrt:libcovrt.dll
+ 0000:00000000       .debug$S                   0000000180000000     libemlrt:libemlrt.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmex:libmex.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmex:libmex.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmex:libmex.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmex:libmex.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmex:libmex.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmex:libmex.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmex:libmex.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmx:libmx.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmx:libmx.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmx:libmx.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmx:libmx.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmx:libmx.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmx:libmx.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmx:libmx.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmx:libmx.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmx:libmx.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmx:libmx.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmx:libmx.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmx:libmx.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmx:libmx.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmx:libmx.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmx:libmx.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmx:libmx.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmx:libmx.dll
+ 0000:00000000       .debug$S                   0000000180000000     libmx:libmx.dll
+ 0000:00000000       .debug$S                   0000000180000000     libut:libut.dll
+ 0000:00000000       .debug$S                   0000000180000000     libut:libut.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:00000000       .debug$S                   0000000180000000     sf_runtime:sf_runtime.dll
+ 0000:fffe1000       _volmd                     0000000180000000     MSVCRT:cpu_disp.obj
+ 0002:fffea000       __guard_ehcont_?dllmain_dispatch@@YAHQEAUHINSTANCE__@@KQEAX@Z 0000000180000000     MSVCRT:dll_dllmain.obj
+ 0002:fffea000       __guard_fids_?dllmain_dispatch@@YAHQEAUHINSTANCE__@@KQEAX@Z 0000000180000000     MSVCRT:dll_dllmain.obj
+ 0000:fffe1000       _volmd                     0000000180000000     MSVCRT:gs_report.obj
+ 0000:fffe1000       _volmd                     0000000180000000     MSVCRT:gs_report.obj
+ 0000:fffe1000       _volmd                     0000000180000000     MSVCRT:gs_report.obj
+ 0002:fffea000       __guard_fids__             0000000180000000     MSVCRT:guard_support.obj
+ 0002:fffea000       __guard_fids__             0000000180000000     MSVCRT:guard_support.obj
+ 0002:fffea000       __guard_fids__guard_icall_checks_enforced 0000000180000000     MSVCRT:guard_support.obj
+ 0000:fffe1000       _volmd                     0000000180000000     MSVCRT:guard_support.obj
+ 0000:fffe1000       _volmd                     0000000180000000     MSVCRT:guard_support.obj
+ 0000:fffe1000       _volmd                     0000000180000000     MSVCRT:guard_support.obj
+ 0000:fffe1000       _volmd                     0000000180000000     MSVCRT:guard_support.obj
+ 0000:fffe1000       _volmd                     0000000180000000     MSVCRT:guard_support.obj
+ 0002:fffea000       __guard_ehcont___scrt_is_nonwritable_in_current_image 0000000180000000     MSVCRT:utility.obj
+ 0000:fffe1000       _volmd                     0000000180000000     MSVCRT:utility.obj
+ 0000:fffe1000       _volmd                     0000000180000000     MSVCRT:utility.obj
+ 0000:fffe1000       _volmd                     0000000180000000     MSVCRT:utility.obj
+ 0002:fffea000       __guard_fids___scrt_set_unhandled_exception_filter 0000000180000000     MSVCRT:utility_desktop.obj
+ 0000:fffe1000       _volmd                     0000000180000000     MSVCRT:utility_desktop.obj
+ 0000:00000000       .debug$S                   0000000180000000     vcruntime:VCRUNTIME140.dll
+ 0000:00000000       .debug$S                   0000000180000000     vcruntime:VCRUNTIME140.dll
+ 0000:00000000       .debug$S                   0000000180000000     vcruntime:VCRUNTIME140.dll
+ 0000:00000000       .debug$S                   0000000180000000     vcruntime:VCRUNTIME140.dll
+ 0000:00000000       .debug$S                   0000000180000000     vcruntime:VCRUNTIME140.dll
+ 0000:00000000       .debug$S                   0000000180000000     vcruntime:VCRUNTIME140.dll
+ 0000:fffe1010       _volmd                     0000000180000010     Balancing_Logic_sfun.obj
+ 0000:fffe1010       _volmd                     0000000180000010     Balancing_Logic_sfun_registry.obj
+ 0000:fffe1010       _volmd                     0000000180000010     c1_Balancing_Logic.obj
+ 0000:fffe1020       _volmd                     0000000180000020     Balancing_Logic_sfun.obj
+ 0000:fffe1020       _volmd                     0000000180000020     Balancing_Logic_sfun_registry.obj
+ 0000:fffe1020       _volmd                     0000000180000020     c1_Balancing_Logic.obj
+ 0000:fffe1030       _volmd                     0000000180000030     Balancing_Logic_sfun.obj
+ 0000:fffe1030       _volmd                     0000000180000030     Balancing_Logic_sfun_registry.obj
+ 0000:fffe1030       _volmd                     0000000180000030     c1_Balancing_Logic.obj
+ 0000:fffe1040       _volmd                     0000000180000040     Balancing_Logic_sfun.obj
+ 0000:fffe1040       _volmd                     0000000180000040     Balancing_Logic_sfun_registry.obj
+ 0000:fffe1040       _volmd                     0000000180000040     c1_Balancing_Logic.obj
+ 0000:fffe1050       _volmd                     0000000180000050     Balancing_Logic_sfun.obj
+ 0000:fffe1050       _volmd                     0000000180000050     Balancing_Logic_sfun_registry.obj
+ 0000:fffe1050       _volmd                     0000000180000050     c1_Balancing_Logic.obj
+ 0000:fffe1060       _volmd                     0000000180000060     Balancing_Logic_sfun_registry.obj
+ 0000:fffe1060       _volmd                     0000000180000060     c1_Balancing_Logic.obj
+ 0000:fffe1070       _volmd                     0000000180000070     Balancing_Logic_sfun_registry.obj
+ 0000:fffe1070       _volmd                     0000000180000070     c1_Balancing_Logic.obj
+ 0000:fffe1080       _volmd                     0000000180000080     Balancing_Logic_sfun_registry.obj
+ 0000:fffe1090       _volmd                     0000000180000090     Balancing_Logic_sfun_registry.obj
+ 0000:fffe10a0       _volmd                     00000001800000a0     Balancing_Logic_sfun_registry.obj
+ 0000:fffe10b0       _volmd                     00000001800000b0     Balancing_Logic_sfun_registry.obj
+ 0000:fffe10c0       _volmd                     00000001800000c0     Balancing_Logic_sfun_registry.obj
+ 0000:fffe10d0       _volmd                     00000001800000d0     Balancing_Logic_sfun_registry.obj
+ 0000:fffe10e0       _volmd                     00000001800000e0     Balancing_Logic_sfun_registry.obj
+ 0000:fffe10f0       _volmd                     00000001800000f0     Balancing_Logic_sfun_registry.obj
+ 0000:fffe1100       _volmd                     0000000180000100     Balancing_Logic_sfun_registry.obj
+ 0001:00001380       initialize_c1_Balancing_Logic 0000000180002380 f   c1_Balancing_Logic.obj
+ 0001:00001730       initialize_params_c1_Balancing_Logic 0000000180002730 f   c1_Balancing_Logic.obj
+ 0001:00001af0       mdl_start_c1_Balancing_Logic 0000000180002af0 f   c1_Balancing_Logic.obj
+ 0001:00001b00       mdl_terminate_c1_Balancing_Logic 0000000180002b00 f   c1_Balancing_Logic.obj
+ 0001:00001b10       mdl_setup_runtime_resources_c1_Balancing_Logic 0000000180002b10 f   c1_Balancing_Logic.obj
+ 0001:00002630       mdl_cleanup_runtime_resources_c1_Balancing_Logic 0000000180003630 f   c1_Balancing_Logic.obj
+ 0001:000026a0       enable_c1_Balancing_Logic  00000001800036a0 f   c1_Balancing_Logic.obj
+ 0001:000026d0       disable_c1_Balancing_Logic 00000001800036d0 f   c1_Balancing_Logic.obj
+ 0001:00002700       c1_set_sim_state_side_effects_c1_Balancing_Logic 0000000180003700 f   c1_Balancing_Logic.obj
+ 0001:000027d0       sf_gateway_c1_Balancing_Logic 00000001800037d0 f   c1_Balancing_Logic.obj
+ 0001:000033c0       c1_update_jit_animation_c1_Balancing_Logic 00000001800043c0 f   c1_Balancing_Logic.obj
+ 0001:000034a0       c1_do_animation_call_c1_Balancing_Logic 00000001800044a0 f   c1_Balancing_Logic.obj
+ 0001:000034e0       get_sim_state_c1_Balancing_Logic 00000001800044e0 f   c1_Balancing_Logic.obj
+ 0001:00003a50       set_sim_state_c1_Balancing_Logic 0000000180004a50 f   c1_Balancing_Logic.obj
+ 0001:00003fb0       c1_sdiInitializec1_Balancing_Logic 0000000180004fb0 f   c1_Balancing_Logic.obj
+ 0001:00004c80       c1_sdiTerminatec1_Balancing_Logic 0000000180005c80 f   c1_Balancing_Logic.obj
+ 0001:00004cb0       initSimStructsc1_Balancing_Logic 0000000180005cb0 f   c1_Balancing_Logic.obj
+ 0001:00004cc0       c1_enter_atomic_BalancingOFF 0000000180005cc0 f   c1_Balancing_Logic.obj
+ 0001:00004df0       c1_BalancingON             0000000180005df0 f   c1_Balancing_Logic.obj
+ 0001:00006360       c1_enter_atomic_BalActive  0000000180007360 f   c1_Balancing_Logic.obj
+ 0001:00006640       c1_sfAfterOrElapsed        0000000180007640 f   c1_Balancing_Logic.obj
+ 0001:00006730       c1_b_sfAfterOrElapsed      0000000180007730 f   c1_Balancing_Logic.obj
+ 0001:00006820       c1_c_sfAfterOrElapsed      0000000180007820 f   c1_Balancing_Logic.obj
+ 0001:00006910       c1_emlrt_marshallIn        0000000180007910 f   c1_Balancing_Logic.obj
+ 0001:00006980       c1_b_emlrt_marshallIn      0000000180007980 f   c1_Balancing_Logic.obj
+ 0001:00006a70       c1_c_emlrt_marshallIn      0000000180007a70 f   c1_Balancing_Logic.obj
+ 0001:00006ae0       c1_d_emlrt_marshallIn      0000000180007ae0 f   c1_Balancing_Logic.obj
+ 0001:00006b70       c1_e_emlrt_marshallIn      0000000180007b70 f   c1_Balancing_Logic.obj
+ 0001:00006be0       c1_f_emlrt_marshallIn      0000000180007be0 f   c1_Balancing_Logic.obj
+ 0001:00006c70       c1_g_emlrt_marshallIn      0000000180007c70 f   c1_Balancing_Logic.obj
+ 0001:00006ce0       c1_h_emlrt_marshallIn      0000000180007ce0 f   c1_Balancing_Logic.obj
+ 0001:00006d70       c1_i_emlrt_marshallIn      0000000180007d70 f   c1_Balancing_Logic.obj
+ 0001:00006de0       c1_j_emlrt_marshallIn      0000000180007de0 f   c1_Balancing_Logic.obj
+ 0001:00006e70       c1_k_emlrt_marshallIn      0000000180007e70 f   c1_Balancing_Logic.obj
+ 0001:00006ee0       c1_l_emlrt_marshallIn      0000000180007ee0 f   c1_Balancing_Logic.obj
+ 0001:00006f70       c1_m_emlrt_marshallIn      0000000180007f70 f   c1_Balancing_Logic.obj
+ 0001:00006fe0       c1_n_emlrt_marshallIn      0000000180007fe0 f   c1_Balancing_Logic.obj
+ 0001:00007090       c1_o_emlrt_marshallIn      0000000180008090 f   c1_Balancing_Logic.obj
+ 0001:00007120       c1_p_emlrt_marshallIn      0000000180008120 f   c1_Balancing_Logic.obj
+ 0001:00007180       c1_chart_data_browse_helper 0000000180008180 f   c1_Balancing_Logic.obj
+ 0001:000076b8       $LN19                      00000001800086b8     c1_Balancing_Logic.obj
+ 0001:000076e4       $LN18                      00000001800086e4     c1_Balancing_Logic.obj
+ 0001:00007720       c1_sdiStreamingWrapperFcn  0000000180008720 f   c1_Balancing_Logic.obj
+ 0001:00007780       c1_b_sdiStreamingWrapperFcn 0000000180008780 f   c1_Balancing_Logic.obj
+ 0001:000077e0       c1_c_sdiStreamingWrapperFcn 00000001800087e0 f   c1_Balancing_Logic.obj
+ 0001:00007840       c1_d_sdiStreamingWrapperFcn 0000000180008840 f   c1_Balancing_Logic.obj
+ 0001:000078a0       init_test_point_addr_map   00000001800088a0 f   c1_Balancing_Logic.obj
+ 0001:000078f0       get_test_point_address_map 00000001800088f0 f   c1_Balancing_Logic.obj
+ 0001:00007920       get_test_point_mapping_info 0000000180008920 f   c1_Balancing_Logic.obj
+ 0001:00007940       init_dsm_address_info      0000000180008940 f   c1_Balancing_Logic.obj
+ 0001:00007950       init_simulink_io_address   0000000180008950 f   c1_Balancing_Logic.obj
+ 0001:00007a30       init_test_point_mapping_info 0000000180008a30 f   c1_Balancing_Logic.obj
+ 0001:00007d30       sf_get_sim_state_info_c1_Balancing_Logic 0000000180008d30 f   c1_Balancing_Logic.obj
+ 0001:00007df0       sf_opaque_initialize_c1_Balancing_Logic 0000000180008df0 f   c1_Balancing_Logic.obj
+ 0001:00007e20       sf_opaque_enable_c1_Balancing_Logic 0000000180008e20 f   c1_Balancing_Logic.obj
+ 0001:00007e40       sf_opaque_disable_c1_Balancing_Logic 0000000180008e40 f   c1_Balancing_Logic.obj
+ 0001:00007e60       sf_opaque_gateway_c1_Balancing_Logic 0000000180008e60 f   c1_Balancing_Logic.obj
+ 0001:00007e80       sf_opaque_get_sim_state_c1_Balancing_Logic 0000000180008e80 f   c1_Balancing_Logic.obj
+ 0001:00007eb0       sf_opaque_set_sim_state_c1_Balancing_Logic 0000000180008eb0 f   c1_Balancing_Logic.obj
+ 0001:00007ee0       sf_opaque_cleanup_runtime_resources_c1_Balancing_Logic 0000000180008ee0 f   c1_Balancing_Logic.obj
+ 0001:00007fd0       sf_opaque_mdl_start_c1_Balancing_Logic 0000000180008fd0 f   c1_Balancing_Logic.obj
+ 0001:00007ff0       sf_opaque_mdl_terminate_c1_Balancing_Logic 0000000180008ff0 f   c1_Balancing_Logic.obj
+ 0001:00008010       mdlProcessParameters_c1_Balancing_Logic 0000000180009010 f   c1_Balancing_Logic.obj
+ 0001:00008360       mdlSetWorkWidths_c1_Balancing_Logic 0000000180009360 f   c1_Balancing_Logic.obj
+ 0001:000083f0       mdlRTW_c1_Balancing_Logic  00000001800093f0 f   c1_Balancing_Logic.obj
+ 0001:00008430       mdlSetupRuntimeResources_c1_Balancing_Logic 0000000180009430 f   c1_Balancing_Logic.obj
+ 0001:0000aec4       $LN197                     000000018000bec4     Balancing_Logic_sfun_registry.obj
+ 0001:0000bd24       $LN22                      000000018000cd24     Balancing_Logic_sfun_registry.obj
+ 0001:0000c424       $LN26                      000000018000d424     Balancing_Logic_sfun_registry.obj
+ 0001:0000cb04       $LN24                      000000018000db04     Balancing_Logic_sfun_registry.obj
+ 0001:0000d6bc       $LN30                      000000018000e6bc     Balancing_Logic_sfun_registry.obj
+ 0001:00010c20       ProcessMexSfunctionCmdLineCall 0000000180011c20 f   Balancing_Logic_sfun_registry.obj
+ 0001:00010f30       mdlSetWorkWidths           0000000180011f30 f   Balancing_Logic_sfun_registry.obj
+ 0001:00010f80       mdlProcessParameters       0000000180011f80 f   Balancing_Logic_sfun_registry.obj
+ 0001:00010fb0       mdl_setup_runtime_resources_processing 0000000180011fb0 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011010       mdlSetupRuntimeResources   0000000180012010 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011040       mdl_cleanup_runtime_resources_processing 0000000180012040 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011100       mdlCleanupRuntimeResources 0000000180012100 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011130       mdl_start_processing       0000000180012130 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011170       mdlStart                   0000000180012170 f   Balancing_Logic_sfun_registry.obj
+ 0001:000111a0       mdl_terminate_processing   00000001800121a0 f   Balancing_Logic_sfun_registry.obj
+ 0001:000111e0       mdlTerminate               00000001800121e0 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011210       mdlInitializeSizes         0000000180012210 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011240       mdlInitializeSampleTimes   0000000180012240 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011270       mdl_outputs_continuous_legacy 0000000180012270 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011370       mdl_outputs_processing     0000000180012370 f   Balancing_Logic_sfun_registry.obj
+ 0001:000114b0       mdl_zeroCrossings_processing 00000001800124b0 f   Balancing_Logic_sfun_registry.obj
+ 0001:000114f0       mdlZeroCrossings           00000001800124f0 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011520       mdl_derivatives_processing 0000000180012520 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011570       mdlDerivatives             0000000180012570 f   Balancing_Logic_sfun_registry.obj
+ 0001:000115a0       mdl_initialize_conditions_processing 00000001800125a0 f   Balancing_Logic_sfun_registry.obj
+ 0001:000115f0       mdlInitializeConditions    00000001800125f0 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011620       mdl_ext_mode_exec_processing 0000000180012620 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011660       mdlExtModeExec             0000000180012660 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011690       mdlRTW                     0000000180012690 f   Balancing_Logic_sfun_registry.obj
+ 0001:000116d0       mdl_enable_processing      00000001800126d0 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011710       mdlEnable                  0000000180012710 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011740       mdl_disable_processing     0000000180012740 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011780       mdlDisable                 0000000180012780 f   Balancing_Logic_sfun_registry.obj
+ 0001:000117b0       mdlOutputs                 00000001800127b0 f   Balancing_Logic_sfun_registry.obj
+ 0001:000117e0       mdl_update_processing      00000001800127e0 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011830       mdlUpdate                  0000000180012830 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011a20       mdlGetTimeOfNextVarHit     0000000180012a20 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011a70       _RegNumInputPortsCB        0000000180012a70 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011af0       _RegNumOutputPortsCB       0000000180012af0 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011b70       _CreateSimStruct           0000000180012b70 f   Balancing_Logic_sfun_registry.obj
+ 0001:00011da0       _ProcessMexSfunctionCmdLineCall 0000000180012da0 f   Balancing_Logic_sfun_registry.obj
+ 0001:00012810       ReportIndexOutOfBoundsError 0000000180013810 f   Balancing_Logic_sfun_registry.obj
+ 0001:00013744       capture_current_context    0000000180014744 f   MSVCRT:gs_report.obj
+ 0001:000137b4       capture_previous_context   00000001800147b4 f   MSVCRT:gs_report.obj
+ 0001:000138b0       $$000000                   00000001800148b0     MSVCRT:amdsecgs.obj
+ 0001:000138e0       ?dllmain_crt_dispatch@@YAHQEAUHINSTANCE__@@KQEAX@Z 00000001800148e0 f   MSVCRT:dll_dllmain.obj
+ 0001:00013930       ?dllmain_crt_process_attach@@YAHQEAUHINSTANCE__@@QEAX@Z 0000000180014930 f   MSVCRT:dll_dllmain.obj
+ 0001:00013a48       ?dllmain_crt_process_detach@@YAH_N@Z 0000000180014a48 f   MSVCRT:dll_dllmain.obj
+ 0001:00013acc       ?dllmain_dispatch@@YAHQEAUHINSTANCE__@@KQEAX@Z 0000000180014acc f   MSVCRT:dll_dllmain.obj
+ 0001:00013c00       ?dllmain_raw@@YAHQEAUHINSTANCE__@@KQEAX@Z 0000000180014c00 f   MSVCRT:dll_dllmain.obj
+ 0001:00013c64       __get_entropy              0000000180014c64 f   MSVCRT:gs_support.obj
+ 0001:00013df4       ?find_pe_section@@YAPEAU_IMAGE_SECTION_HEADER@@QEAE_K@Z 0000000180014df4 f   MSVCRT:utility.obj
+ 0001:00013e48       ?is_potentially_valid_image_base@@YA_NQEAX@Z 0000000180014e48 f   MSVCRT:utility.obj
+ 0001:00014594       __castguard_compat_check   0000000180015594 f   MSVCRT:guard_support.obj
+ 0001:00014680       __castguard_slow_path_compat_check 0000000180015680 f   MSVCRT:guard_support.obj
+ 0001:00014980       $$000000                   0000000180015980     MSVCRT:guard_dispatch.obj
+ 0001:000149a0       $$000000                   00000001800159a0     MSVCRT:guard_xfg_dispatch.obj
+ 0001:000149b6       ?fin$0@?0??dllmain_crt_process_attach@@YAHQEAUHINSTANCE__@@QEAX@Z@4HA 00000001800159b6 f   MSVCRT:dll_dllmain.obj
+ 0001:000149cd       ?fin$0@?0??dllmain_crt_process_detach@@YAH_N@Z@4HA 00000001800159cd f   MSVCRT:dll_dllmain.obj
+ 0001:000149e6       ?fin$1@?0??dllmain_crt_process_detach@@YAH_N@Z@4HA 00000001800159e6 f   MSVCRT:dll_dllmain.obj
+ 0001:000149fa       ?filt$0@?0??dllmain_dispatch@@YAHQEAUHINSTANCE__@@KQEAX@Z@4HA 00000001800159fa f   MSVCRT:dll_dllmain.obj
+ 0001:00014a30       __scrt_is_nonwritable_in_current_image$filt$0 0000000180015a30 f   MSVCRT:utility.obj
+ 0002:000005a0       ?c1_b_postfixPredicateTree@?1??mdl_setup_runtime_resources_c1_Balancing_Logic@@9@9 00000001800165a0     c1_Balancing_Logic.obj
+ 0002:000005bc       ?c1_b_decisionTxtEndIdx@?1??mdl_setup_runtime_resources_c1_Balancing_Logic@@9@9 00000001800165bc     c1_Balancing_Logic.obj
+ 0002:000005c0       ?c1_b_condTxtEndIdx@?1??mdl_setup_runtime_resources_c1_Balancing_Logic@@9@9 00000001800165c0     c1_Balancing_Logic.obj
+ 0002:000005d0       ?c1_b_condTxtStartIdx@?1??mdl_setup_runtime_resources_c1_Balancing_Logic@@9@9 00000001800165d0     c1_Balancing_Logic.obj
+ 0002:000005e0       ?c1_postfixPredicateTree@?1??mdl_setup_runtime_resources_c1_Balancing_Logic@@9@9 00000001800165e0     c1_Balancing_Logic.obj
+ 0002:000005ec       ?c1_b_decisionTxtStartIdx@?1??mdl_setup_runtime_resources_c1_Balancing_Logic@@9@9 00000001800165ec     c1_Balancing_Logic.obj
+ 0002:000005f0       ?c1_condTxtEndIdx@?1??mdl_setup_runtime_resources_c1_Balancing_Logic@@9@9 00000001800165f0     c1_Balancing_Logic.obj
+ 0002:000005f8       ?c1_condTxtStartIdx@?1??mdl_setup_runtime_resources_c1_Balancing_Logic@@9@9 00000001800165f8     c1_Balancing_Logic.obj
+ 0002:00000600       ?c1_c_decisionTxtEndIdx@?1??mdl_setup_runtime_resources_c1_Balancing_Logic@@9@9 0000000180016600     c1_Balancing_Logic.obj
+ 0002:00000604       ?c1_c_decisionTxtStartIdx@?1??mdl_setup_runtime_resources_c1_Balancing_Logic@@9@9 0000000180016604     c1_Balancing_Logic.obj
+ 0002:00000608       ?c1_d_decisionTxtEndIdx@?1??mdl_setup_runtime_resources_c1_Balancing_Logic@@9@9 0000000180016608     c1_Balancing_Logic.obj
+ 0002:0000060c       ?c1_d_decisionTxtStartIdx@?1??mdl_setup_runtime_resources_c1_Balancing_Logic@@9@9 000000018001660c     c1_Balancing_Logic.obj
+ 0002:00000610       ?c1_decisionTxtEndIdx@?1??mdl_setup_runtime_resources_c1_Balancing_Logic@@9@9 0000000180016610     c1_Balancing_Logic.obj
+ 0002:00000614       ?c1_decisionTxtStartIdx@?1??mdl_setup_runtime_resources_c1_Balancing_Logic@@9@9 0000000180016614     c1_Balancing_Logic.obj
+ 0002:00000618       sampleTimeMap              0000000180016618     c1_Balancing_Logic.obj
+ 0002:00000630       dataTypeMap                0000000180016630     c1_Balancing_Logic.obj
+ 0002:00000670       dimensionMap               0000000180016670     c1_Balancing_Logic.obj
+ 0002:00000680       testPointSignals           0000000180016680     c1_Balancing_Logic.obj
+ 0002:000006d0       fixedPointMap              00000001800166d0     c1_Balancing_Logic.obj
+ 0002:000006e8       dimensionArray             00000001800166e8     c1_Balancing_Logic.obj
+ 0002:00000778       GS_ExceptionPointers       0000000180016778     MSVCRT:gs_report.obj
+ 0002:00000cc0       $unwind$load_Balancing_Logic_optimization_info 0000000180016cc0     Balancing_Logic_sfun.obj
+ 0002:00000cc8       $unwind$unload_Balancing_Logic_optimization_info 0000000180016cc8     Balancing_Logic_sfun.obj
+ 0002:00000cd0       $unwind$sf_Balancing_Logic_method_dispatcher 0000000180016cd0     Balancing_Logic_sfun.obj
+ 0002:00000cd8       $unwind$sf_Balancing_Logic_process_check_sum_call 0000000180016cd8     Balancing_Logic_sfun.obj
+ 0002:00000ce8       $unwind$sf_Balancing_Logic_get_eml_resolved_functions_info 0000000180016ce8     Balancing_Logic_sfun.obj
+ 0002:00000cf8       $unwind$sf_Balancing_Logic_third_party_uses_info 0000000180016cf8     Balancing_Logic_sfun.obj
+ 0002:00000d08       $unwind$sf_Balancing_Logic_jit_fallback_info 0000000180016d08     Balancing_Logic_sfun.obj
+ 0002:00000d18       $unwind$sf_Balancing_Logic_get_post_codegen_info 0000000180016d18     Balancing_Logic_sfun.obj
+ 0002:00000d28       $unwind$sf_Balancing_Logic_updateBuildInfo_args_info 0000000180016d28     Balancing_Logic_sfun.obj
+ 0002:00000d38       $unwind$sf_c1_Balancing_Logic_get_eml_resolved_functions_info 0000000180016d38     c1_Balancing_Logic.obj
+ 0002:00000d48       $unwind$sf_c1_Balancing_Logic_getDebuggerHoverDataFor 0000000180016d48     c1_Balancing_Logic.obj
+ 0002:00000d50       $unwind$sf_c1_Balancing_Logic_get_check_sum 0000000180016d50     c1_Balancing_Logic.obj
+ 0002:00000d58       $unwind$c1_Balancing_Logic_method_dispatcher 0000000180016d58     c1_Balancing_Logic.obj
+ 0002:00000d60       $unwind$initialize_c1_Balancing_Logic 0000000180016d60     c1_Balancing_Logic.obj
+ 0002:00000d68       $unwind$initialize_params_c1_Balancing_Logic 0000000180016d68     c1_Balancing_Logic.obj
+ 0002:00000d70       $unwind$mdl_setup_runtime_resources_c1_Balancing_Logic 0000000180016d70     c1_Balancing_Logic.obj
+ 0002:00000d78       $unwind$mdl_cleanup_runtime_resources_c1_Balancing_Logic 0000000180016d78     c1_Balancing_Logic.obj
+ 0002:00000d80       $unwind$enable_c1_Balancing_Logic 0000000180016d80     c1_Balancing_Logic.obj
+ 0002:00000d88       $unwind$disable_c1_Balancing_Logic 0000000180016d88     c1_Balancing_Logic.obj
+ 0002:00000d90       $unwind$c1_set_sim_state_side_effects_c1_Balancing_Logic 0000000180016d90     c1_Balancing_Logic.obj
+ 0002:00000d98       $unwind$sf_gateway_c1_Balancing_Logic 0000000180016d98     c1_Balancing_Logic.obj
+ 0002:00000da0       $unwind$c1_update_jit_animation_c1_Balancing_Logic 0000000180016da0     c1_Balancing_Logic.obj
+ 0002:00000da8       $unwind$c1_do_animation_call_c1_Balancing_Logic 0000000180016da8     c1_Balancing_Logic.obj
+ 0002:00000db0       $unwind$get_sim_state_c1_Balancing_Logic 0000000180016db0     c1_Balancing_Logic.obj
+ 0002:00000db8       $unwind$set_sim_state_c1_Balancing_Logic 0000000180016db8     c1_Balancing_Logic.obj
+ 0002:00000dc8       $unwind$c1_sdiInitializec1_Balancing_Logic 0000000180016dc8     c1_Balancing_Logic.obj
+ 0002:00000dd8       $unwind$c1_sdiTerminatec1_Balancing_Logic 0000000180016dd8     c1_Balancing_Logic.obj
+ 0002:00000de0       $unwind$c1_enter_atomic_BalancingOFF 0000000180016de0     c1_Balancing_Logic.obj
+ 0002:00000de8       $unwind$c1_BalancingON     0000000180016de8     c1_Balancing_Logic.obj
+ 0002:00000df8       $unwind$c1_enter_atomic_BalActive 0000000180016df8     c1_Balancing_Logic.obj
+ 0002:00000e08       $unwind$c1_sfAfterOrElapsed 0000000180016e08     c1_Balancing_Logic.obj
+ 0002:00000e10       $unwind$c1_b_sfAfterOrElapsed 0000000180016e10     c1_Balancing_Logic.obj
+ 0002:00000e18       $unwind$c1_c_sfAfterOrElapsed 0000000180016e18     c1_Balancing_Logic.obj
+ 0002:00000e20       $unwind$c1_emlrt_marshallIn 0000000180016e20     c1_Balancing_Logic.obj
+ 0002:00000e28       $unwind$c1_b_emlrt_marshallIn 0000000180016e28     c1_Balancing_Logic.obj
+ 0002:00000e38       $unwind$c1_c_emlrt_marshallIn 0000000180016e38     c1_Balancing_Logic.obj
+ 0002:00000e40       $unwind$c1_d_emlrt_marshallIn 0000000180016e40     c1_Balancing_Logic.obj
+ 0002:00000e48       $unwind$c1_e_emlrt_marshallIn 0000000180016e48     c1_Balancing_Logic.obj
+ 0002:00000e50       $unwind$c1_f_emlrt_marshallIn 0000000180016e50     c1_Balancing_Logic.obj
+ 0002:00000e58       $unwind$c1_g_emlrt_marshallIn 0000000180016e58     c1_Balancing_Logic.obj
+ 0002:00000e60       $unwind$c1_h_emlrt_marshallIn 0000000180016e60     c1_Balancing_Logic.obj
+ 0002:00000e68       $unwind$c1_i_emlrt_marshallIn 0000000180016e68     c1_Balancing_Logic.obj
+ 0002:00000e70       $unwind$c1_j_emlrt_marshallIn 0000000180016e70     c1_Balancing_Logic.obj
+ 0002:00000e78       $unwind$c1_k_emlrt_marshallIn 0000000180016e78     c1_Balancing_Logic.obj
+ 0002:00000e80       $unwind$c1_l_emlrt_marshallIn 0000000180016e80     c1_Balancing_Logic.obj
+ 0002:00000e88       $unwind$c1_m_emlrt_marshallIn 0000000180016e88     c1_Balancing_Logic.obj
+ 0002:00000e90       $unwind$c1_n_emlrt_marshallIn 0000000180016e90     c1_Balancing_Logic.obj
+ 0002:00000e98       $unwind$c1_o_emlrt_marshallIn 0000000180016e98     c1_Balancing_Logic.obj
+ 0002:00000ea0       $unwind$c1_p_emlrt_marshallIn 0000000180016ea0     c1_Balancing_Logic.obj
+ 0002:00000ea8       $unwind$c1_chart_data_browse_helper 0000000180016ea8     c1_Balancing_Logic.obj
+ 0002:00000eb0       $unwind$c1_sdiStreamingWrapperFcn 0000000180016eb0     c1_Balancing_Logic.obj
+ 0002:00000eb8       $unwind$c1_b_sdiStreamingWrapperFcn 0000000180016eb8     c1_Balancing_Logic.obj
+ 0002:00000ec0       $unwind$c1_c_sdiStreamingWrapperFcn 0000000180016ec0     c1_Balancing_Logic.obj
+ 0002:00000ec8       $unwind$c1_d_sdiStreamingWrapperFcn 0000000180016ec8     c1_Balancing_Logic.obj
+ 0002:00000ed0       $unwind$init_simulink_io_address 0000000180016ed0     c1_Balancing_Logic.obj
+ 0002:00000ed8       $unwind$init_test_point_mapping_info 0000000180016ed8     c1_Balancing_Logic.obj
+ 0002:00000ee0       $unwind$sf_c1_Balancing_Logic_third_party_uses_info 0000000180016ee0     c1_Balancing_Logic.obj
+ 0002:00000ee8       $unwind$sf_c1_Balancing_Logic_jit_fallback_info 0000000180016ee8     c1_Balancing_Logic.obj
+ 0002:00000ef8       $unwind$sf_c1_Balancing_Logic_updateBuildInfo_args_info 0000000180016ef8     c1_Balancing_Logic.obj
+ 0002:00000f00       $unwind$sf_get_sim_state_info_c1_Balancing_Logic 0000000180016f00     c1_Balancing_Logic.obj
+ 0002:00000f08       $unwind$sf_opaque_initialize_c1_Balancing_Logic 0000000180016f08     c1_Balancing_Logic.obj
+ 0002:00000f10       $unwind$sf_opaque_enable_c1_Balancing_Logic 0000000180016f10     c1_Balancing_Logic.obj
+ 0002:00000f18       $unwind$sf_opaque_disable_c1_Balancing_Logic 0000000180016f18     c1_Balancing_Logic.obj
+ 0002:00000f20       $unwind$sf_opaque_gateway_c1_Balancing_Logic 0000000180016f20     c1_Balancing_Logic.obj
+ 0002:00000f28       $unwind$sf_opaque_get_sim_state_c1_Balancing_Logic 0000000180016f28     c1_Balancing_Logic.obj
+ 0002:00000f30       $unwind$sf_opaque_set_sim_state_c1_Balancing_Logic 0000000180016f30     c1_Balancing_Logic.obj
+ 0002:00000f38       $unwind$sf_opaque_cleanup_runtime_resources_c1_Balancing_Logic 0000000180016f38     c1_Balancing_Logic.obj
+ 0002:00000f40       $unwind$sf_opaque_mdl_start_c1_Balancing_Logic 0000000180016f40     c1_Balancing_Logic.obj
+ 0002:00000f48       $unwind$sf_opaque_mdl_terminate_c1_Balancing_Logic 0000000180016f48     c1_Balancing_Logic.obj
+ 0002:00000f50       $unwind$mdlProcessParameters_c1_Balancing_Logic 0000000180016f50     c1_Balancing_Logic.obj
+ 0002:00000f58       $unwind$sf_c1_Balancing_Logic_get_post_codegen_info 0000000180016f58     c1_Balancing_Logic.obj
+ 0002:00000f68       $unwind$mdlSetWorkWidths_c1_Balancing_Logic 0000000180016f68     c1_Balancing_Logic.obj
+ 0002:00000f70       $unwind$mdlRTW_c1_Balancing_Logic 0000000180016f70     c1_Balancing_Logic.obj
+ 0002:00000f78       $unwind$mdlSetupRuntimeResources_c1_Balancing_Logic 0000000180016f78     c1_Balancing_Logic.obj
+ 0002:00000f80       $unwind$_vsnprintf_l       0000000180016f80     Balancing_Logic_sfun_registry.obj
+ 0002:00000f88       $unwind$_vsprintf_l        0000000180016f88     Balancing_Logic_sfun_registry.obj
+ 0002:00000f90       $unwind$sprintf            0000000180016f90     Balancing_Logic_sfun_registry.obj
+ 0002:00000f98       $unwind$mexFunction        0000000180016f98     Balancing_Logic_sfun_registry.obj
+ 0002:00000fa8       $unwind$_ssSetInputPortDirectFeedThroughFcn 0000000180016fa8     Balancing_Logic_sfun_registry.obj
+ 0002:00000fb8       $unwind$_ssSetRWorkValueFcn 0000000180016fb8     Balancing_Logic_sfun_registry.obj
+ 0002:00000fc0       $unwind$_ssGetRWorkValueFcn 0000000180016fc0     Balancing_Logic_sfun_registry.obj
+ 0002:00000fc8       $unwind$_ssSetIWorkValueFcn 0000000180016fc8     Balancing_Logic_sfun_registry.obj
+ 0002:00000fd0       $unwind$_ssGetIWorkValueFcn 0000000180016fd0     Balancing_Logic_sfun_registry.obj
+ 0002:00000fd8       $unwind$_ssSetPWorkValueFcn 0000000180016fd8     Balancing_Logic_sfun_registry.obj
+ 0002:00000fe0       $unwind$_ssGetPWorkValueFcn 0000000180016fe0     Balancing_Logic_sfun_registry.obj
+ 0002:00000fe8       $unwind$_ssGetInputPortSignalFcn 0000000180016fe8     Balancing_Logic_sfun_registry.obj
+ 0002:00000ff8       $unwind$_ssGetInputPortBufferDstPortFcn 0000000180016ff8     Balancing_Logic_sfun_registry.obj
+ 0002:00001000       $unwind$_ssGetInputPortSignalPtrsFcn 0000000180017000     Balancing_Logic_sfun_registry.obj
+ 0002:00001010       $unwind$ssGetParameterTuningCompliance 0000000180017010     Balancing_Logic_sfun_registry.obj
+ 0002:00001018       $unwind$_ssReadInputStringFcn 0000000180017018     Balancing_Logic_sfun_registry.obj
+ 0002:00001020       $unwind$ssGetDTypeIdFromMxArray 0000000180017020     Balancing_Logic_sfun_registry.obj
+ 0002:00001028       $unwind$ssWriteRTWMx2dMatParam 0000000180017028     Balancing_Logic_sfun_registry.obj
+ 0002:00001030       $unwind$ssWriteRTWMxVectParam 0000000180017030     Balancing_Logic_sfun_registry.obj
+ 0002:00001038       $unwind$ssWriteRTWParameters 0000000180017038     Balancing_Logic_sfun_registry.obj
+ 0002:00001040       $unwind$ssWriteRTWParamSettings 0000000180017040     Balancing_Logic_sfun_registry.obj
+ 0002:00001048       $unwind$ssWriteRTWStr      0000000180017048     Balancing_Logic_sfun_registry.obj
+ 0002:00001050       $unwind$ssWriteRTWWorkVect 0000000180017050     Balancing_Logic_sfun_registry.obj
+ 0002:00001064       $unwind$ssWarning          0000000180017064     Balancing_Logic_sfun_registry.obj
+ 0002:00001078       $unwind$ssWriteRTWNameValuePair 0000000180017078     Balancing_Logic_sfun_registry.obj
+ 0002:00001080       $unwind$_ssSetInputPortMatrixDimensions 0000000180017080     Balancing_Logic_sfun_registry.obj
+ 0002:0000108c       $unwind$_ssSetOutputPortMatrixDimensions 000000018001708c     Balancing_Logic_sfun_registry.obj
+ 0002:00001098       $unwind$_ssSetInputPortVectorDimension 0000000180017098     Balancing_Logic_sfun_registry.obj
+ 0002:000010a4       $unwind$_ssSetOutputPortVectorDimension 00000001800170a4     Balancing_Logic_sfun_registry.obj
+ 0002:000010b0       $unwind$ssIsRunTimeParamTunable 00000001800170b0     Balancing_Logic_sfun_registry.obj
+ 0002:000010b8       $unwind$ssGetSFuncBlockHandle 00000001800170b8     Balancing_Logic_sfun_registry.obj
+ 0002:000010c0       $unwind$_ssGetCallSystemNumFcnCallDestinations 00000001800170c0     Balancing_Logic_sfun_registry.obj
+ 0002:000010c8       $unwind$_ssGetCurrentInputPortWidth 00000001800170c8     Balancing_Logic_sfun_registry.obj
+ 0002:000010d0       $unwind$_ssGetCurrentOutputPortWidth 00000001800170d0     Balancing_Logic_sfun_registry.obj
+ 0002:000010d8       $unwind$ssGetIsZeroCrossControlDisabled 00000001800170d8     Balancing_Logic_sfun_registry.obj
+ 0002:000010e0       $unwind$ssSetIsInputPortUsedForContZcSignal 00000001800170e0     Balancing_Logic_sfun_registry.obj
+ 0002:000010e8       $unwind$ssSetZcSignalIsZcElementDisc 00000001800170e8     Balancing_Logic_sfun_registry.obj
+ 0002:000010f8       $unwind$ssSetZcSignalName  00000001800170f8     Balancing_Logic_sfun_registry.obj
+ 0002:00001100       $unwind$ssSetZcSignalWidth 0000000180017100     Balancing_Logic_sfun_registry.obj
+ 0002:00001108       $unwind$ssSetZcSignalZcEventType 0000000180017108     Balancing_Logic_sfun_registry.obj
+ 0002:00001110       $unwind$ssSetZcSignalType  0000000180017110     Balancing_Logic_sfun_registry.obj
+ 0002:00001118       $unwind$ssSetZcSignalZcTol 0000000180017118     Balancing_Logic_sfun_registry.obj
+ 0002:00001120       $unwind$ssSetZcSignalNeedsEventNotification 0000000180017120     Balancing_Logic_sfun_registry.obj
+ 0002:00001128       $unwind$ssCreateAndAddZcSignalInfo 0000000180017128     Balancing_Logic_sfun_registry.obj
+ 0002:00001130       $unwind$ssCloneAndAddZcSignalInfo 0000000180017130     Balancing_Logic_sfun_registry.obj
+ 0002:00001138       $unwind$ssGetNumZcSignals  0000000180017138     Balancing_Logic_sfun_registry.obj
+ 0002:00001140       $unwind$ssGetZcSignalVector 0000000180017140     Balancing_Logic_sfun_registry.obj
+ 0002:00001148       $unwind$ssGetZcSignalName  0000000180017148     Balancing_Logic_sfun_registry.obj
+ 0002:00001150       $unwind$ssGetZcSignalWidth 0000000180017150     Balancing_Logic_sfun_registry.obj
+ 0002:00001158       $unwind$ssGetZcSignalZcEventType 0000000180017158     Balancing_Logic_sfun_registry.obj
+ 0002:00001160       $unwind$ssGetZcSignalZcEvents 0000000180017160     Balancing_Logic_sfun_registry.obj
+ 0002:00001168       $unwind$ssGetZcSignalType  0000000180017168     Balancing_Logic_sfun_registry.obj
+ 0002:00001170       $unwind$ssGetZcSignalZcTol 0000000180017170     Balancing_Logic_sfun_registry.obj
+ 0002:00001178       $unwind$ssGetZcSignalNeedsEventNotification 0000000180017178     Balancing_Logic_sfun_registry.obj
+ 0002:00001180       $unwind$ssGetZcSignalIsZcElementDisc 0000000180017180     Balancing_Logic_sfun_registry.obj
+ 0002:00001190       $unwind$ssGetIsInputPortElementContinuous 0000000180017190     Balancing_Logic_sfun_registry.obj
+ 0002:000011a0       $unwind$_ssGetAbsTol       00000001800171a0     Balancing_Logic_sfun_registry.obj
+ 0002:000011a8       $unwind$_ssSetInputPortReusableFcn 00000001800171a8     Balancing_Logic_sfun_registry.obj
+ 0002:000011b0       $unwind$_ssSetOutputPortReusableFcn 00000001800171b0     Balancing_Logic_sfun_registry.obj
+ 0002:000011b8       $unwind$_ssSetSymbolicDimsSupport 00000001800171b8     Balancing_Logic_sfun_registry.obj
+ 0002:000011c0       $unwind$_ssRegisterSymbolicDimsExpr 00000001800171c0     Balancing_Logic_sfun_registry.obj
+ 0002:000011c8       $unwind$_ssRegisterSymbolicDimsMATLABExpr 00000001800171c8     Balancing_Logic_sfun_registry.obj
+ 0002:000011d0       $unwind$_ssRegisterSymbolicDims 00000001800171d0     Balancing_Logic_sfun_registry.obj
+ 0002:000011d8       $unwind$_ssRegisterSymbolicDimsString 00000001800171d8     Balancing_Logic_sfun_registry.obj
+ 0002:000011e0       $unwind$_ssRegisterSymbolicDimsIntValue 00000001800171e0     Balancing_Logic_sfun_registry.obj
+ 0002:000011e8       $unwind$_ssRegisterSymbolicEqualRelation 00000001800171e8     Balancing_Logic_sfun_registry.obj
+ 0002:000011f0       $unwind$_ssRegisterSymbolicEqualValue 00000001800171f0     Balancing_Logic_sfun_registry.obj
+ 0002:000011f8       $unwind$_ssAmendLeadingSymbolicDims 00000001800171f8     Balancing_Logic_sfun_registry.obj
+ 0002:00001200       $unwind$_ssAmendTrailingSymbolicDims 0000000180017200     Balancing_Logic_sfun_registry.obj
+ 0002:00001208       $unwind$_ssRegisterSymbolicDimsPlus 0000000180017208     Balancing_Logic_sfun_registry.obj
+ 0002:00001210       $unwind$_ssRegisterSymbolicDimsMinus 0000000180017210     Balancing_Logic_sfun_registry.obj
+ 0002:00001218       $unwind$_ssRegisterSymbolicDimsMultiply 0000000180017218     Balancing_Logic_sfun_registry.obj
+ 0002:00001220       $unwind$_ssRegisterSymbolicDimsDivide 0000000180017220     Balancing_Logic_sfun_registry.obj
+ 0002:00001228       $unwind$_ssGetNumSymbolicDims 0000000180017228     Balancing_Logic_sfun_registry.obj
+ 0002:00001230       $unwind$_ssGetSymbolicDim  0000000180017230     Balancing_Logic_sfun_registry.obj
+ 0002:00001238       $unwind$_ssSetInputPortSymbolicDimsId 0000000180017238     Balancing_Logic_sfun_registry.obj
+ 0002:00001240       $unwind$_ssGetCompInputPortSymbolicDimsId 0000000180017240     Balancing_Logic_sfun_registry.obj
+ 0002:00001248       $unwind$_ssSetCompInputPortSymbolicDimsId 0000000180017248     Balancing_Logic_sfun_registry.obj
+ 0002:00001250       $unwind$_ssSetOutputPortSymbolicDimsId 0000000180017250     Balancing_Logic_sfun_registry.obj
+ 0002:00001258       $unwind$_ssGetCompOutputPortSymbolicDimsId 0000000180017258     Balancing_Logic_sfun_registry.obj
+ 0002:00001260       $unwind$_ssSetCompOutputPortSymbolicDimsId 0000000180017260     Balancing_Logic_sfun_registry.obj
+ 0002:00001268       $unwind$_ssGetDWorkSymbolicDimsId 0000000180017268     Balancing_Logic_sfun_registry.obj
+ 0002:00001270       $unwind$_ssSetDWorkSymbolicDimsId 0000000180017270     Balancing_Logic_sfun_registry.obj
+ 0002:00001278       $unwind$_ssGetCompDWorkSymbolicDimsId 0000000180017278     Balancing_Logic_sfun_registry.obj
+ 0002:00001280       $unwind$_ssSetCompDWorkSymbolicDimsId 0000000180017280     Balancing_Logic_sfun_registry.obj
+ 0002:00001288       $unwind$_ssCreateSLCGStringBuffer 0000000180017288     Balancing_Logic_sfun_registry.obj
+ 0002:00001290       $unwind$_ssAddToSLCGStringBuffer 0000000180017290     Balancing_Logic_sfun_registry.obj
+ 0002:00001298       $unwind$_ssGetPointerContainedData 0000000180017298     Balancing_Logic_sfun_registry.obj
+ 0002:000012a0       $unwind$_ssGetPointerContainedDataWidth 00000001800172a0     Balancing_Logic_sfun_registry.obj
+ 0002:000012a8       $unwind$_ssRegisterDynamicArrayDataTypeFcn 00000001800172a8     Balancing_Logic_sfun_registry.obj
+ 0002:000012b0       $unwind$_ssGetDynamicArrayContainedDataCurrentWidthFcn 00000001800172b0     Balancing_Logic_sfun_registry.obj
+ 0002:000012b8       $unwind$_ssGetDynamicArrayContainedDataFcn 00000001800172b8     Balancing_Logic_sfun_registry.obj
+ 0002:000012c0       $unwind$_ssGetInputPortDynamicArrayDataFcn 00000001800172c0     Balancing_Logic_sfun_registry.obj
+ 0002:000012c8       $unwind$_ssGetOutputPortDynamicArrayDataFcn 00000001800172c8     Balancing_Logic_sfun_registry.obj
+ 0002:000012d0       $unwind$_ssGetInputPortDynamicArrayContainedDataFcn 00000001800172d0     Balancing_Logic_sfun_registry.obj
+ 0002:000012d8       $unwind$_ssGetOutputPortDynamicArrayContainedDataFcn 00000001800172d8     Balancing_Logic_sfun_registry.obj
+ 0002:000012e0       $unwind$sf_process_check_sum_call 00000001800172e0     Balancing_Logic_sfun_registry.obj
+ 0002:000012e8       $unwind$sf_process_get_third_party_uses_info_call 00000001800172e8     Balancing_Logic_sfun_registry.obj
+ 0002:000012f8       $unwind$sf_process_get_jit_fallback_info_call 00000001800172f8     Balancing_Logic_sfun_registry.obj
+ 0002:00001308       $unwind$sf_process_get_post_codegen_info_call 0000000180017308     Balancing_Logic_sfun_registry.obj
+ 0002:00001318       $unwind$sf_process_get_updateBuildInfo_args_info_call 0000000180017318     Balancing_Logic_sfun_registry.obj
+ 0002:00001328       $unwind$sf_process_get_eml_resolved_functions_info_call 0000000180017328     Balancing_Logic_sfun_registry.obj
+ 0002:00001338       $unwind$sf_mex_unlock_call 0000000180017338     Balancing_Logic_sfun_registry.obj
+ 0002:00001348       $unwind$ProcessMexSfunctionCmdLineCall 0000000180017348     Balancing_Logic_sfun_registry.obj
+ 0002:00001350       $unwind$sf_machine_global_initializer_called 0000000180017350     Balancing_Logic_sfun_registry.obj
+ 0002:00001358       $unwind$sf_machine_global_method_dispatcher 0000000180017358     Balancing_Logic_sfun_registry.obj
+ 0002:00001360       $unwind$sf_machine_global_terminator 0000000180017360     Balancing_Logic_sfun_registry.obj
+ 0002:00001368       $unwind$sf_register_machine_exported_symbols 0000000180017368     Balancing_Logic_sfun_registry.obj
+ 0002:00001370       $unwind$sf_machine_global_initializer 0000000180017370     Balancing_Logic_sfun_registry.obj
+ 0002:00001378       $unwind$mdlGetSimState     0000000180017378     Balancing_Logic_sfun_registry.obj
+ 0002:00001380       $unwind$mdlSetSimState     0000000180017380     Balancing_Logic_sfun_registry.obj
+ 0002:00001388       $unwind$mdlSetWorkWidths   0000000180017388     Balancing_Logic_sfun_registry.obj
+ 0002:00001390       $unwind$mdlProcessParameters 0000000180017390     Balancing_Logic_sfun_registry.obj
+ 0002:00001398       $unwind$mdl_setup_runtime_resources_processing 0000000180017398     Balancing_Logic_sfun_registry.obj
+ 0002:000013a0       $unwind$mdlSetupRuntimeResources 00000001800173a0     Balancing_Logic_sfun_registry.obj
+ 0002:000013a8       $unwind$mdl_cleanup_runtime_resources_processing 00000001800173a8     Balancing_Logic_sfun_registry.obj
+ 0002:000013b0       $unwind$mdlCleanupRuntimeResources 00000001800173b0     Balancing_Logic_sfun_registry.obj
+ 0002:000013b8       $unwind$mdl_start_processing 00000001800173b8     Balancing_Logic_sfun_registry.obj
+ 0002:000013c0       $unwind$mdlStart           00000001800173c0     Balancing_Logic_sfun_registry.obj
+ 0002:000013c8       $unwind$mdl_terminate_processing 00000001800173c8     Balancing_Logic_sfun_registry.obj
+ 0002:000013d0       $unwind$mdlTerminate       00000001800173d0     Balancing_Logic_sfun_registry.obj
+ 0002:000013d8       $unwind$mdlInitializeSizes 00000001800173d8     Balancing_Logic_sfun_registry.obj
+ 0002:000013e0       $unwind$mdlInitializeSampleTimes 00000001800173e0     Balancing_Logic_sfun_registry.obj
+ 0002:000013e8       $unwind$mdl_outputs_continuous_legacy 00000001800173e8     Balancing_Logic_sfun_registry.obj
+ 0002:000013f0       $unwind$mdl_outputs_processing 00000001800173f0     Balancing_Logic_sfun_registry.obj
+ 0002:000013f8       $unwind$mdl_zeroCrossings_processing 00000001800173f8     Balancing_Logic_sfun_registry.obj
+ 0002:00001400       $unwind$mdlZeroCrossings   0000000180017400     Balancing_Logic_sfun_registry.obj
+ 0002:00001408       $unwind$mdl_derivatives_processing 0000000180017408     Balancing_Logic_sfun_registry.obj
+ 0002:00001410       $unwind$mdlDerivatives     0000000180017410     Balancing_Logic_sfun_registry.obj
+ 0002:00001418       $unwind$mdl_initialize_conditions_processing 0000000180017418     Balancing_Logic_sfun_registry.obj
+ 0002:00001420       $unwind$mdlInitializeConditions 0000000180017420     Balancing_Logic_sfun_registry.obj
+ 0002:00001428       $unwind$mdl_ext_mode_exec_processing 0000000180017428     Balancing_Logic_sfun_registry.obj
+ 0002:00001430       $unwind$mdlExtModeExec     0000000180017430     Balancing_Logic_sfun_registry.obj
+ 0002:00001438       $unwind$mdlRTW             0000000180017438     Balancing_Logic_sfun_registry.obj
+ 0002:00001440       $unwind$mdl_enable_processing 0000000180017440     Balancing_Logic_sfun_registry.obj
+ 0002:00001448       $unwind$mdlEnable          0000000180017448     Balancing_Logic_sfun_registry.obj
+ 0002:00001450       $unwind$mdl_disable_processing 0000000180017450     Balancing_Logic_sfun_registry.obj
+ 0002:00001458       $unwind$mdlDisable         0000000180017458     Balancing_Logic_sfun_registry.obj
+ 0002:00001460       $unwind$mdlOutputs         0000000180017460     Balancing_Logic_sfun_registry.obj
+ 0002:00001468       $unwind$mdl_update_processing 0000000180017468     Balancing_Logic_sfun_registry.obj
+ 0002:00001470       $unwind$mdlUpdate          0000000180017470     Balancing_Logic_sfun_registry.obj
+ 0002:00001478       $unwind$ProcessMexSfunctionEveryCall 0000000180017478     Balancing_Logic_sfun_registry.obj
+ 0002:00001480       $unwind$_RegNumInputPortsCB 0000000180017480     Balancing_Logic_sfun_registry.obj
+ 0002:00001488       $unwind$_RegNumOutputPortsCB 0000000180017488     Balancing_Logic_sfun_registry.obj
+ 0002:00001490       $unwind$_CreateSimStruct   0000000180017490     Balancing_Logic_sfun_registry.obj
+ 0002:00001498       $unwind$_ProcessMexSfunctionCmdLineCall 0000000180017498     Balancing_Logic_sfun_registry.obj
+ 0002:000014a8       $unwind$ReportIndexOutOfBoundsError 00000001800174a8     Balancing_Logic_sfun_registry.obj
+ 0002:000014b8       $unwind$getBitfieldFromFloat 00000001800174b8     half_type.obj
+ 0002:000014c0       $unwind$getFloatFromBitfield 00000001800174c0     half_type.obj
+ 0002:000014c8       $unwind$getHalfFromBitfield 00000001800174c8     half_type.obj
+ 0002:000014d0       $unwind$halfToFloat        00000001800174d0     half_type.obj
+ 0002:000014d8       $unwind$halfToDouble       00000001800174d8     half_type.obj
+ 0002:000014e0       $unwind$floatToHalf        00000001800174e0     half_type.obj
+ 0002:000014e8       $unwind$doubleToHalf       00000001800174e8     half_type.obj
+ 0002:000014f0       $unwind$__report_securityfailure 00000001800174f0     MSVCRT:gs_report.obj
+ 0002:000014f8       $unwind$__report_securityfailureEx 00000001800174f8     MSVCRT:gs_report.obj
+ 0002:00001500       $unwind$__report_rangecheckfailure 0000000180017500     MSVCRT:gs_report.obj
+ 0002:00001508       $unwind$__report_gsfailure 0000000180017508     MSVCRT:gs_report.obj
+ 0002:00001510       $unwind$capture_current_context 0000000180017510     MSVCRT:gs_report.obj
+ 0002:0000151c       $unwind$capture_previous_context 000000018001751c     MSVCRT:gs_report.obj
+ 0002:00001528       $unwind$__raise_securityfailure 0000000180017528     MSVCRT:gs_report.obj
+ 0002:00001530       $unwind$__GSHandlerCheckCommon 0000000180017530     MSVCRT:gshandler.obj
+ 0002:00001538       $unwind$__GSHandlerCheck   0000000180017538     MSVCRT:gshandler.obj
+ 0002:00001540       $xdatasym                  0000000180017540     MSVCRT:amdsecgs.obj
+ 0002:00001544       $unwind$?dllmain_crt_process_attach@@YAHQEAUHINSTANCE__@@QEAX@Z 0000000180017544     MSVCRT:dll_dllmain.obj
+ 0002:00001580       $unwind$?fin$0@?0??dllmain_crt_process_attach@@YAHQEAUHINSTANCE__@@QEAX@Z@4HA 0000000180017580     MSVCRT:dll_dllmain.obj
+ 0002:00001588       $unwind$?dllmain_crt_process_detach@@YAH_N@Z 0000000180017588     MSVCRT:dll_dllmain.obj
+ 0002:000015dc       $unwind$?fin$0@?0??dllmain_crt_process_detach@@YAH_N@Z@4HA 00000001800175dc     MSVCRT:dll_dllmain.obj
+ 0002:000015e4       $unwind$?fin$1@?0??dllmain_crt_process_detach@@YAH_N@Z@4HA 00000001800175e4     MSVCRT:dll_dllmain.obj
+ 0002:000015ec       $unwind$?dllmain_crt_dispatch@@YAHQEAUHINSTANCE__@@KQEAX@Z 00000001800175ec     MSVCRT:dll_dllmain.obj
+ 0002:000015f4       $unwind$?dllmain_dispatch@@YAHQEAUHINSTANCE__@@KQEAX@Z 00000001800175f4     MSVCRT:dll_dllmain.obj
+ 0002:0000161c       $unwind$?filt$0@?0??dllmain_dispatch@@YAHQEAUHINSTANCE__@@KQEAX@Z@4HA 000000018001761c     MSVCRT:dll_dllmain.obj
+ 0002:00001624       $unwind$_DllMainCRTStartup 0000000180017624     MSVCRT:dll_dllmain.obj
+ 0002:00001634       $unwind$__security_init_cookie 0000000180017634     MSVCRT:gs_support.obj
+ 0002:00001640       $unwind$__get_entropy      0000000180017640     MSVCRT:gs_support.obj
+ 0002:00001648       $unwind$DllMain            0000000180017648     MSVCRT:dll_dllmain_stub.obj
+ 0002:00001650       $unwind$__scrt_initialize_default_local_stdio_options 0000000180017650     MSVCRT:default_local_stdio_options.obj
+ 0002:00001658       $unwind$atexit             0000000180017658     MSVCRT:utility.obj
+ 0002:00001660       $unwind$_onexit            0000000180017660     MSVCRT:utility.obj
+ 0002:00001668       $unwind$__scrt_is_nonwritable_in_current_image 0000000180017668     MSVCRT:utility.obj
+ 0002:00001688       $unwind$__scrt_is_nonwritable_in_current_image$filt$0 0000000180017688     MSVCRT:utility.obj
+ 0002:00001690       $unwind$__scrt_acquire_startup_lock 0000000180017690     MSVCRT:utility.obj
+ 0002:00001698       $unwind$__scrt_release_startup_lock 0000000180017698     MSVCRT:utility.obj
+ 0002:000016a0       $unwind$__scrt_initialize_crt 00000001800176a0     MSVCRT:utility.obj
+ 0002:000016a8       $unwind$__scrt_uninitialize_crt 00000001800176a8     MSVCRT:utility.obj
+ 0002:000016b0       $unwind$__scrt_initialize_onexit_tables 00000001800176b0     MSVCRT:utility.obj
+ 0002:000016b8       $unwind$__scrt_dllmain_exception_filter 00000001800176b8     MSVCRT:utility.obj
+ 0002:000016cc       $unwind$__scrt_dllmain_before_initialize_c 00000001800176cc     MSVCRT:utility.obj
+ 0002:000016d4       $unwind$__scrt_dllmain_after_initialize_c 00000001800176d4     MSVCRT:utility.obj
+ 0002:000016dc       $unwind$__scrt_dllmain_uninitialize_c 00000001800176dc     MSVCRT:utility.obj
+ 0002:000016e4       $unwind$__scrt_dllmain_uninitialize_critical 00000001800176e4     MSVCRT:utility.obj
+ 0002:000016ec       $unwind$__scrt_dllmain_crt_thread_attach 00000001800176ec     MSVCRT:utility.obj
+ 0002:000016f4       $unwind$__scrt_dllmain_crt_thread_detach 00000001800176f4     MSVCRT:utility.obj
+ 0002:000016fc       $unwind$?configure_argv@__scrt_narrow_argv_policy@@SAHXZ 00000001800176fc     MSVCRT:utility.obj
+ 0002:00001704       $unwind$__scrt_get_show_window_mode 0000000180017704     MSVCRT:utility_desktop.obj
+ 0002:0000170c       $unwind$__scrt_is_managed_app 000000018001770c     MSVCRT:utility_desktop.obj
+ 0002:00001714       $unwind$__scrt_fastfail    0000000180017714     MSVCRT:utility_desktop.obj
+ 0002:00001724       $unwind$__scrt_unhandled_exception_filter 0000000180017724     MSVCRT:utility_desktop.obj
+ 0002:00001730       $unwind$_RTC_Initialize    0000000180017730     MSVCRT:initsect.obj
+ 0002:0000173c       $unwind$_RTC_Terminate     000000018001773c     MSVCRT:initsect.obj
+ 0002:00001748       $unwind$__castguard_check_failure_os_handled 0000000180017748     MSVCRT:guard_support.obj
+ 0002:00001750       $unwind$__castguard_slow_path_check_os_handled 0000000180017750     MSVCRT:guard_support.obj
+ 0002:00001758       $unwind$__isa_available_init 0000000180017758     MSVCRT:cpu_disp.obj
+ 0002:00001768       $xdatasym                  0000000180017768     MSVCRT:guard_dispatch.obj
+ 0002:00001770       $xdatasym                  0000000180017770     MSVCRT:guard_xfg_dispatch.obj
+ 0002:00001780       .edata                     0000000180017780     Balancing_Logic_sfun.exp
+ 0002:000017a8       rgpv                       00000001800177a8     Balancing_Logic_sfun.exp
+ 0002:000017b0       rgszName                   00000001800177b0     Balancing_Logic_sfun.exp
+ 0002:000017b8       rgwOrd                     00000001800177b8     Balancing_Logic_sfun.exp
+ 0002:000017bc       szName                     00000001800177bc     Balancing_Logic_sfun.exp
+ 0002:000017d8       $N00001                    00000001800177d8     Balancing_Logic_sfun.exp
+ 0002:000017e4       $N00002                    00000001800177e4     Balancing_Logic_sfun.exp
+ 0002:000023ea       .idata$6                   00000001800183ea     sf_runtime:sf_runtime.dll
+ 0002:00002564       .idata$6                   0000000180018564     libmx:libmx.dll
+ 0002:000025f8       .idata$6                   00000001800185f8     libmex:libmex.dll
+ 0002:0000261a       .idata$6                   000000018001861a     libut:libut.dll
+ 0002:00002644       .idata$6                   0000000180018644     libemlrt:libemlrt.dll
+ 0002:000027ae       .idata$6                   00000001800187ae     libcovrt:libcovrt.dll
+ 0002:00002948       .idata$6                   0000000180018948     kernel32:KERNEL32.dll
+ 0002:000029d6       .idata$6                   00000001800189d6     vcruntime:VCRUNTIME140.dll
+ 0002:00002b24       .idata$6                   0000000180018b24     ucrt:api-ms-win-crt-string-l1-1-0.dll
+ 0002:00002b46       .idata$6                   0000000180018b46     ucrt:api-ms-win-crt-stdio-l1-1-0.dll
+ 0002:00002b66       .idata$6                   0000000180018b66     ucrt:api-ms-win-crt-heap-l1-1-0.dll
+ 0002:00002b86       .idata$6                   0000000180018b86     ucrt:api-ms-win-crt-runtime-l1-1-0.dll
+ 0003:00000000       $SG25888                   0000000180019000     Balancing_Logic_sfun.obj
+ 0003:00000018       $SG25893                   0000000180019018     Balancing_Logic_sfun.obj
+ 0003:00000020       $SG25896                   0000000180019020     Balancing_Logic_sfun.obj
+ 0003:00000028       $SG25901                   0000000180019028     Balancing_Logic_sfun.obj
+ 0003:00000030       $SG25931                   0000000180019030     Balancing_Logic_sfun.obj
+ 0003:00000050       $SG25934                   0000000180019050     Balancing_Logic_sfun.obj
+ 0003:00000068       $SG25963                   0000000180019068     Balancing_Logic_sfun.obj
+ 0003:00000088       $SG25966                   0000000180019088     Balancing_Logic_sfun.obj
+ 0003:000000a0       $SG25995                   00000001800190a0     Balancing_Logic_sfun.obj
+ 0003:000000b8       $SG25998                   00000001800190b8     Balancing_Logic_sfun.obj
+ 0003:000000d0       $SG26028                   00000001800190d0     Balancing_Logic_sfun.obj
+ 0003:000000e8       $SG26031                   00000001800190e8     Balancing_Logic_sfun.obj
+ 0003:00000100       $SG26060                   0000000180019100     Balancing_Logic_sfun.obj
+ 0003:00000120       $SG26063                   0000000180019120     Balancing_Logic_sfun.obj
+ 0003:00000138       $SG26089                   0000000180019138     Balancing_Logic_sfun.obj
+ 0003:00000148       $SG26090                   0000000180019148     Balancing_Logic_sfun.obj
+ 0003:00000160       $SG26232                   0000000180019160     c1_Balancing_Logic.obj
+ 0003:00000170       $SG26233                   0000000180019170     c1_Balancing_Logic.obj
+ 0003:000001b0       $SG27725                   00000001800191b0     c1_Balancing_Logic.obj
+ 0003:000001c0       $SG27726                   00000001800191c0     c1_Balancing_Logic.obj
+ 0003:000001d0       $SG27727                   00000001800191d0     c1_Balancing_Logic.obj
+ 0003:000001dc       $SG27748                   00000001800191dc     c1_Balancing_Logic.obj
+ 0003:000001e8       $SG27728                   00000001800191e8     c1_Balancing_Logic.obj
+ 0003:000001f8       $SG27733                   00000001800191f8     c1_Balancing_Logic.obj
+ 0003:00000218       $SG27734                   0000000180019218     c1_Balancing_Logic.obj
+ 0003:00000228       $SG27735                   0000000180019228     c1_Balancing_Logic.obj
+ 0003:00000248       $SG27736                   0000000180019248     c1_Balancing_Logic.obj
+ 0003:00000258       $SG26551                   0000000180019258     c1_Balancing_Logic.obj
+ 0003:00000268       $SG26552                   0000000180019268     c1_Balancing_Logic.obj
+ 0003:00000278       $SG26559                   0000000180019278     c1_Balancing_Logic.obj
+ 0003:00000284       $SG26764                   0000000180019284     c1_Balancing_Logic.obj
+ 0003:00000288       $SG26566                   0000000180019288     c1_Balancing_Logic.obj
+ 0003:00000294       $SG26765                   0000000180019294     c1_Balancing_Logic.obj
+ 0003:00000298       $SG26573                   0000000180019298     c1_Balancing_Logic.obj
+ 0003:000002a8       $SG26661                   00000001800192a8     c1_Balancing_Logic.obj
+ 0003:000002c4       $SG26766                   00000001800192c4     c1_Balancing_Logic.obj
+ 0003:000002c8       $SG26663                   00000001800192c8     c1_Balancing_Logic.obj
+ 0003:000002e4       $SG26767                   00000001800192e4     c1_Balancing_Logic.obj
+ 0003:000002e8       $SG26768                   00000001800192e8     c1_Balancing_Logic.obj
+ 0003:000002ec       $SG26769                   00000001800192ec     c1_Balancing_Logic.obj
+ 0003:000002f0       $SG26770                   00000001800192f0     c1_Balancing_Logic.obj
+ 0003:000002f4       $SG26771                   00000001800192f4     c1_Balancing_Logic.obj
+ 0003:000002f8       $SG26772                   00000001800192f8     c1_Balancing_Logic.obj
+ 0003:000002fc       $SG26773                   00000001800192fc     c1_Balancing_Logic.obj
+ 0003:00000300       $SG26790                   0000000180019300     c1_Balancing_Logic.obj
+ 0003:00000308       $SG26791                   0000000180019308     c1_Balancing_Logic.obj
+ 0003:00000318       $SG26792                   0000000180019318     c1_Balancing_Logic.obj
+ 0003:00000324       $SG27668                   0000000180019324     c1_Balancing_Logic.obj
+ 0003:00000328       $SG26793                   0000000180019328     c1_Balancing_Logic.obj
+ 0003:00000348       $SG26794                   0000000180019348     c1_Balancing_Logic.obj
+ 0003:00000360       $SG26795                   0000000180019360     c1_Balancing_Logic.obj
+ 0003:00000370       $SG26796                   0000000180019370     c1_Balancing_Logic.obj
+ 0003:00000388       $SG26797                   0000000180019388     c1_Balancing_Logic.obj
+ 0003:000003a0       $SG26798                   00000001800193a0     c1_Balancing_Logic.obj
+ 0003:000003c0       $SG26799                   00000001800193c0     c1_Balancing_Logic.obj
+ 0003:000003d8       $SG26800                   00000001800193d8     c1_Balancing_Logic.obj
+ 0003:000003f4       $SG26824                   00000001800193f4     c1_Balancing_Logic.obj
+ 0003:00000400       $SG26826                   0000000180019400     c1_Balancing_Logic.obj
+ 0003:00000410       $SG26828                   0000000180019410     c1_Balancing_Logic.obj
+ 0003:00000420       $SG26830                   0000000180019420     c1_Balancing_Logic.obj
+ 0003:00000430       $SG26832                   0000000180019430     c1_Balancing_Logic.obj
+ 0003:00000438       $SG26834                   0000000180019438     c1_Balancing_Logic.obj
+ 0003:00000448       $SG26836                   0000000180019448     c1_Balancing_Logic.obj
+ 0003:00000454       $SG26838                   0000000180019454     c1_Balancing_Logic.obj
+ 0003:00000460       $SG26840                   0000000180019460     c1_Balancing_Logic.obj
+ 0003:00000470       $SG26842                   0000000180019470     c1_Balancing_Logic.obj
+ 0003:00000480       $SG26844                   0000000180019480     c1_Balancing_Logic.obj
+ 0003:00000488       $SG26846                   0000000180019488     c1_Balancing_Logic.obj
+ 0003:00000498       $SG26848                   0000000180019498     c1_Balancing_Logic.obj
+ 0003:000004a8       $SG26851                   00000001800194a8     c1_Balancing_Logic.obj
+ 0003:000004c0       $SG26855                   00000001800194c0     c1_Balancing_Logic.obj
+ 0003:000004d0       $SG26858                   00000001800194d0     c1_Balancing_Logic.obj
+ 0003:000004e0       $SG26860                   00000001800194e0     c1_Balancing_Logic.obj
+ 0003:000004f0       $SG26862                   00000001800194f0     c1_Balancing_Logic.obj
+ 0003:00000500       $SG26863                   0000000180019500     c1_Balancing_Logic.obj
+ 0003:00000510       $SG26865                   0000000180019510     c1_Balancing_Logic.obj
+ 0003:00000520       $SG26866                   0000000180019520     c1_Balancing_Logic.obj
+ 0003:00000530       $SG26868                   0000000180019530     c1_Balancing_Logic.obj
+ 0003:00000540       $SG26870                   0000000180019540     c1_Balancing_Logic.obj
+ 0003:00000550       $SG26871                   0000000180019550     c1_Balancing_Logic.obj
+ 0003:00000560       $SG26873                   0000000180019560     c1_Balancing_Logic.obj
+ 0003:00000570       $SG26874                   0000000180019570     c1_Balancing_Logic.obj
+ 0003:00000580       $SG26876                   0000000180019580     c1_Balancing_Logic.obj
+ 0003:00000598       $SG26878                   0000000180019598     c1_Balancing_Logic.obj
+ 0003:000005b0       $SG26879                   00000001800195b0     c1_Balancing_Logic.obj
+ 0003:000005c8       $SG26881                   00000001800195c8     c1_Balancing_Logic.obj
+ 0003:000005e8       $SG26883                   00000001800195e8     c1_Balancing_Logic.obj
+ 0003:00000608       $SG26884                   0000000180019608     c1_Balancing_Logic.obj
+ 0003:00000624       $SG26886                   0000000180019624     c1_Balancing_Logic.obj
+ 0003:0000062c       $SG26890                   000000018001962c     c1_Balancing_Logic.obj
+ 0003:00000638       $SG26892                   0000000180019638     c1_Balancing_Logic.obj
+ 0003:00000648       $SG26896                   0000000180019648     c1_Balancing_Logic.obj
+ 0003:00000658       $SG26898                   0000000180019658     c1_Balancing_Logic.obj
+ 0003:00000668       $SG26902                   0000000180019668     c1_Balancing_Logic.obj
+ 0003:00000678       $SG27322                   0000000180019678     c1_Balancing_Logic.obj
+ 0003:00000688       $SG27353                   0000000180019688     c1_Balancing_Logic.obj
+ 0003:00000690       $SG27070                   0000000180019690     c1_Balancing_Logic.obj
+ 0003:00000798       $SG27088                   0000000180019798     c1_Balancing_Logic.obj
+ 0003:000007a8       $SG27325                   00000001800197a8     c1_Balancing_Logic.obj
+ 0003:000007b8       $SG27355                   00000001800197b8     c1_Balancing_Logic.obj
+ 0003:000007c0       $SG27072                   00000001800197c0     c1_Balancing_Logic.obj
+ 0003:000008c8       $SG27089                   00000001800198c8     c1_Balancing_Logic.obj
+ 0003:000008d8       $SG27328                   00000001800198d8     c1_Balancing_Logic.obj
+ 0003:000008e8       $SG27357                   00000001800198e8     c1_Balancing_Logic.obj
+ 0003:000008f0       $SG27074                   00000001800198f0     c1_Balancing_Logic.obj
+ 0003:00000978       $SG27101                   0000000180019978     c1_Balancing_Logic.obj
+ 0003:00000988       $SG27102                   0000000180019988     c1_Balancing_Logic.obj
+ 0003:00000998       $SG27114                   0000000180019998     c1_Balancing_Logic.obj
+ 0003:000009a8       $SG27115                   00000001800199a8     c1_Balancing_Logic.obj
+ 0003:000009b8       $SG27350                   00000001800199b8     c1_Balancing_Logic.obj
+ 0003:000009c8       $SG27351                   00000001800199c8     c1_Balancing_Logic.obj
+ 0003:000009d8       $SG27359                   00000001800199d8     c1_Balancing_Logic.obj
+ 0003:000009e0       $SG27361                   00000001800199e0     c1_Balancing_Logic.obj
+ 0003:000009e8       $SG27363                   00000001800199e8     c1_Balancing_Logic.obj
+ 0003:000009f0       $SG27365                   00000001800199f0     c1_Balancing_Logic.obj
+ 0003:000009f8       $SG27367                   00000001800199f8     c1_Balancing_Logic.obj
+ 0003:00000a00       $SG27369                   0000000180019a00     c1_Balancing_Logic.obj
+ 0003:00000a08       $SG27371                   0000000180019a08     c1_Balancing_Logic.obj
+ 0003:00000a10       $SG27373                   0000000180019a10     c1_Balancing_Logic.obj
+ 0003:00000a18       $SG27481                   0000000180019a18     c1_Balancing_Logic.obj
+ 0003:00000a28       $SG27483                   0000000180019a28     c1_Balancing_Logic.obj
+ 0003:00000a38       $SG27485                   0000000180019a38     c1_Balancing_Logic.obj
+ 0003:00000a50       $SG27487                   0000000180019a50     c1_Balancing_Logic.obj
+ 0003:00000a68       $SG27489                   0000000180019a68     c1_Balancing_Logic.obj
+ 0003:00000a7c       $SG27490                   0000000180019a7c     c1_Balancing_Logic.obj
+ 0003:00000a88       $SG27491                   0000000180019a88     c1_Balancing_Logic.obj
+ 0003:00000a98       $SG27494                   0000000180019a98     c1_Balancing_Logic.obj
+ 0003:00000aa8       $SG27507                   0000000180019aa8     c1_Balancing_Logic.obj
+ 0003:00000ab8       $SG27509                   0000000180019ab8     c1_Balancing_Logic.obj
+ 0003:00000ac0       $SG27510                   0000000180019ac0     c1_Balancing_Logic.obj
+ 0003:00000ce8       $SG27682                   0000000180019ce8     c1_Balancing_Logic.obj
+ 0003:00000d00       $SG27608                   0000000180019d00     c1_Balancing_Logic.obj
+ 0003:00000d50       $SG27610                   0000000180019d50     c1_Balancing_Logic.obj
+ 0003:00000da0       $SG27612                   0000000180019da0     c1_Balancing_Logic.obj
+ 0003:00000df0       $SG27614                   0000000180019df0     c1_Balancing_Logic.obj
+ 0003:00000e40       $SG27616                   0000000180019e40     c1_Balancing_Logic.obj
+ 0003:00000e90       $SG27618                   0000000180019e90     c1_Balancing_Logic.obj
+ 0003:00000ee0       $SG27620                   0000000180019ee0     c1_Balancing_Logic.obj
+ 0003:00000f30       $SG27622                   0000000180019f30     c1_Balancing_Logic.obj
+ 0003:00000f80       $SG27624                   0000000180019f80     c1_Balancing_Logic.obj
+ 0003:00000fd0       $SG27626                   0000000180019fd0     c1_Balancing_Logic.obj
+ 0003:00001020       $SG27628                   000000018001a020     c1_Balancing_Logic.obj
+ 0003:00001070       $SG27630                   000000018001a070     c1_Balancing_Logic.obj
+ 0003:000010c0       $SG27632                   000000018001a0c0     c1_Balancing_Logic.obj
+ 0003:00001110       $SG27634                   000000018001a110     c1_Balancing_Logic.obj
+ 0003:00001160       $SG27636                   000000018001a160     c1_Balancing_Logic.obj
+ 0003:000011b0       $SG27638                   000000018001a1b0     c1_Balancing_Logic.obj
+ 0003:00001200       $SG27640                   000000018001a200     c1_Balancing_Logic.obj
+ 0003:00001250       $SG27642                   000000018001a250     c1_Balancing_Logic.obj
+ 0003:000012a0       $SG27644                   000000018001a2a0     c1_Balancing_Logic.obj
+ 0003:000012f0       $SG27646                   000000018001a2f0     c1_Balancing_Logic.obj
+ 0003:00001340       $SG27648                   000000018001a340     c1_Balancing_Logic.obj
+ 0003:00001390       $SG27650                   000000018001a390     c1_Balancing_Logic.obj
+ 0003:000013e0       $SG27652                   000000018001a3e0     c1_Balancing_Logic.obj
+ 0003:00001430       $SG27654                   000000018001a430     c1_Balancing_Logic.obj
+ 0003:00001480       $SG27656                   000000018001a480     c1_Balancing_Logic.obj
+ 0003:000014d0       $SG27658                   000000018001a4d0     c1_Balancing_Logic.obj
+ 0003:00001520       $SG27660                   000000018001a520     c1_Balancing_Logic.obj
+ 0003:00001570       $SG27662                   000000018001a570     c1_Balancing_Logic.obj
+ 0003:000015c0       $SG27664                   000000018001a5c0     c1_Balancing_Logic.obj
+ 0003:00001610       $SG27666                   000000018001a610     c1_Balancing_Logic.obj
+ 0003:00001660       $SG27681                   000000018001a660     c1_Balancing_Logic.obj
+ 0003:00001670       $SG27706                   000000018001a670     c1_Balancing_Logic.obj
+ 0003:000016a0       $SG27721                   000000018001a6a0     c1_Balancing_Logic.obj
+ 0003:00001710       testPointMappingStaticInfo 000000018001a710     c1_Balancing_Logic.obj
+ 0003:000017d8       $SG25458                   000000018001a7d8     Balancing_Logic_sfun_registry.obj
+ 0003:000017f8       $SG25460                   000000018001a7f8     Balancing_Logic_sfun_registry.obj
+ 0003:00001808       $SG25496                   000000018001a808     Balancing_Logic_sfun_registry.obj
+ 0003:00001820       $SG25498                   000000018001a820     Balancing_Logic_sfun_registry.obj
+ 0003:00001830       $SG25534                   000000018001a830     Balancing_Logic_sfun_registry.obj
+ 0003:00001848       $SG25536                   000000018001a848     Balancing_Logic_sfun_registry.obj
+ 0003:00001858       $SG25572                   000000018001a858     Balancing_Logic_sfun_registry.obj
+ 0003:00001878       $SG25574                   000000018001a878     Balancing_Logic_sfun_registry.obj
+ 0003:00001888       $SG25610                   000000018001a888     Balancing_Logic_sfun_registry.obj
+ 0003:000018a8       $SG25612                   000000018001a8a8     Balancing_Logic_sfun_registry.obj
+ 0003:000018b8       $SG25632                   000000018001a8b8     Balancing_Logic_sfun_registry.obj
+ 0003:000018c8       $SG25650                   000000018001a8c8     Balancing_Logic_sfun_registry.obj
+ 0003:000018e0       $SG25681                   000000018001a8e0     Balancing_Logic_sfun_registry.obj
+ 0003:000018f0       $SG25781                   000000018001a8f0     Balancing_Logic_sfun_registry.obj
+ 0003:000018f8       $SG25782                   000000018001a8f8     Balancing_Logic_sfun_registry.obj
+ 0003:0000190c       $SG25787                   000000018001a90c     Balancing_Logic_sfun_registry.obj
+ 0003:00001914       $SG27633                   000000018001a914     Balancing_Logic_sfun_registry.obj
+ 0003:00001918       $SG25788                   000000018001a918     Balancing_Logic_sfun_registry.obj
+ 0003:00001934       $SG26559                   000000018001a934     Balancing_Logic_sfun_registry.obj
+ 0003:0000193c       $SG27714                   000000018001a93c     Balancing_Logic_sfun_registry.obj
+ 0003:00001940       $SG25930                   000000018001a940     Balancing_Logic_sfun_registry.obj
+ 0003:00001968       _sfcnName                  000000018001a968     Balancing_Logic_sfun_registry.obj
+ 0003:00001988       $SG26352                   000000018001a988     Balancing_Logic_sfun_registry.obj
+ 0003:00001990       $SG25947                   000000018001a990     Balancing_Logic_sfun_registry.obj
+ 0003:00001a08       $SG26353                   000000018001aa08     Balancing_Logic_sfun_registry.obj
+ 0003:00001a10       $SG26367                   000000018001aa10     Balancing_Logic_sfun_registry.obj
+ 0003:00001a20       $SG26557                   000000018001aa20     Balancing_Logic_sfun_registry.obj
+ 0003:00001a60       $SG26558                   000000018001aa60     Balancing_Logic_sfun_registry.obj
+ 0003:00001a70       $SG26563                   000000018001aa70     Balancing_Logic_sfun_registry.obj
+ 0003:00001ab8       $SG26564                   000000018001aab8     Balancing_Logic_sfun_registry.obj
+ 0003:00001ac8       $SG26565                   000000018001aac8     Balancing_Logic_sfun_registry.obj
+ 0003:00001ad0       $SG26566                   000000018001aad0     Balancing_Logic_sfun_registry.obj
+ 0003:00001b28       $SG26567                   000000018001ab28     Balancing_Logic_sfun_registry.obj
+ 0003:00001b38       $SG26568                   000000018001ab38     Balancing_Logic_sfun_registry.obj
+ 0003:00001b40       $SG26590                   000000018001ab40     Balancing_Logic_sfun_registry.obj
+ 0003:00001b80       $SG26591                   000000018001ab80     Balancing_Logic_sfun_registry.obj
+ 0003:00001b90       $SG26592                   000000018001ab90     Balancing_Logic_sfun_registry.obj
+ 0003:00001b98       $SG26598                   000000018001ab98     Balancing_Logic_sfun_registry.obj
+ 0003:00001ba0       $SG26596                   000000018001aba0     Balancing_Logic_sfun_registry.obj
+ 0003:00001be8       $SG26597                   000000018001abe8     Balancing_Logic_sfun_registry.obj
+ 0003:00001bf8       $SG26601                   000000018001abf8     Balancing_Logic_sfun_registry.obj
+ 0003:00001c00       $SG26599                   000000018001ac00     Balancing_Logic_sfun_registry.obj
+ 0003:00001c58       $SG26600                   000000018001ac58     Balancing_Logic_sfun_registry.obj
+ 0003:00001c68       $SG26627                   000000018001ac68     Balancing_Logic_sfun_registry.obj
+ 0003:00001c70       $SG26625                   000000018001ac70     Balancing_Logic_sfun_registry.obj
+ 0003:00001cc0       $SG26626                   000000018001acc0     Balancing_Logic_sfun_registry.obj
+ 0003:00001cd0       $SG26639                   000000018001acd0     Balancing_Logic_sfun_registry.obj
+ 0003:00001d30       $SG26640                   000000018001ad30     Balancing_Logic_sfun_registry.obj
+ 0003:00001d38       $SG26641                   000000018001ad38     Balancing_Logic_sfun_registry.obj
+ 0003:00001d40       $SG26653                   000000018001ad40     Balancing_Logic_sfun_registry.obj
+ 0003:00001da0       $SG26654                   000000018001ada0     Balancing_Logic_sfun_registry.obj
+ 0003:00001da8       $SG26655                   000000018001ada8     Balancing_Logic_sfun_registry.obj
+ 0003:00001db0       $SG26995                   000000018001adb0     Balancing_Logic_sfun_registry.obj
+ 0003:00001e28       $SG27617                   000000018001ae28     Balancing_Logic_sfun_registry.obj
+ 0003:00001e40       $SG26998                   000000018001ae40     Balancing_Logic_sfun_registry.obj
+ 0003:00001eb4       $SG27688                   000000018001aeb4     Balancing_Logic_sfun_registry.obj
+ 0003:00001ec0       $SG27003                   000000018001aec0     Balancing_Logic_sfun_registry.obj
+ 0003:00001f38       $SG27689                   000000018001af38     Balancing_Logic_sfun_registry.obj
+ 0003:00001f40       $SG27011                   000000018001af40     Balancing_Logic_sfun_registry.obj
+ 0003:00001fb0       $SG27286                   000000018001afb0     Balancing_Logic_sfun_registry.obj
+ 0003:00002028       $SG27690                   000000018001b028     Balancing_Logic_sfun_registry.obj
+ 0003:00002030       $SG27291                   000000018001b030     Balancing_Logic_sfun_registry.obj
+ 0003:000020a8       $SG27696                   000000018001b0a8     Balancing_Logic_sfun_registry.obj
+ 0003:000020b0       $SG27630                   000000018001b0b0     Balancing_Logic_sfun_registry.obj
+ 0003:00002128       $SG27699                   000000018001b128     Balancing_Logic_sfun_registry.obj
+ 0003:00002130       $SG27691                   000000018001b130     Balancing_Logic_sfun_registry.obj
+ 0003:000021a8       $SG27702                   000000018001b1a8     Balancing_Logic_sfun_registry.obj
+ 0003:000021b0       $SG27693                   000000018001b1b0     Balancing_Logic_sfun_registry.obj
+ 0003:00002230       $SG27703                   000000018001b230     Balancing_Logic_sfun_registry.obj
+ 0003:000022b0       $SG27704                   000000018001b2b0     Balancing_Logic_sfun_registry.obj
+ 0003:000022c0       $SG27706                   000000018001b2c0     Balancing_Logic_sfun_registry.obj
+ 0003:000022cc       $SG27708                   000000018001b2cc     Balancing_Logic_sfun_registry.obj
+ 0003:000022d4       $SG27710                   000000018001b2d4     Balancing_Logic_sfun_registry.obj
+ 0003:000022e0       $SG27712                   000000018001b2e0     Balancing_Logic_sfun_registry.obj
+ 0003:000022f0       $SG27717                   000000018001b2f0     Balancing_Logic_sfun_registry.obj
+ 0003:000023d8       $SG27835                   000000018001b3d8     Balancing_Logic_sfun_registry.obj
+ 0003:00002408       $SG27836                   000000018001b408     Balancing_Logic_sfun_registry.obj
+ 0003:00002418       $SG27837                   000000018001b418     Balancing_Logic_sfun_registry.obj
+ 0003:00002420       $SG27839                   000000018001b420     Balancing_Logic_sfun_registry.obj
+ 0003:00002458       $SG27840                   000000018001b458     Balancing_Logic_sfun_registry.obj
+ 0003:00002468       $SG27841                   000000018001b468     Balancing_Logic_sfun_registry.obj
+ 0003:00002470       $SG27844                   000000018001b470     Balancing_Logic_sfun_registry.obj
+ 0003:000024a8       $SG27845                   000000018001b4a8     Balancing_Logic_sfun_registry.obj
+ 0003:000024b8       $SG27846                   000000018001b4b8     Balancing_Logic_sfun_registry.obj
+ 0003:000024c0       $SG27848                   000000018001b4c0     Balancing_Logic_sfun_registry.obj
+ 0003:000024f8       $SG27849                   000000018001b4f8     Balancing_Logic_sfun_registry.obj
+ 0003:00002508       $SG27850                   000000018001b508     Balancing_Logic_sfun_registry.obj
+ 0003:00002510       $SG27852                   000000018001b510     Balancing_Logic_sfun_registry.obj
+ 0003:00002548       $SG27853                   000000018001b548     Balancing_Logic_sfun_registry.obj
+ 0003:00002558       $SG27854                   000000018001b558     Balancing_Logic_sfun_registry.obj
+ 0003:00002560       $SG27857                   000000018001b560     Balancing_Logic_sfun_registry.obj
+ 0003:00002568       $SG27859                   000000018001b568     Balancing_Logic_sfun_registry.obj
+ 0003:00002580       $SG27860                   000000018001b580     Balancing_Logic_sfun_registry.obj
+ 0003:000025b8       $SG27861                   000000018001b5b8     Balancing_Logic_sfun_registry.obj
+ 0003:000025c8       $SG27862                   000000018001b5c8     Balancing_Logic_sfun_registry.obj
+ 0003:000025d0       $SG28032                   000000018001b5d0     Balancing_Logic_sfun_registry.obj
+ 0003:000025f0       $SG28033                   000000018001b5f0     Balancing_Logic_sfun_registry.obj
+ 0003:00002680       $SG28039                   000000018001b680     Balancing_Logic_sfun_registry.obj
+ 0003:00002698       $SG28046                   000000018001b698     Balancing_Logic_sfun_registry.obj
+ 0003:000026b0       $SG28040                   000000018001b6b0     Balancing_Logic_sfun_registry.obj
+ 0003:00002740       $SG28047                   000000018001b740     Balancing_Logic_sfun_registry.obj
+ 0003:000027d0       $SG28053                   000000018001b7d0     Balancing_Logic_sfun_registry.obj
+ 0003:000027f0       $SG28054                   000000018001b7f0     Balancing_Logic_sfun_registry.obj
+ 0003:00002880       $SG28060                   000000018001b880     Balancing_Logic_sfun_registry.obj
+ 0003:000028a0       $SG28061                   000000018001b8a0     Balancing_Logic_sfun_registry.obj
+ 0003:00002930       $SG28065                   000000018001b930     Balancing_Logic_sfun_registry.obj
+ 0003:00002950       $SG28066                   000000018001b950     Balancing_Logic_sfun_registry.obj
+ 0003:000029e0       $SG28070                   000000018001b9e0     Balancing_Logic_sfun_registry.obj
+ 0003:00002a08       $SG28075                   000000018001ba08     Balancing_Logic_sfun_registry.obj
+ 0003:00002a30       $SG28071                   000000018001ba30     Balancing_Logic_sfun_registry.obj
+ 0003:00002ac0       $SG28076                   000000018001bac0     Balancing_Logic_sfun_registry.obj
+ 0003:00002b50       $SG28080                   000000018001bb50     Balancing_Logic_sfun_registry.obj
+ 0003:00002b70       $SG28081                   000000018001bb70     Balancing_Logic_sfun_registry.obj
+ 0003:00002c00       $SG28085                   000000018001bc00     Balancing_Logic_sfun_registry.obj
+ 0003:00002c20       $SG28086                   000000018001bc20     Balancing_Logic_sfun_registry.obj
+ 0003:00002cb0       $SG28090                   000000018001bcb0     Balancing_Logic_sfun_registry.obj
+ 0003:00002cc8       $SG28126                   000000018001bcc8     Balancing_Logic_sfun_registry.obj
+ 0003:00002ce0       $SG28091                   000000018001bce0     Balancing_Logic_sfun_registry.obj
+ 0003:00002d70       $SG28095                   000000018001bd70     Balancing_Logic_sfun_registry.obj
+ 0003:00002d90       $SG28096                   000000018001bd90     Balancing_Logic_sfun_registry.obj
+ 0003:00002e20       $SG28100                   000000018001be20     Balancing_Logic_sfun_registry.obj
+ 0003:00002e40       $SG28101                   000000018001be40     Balancing_Logic_sfun_registry.obj
+ 0003:00002ed0       $SG28105                   000000018001bed0     Balancing_Logic_sfun_registry.obj
+ 0003:00002ef0       $SG28106                   000000018001bef0     Balancing_Logic_sfun_registry.obj
+ 0003:00002f80       $SG28110                   000000018001bf80     Balancing_Logic_sfun_registry.obj
+ 0003:00002fa0       $SG28111                   000000018001bfa0     Balancing_Logic_sfun_registry.obj
+ 0003:00003030       $SG28115                   000000018001c030     Balancing_Logic_sfun_registry.obj
+ 0003:00003050       $SG28116                   000000018001c050     Balancing_Logic_sfun_registry.obj
+ 0003:000030e0       $SG28120                   000000018001c0e0     Balancing_Logic_sfun_registry.obj
+ 0003:00003100       $SG28121                   000000018001c100     Balancing_Logic_sfun_registry.obj
+ 0003:00003190       $SG28127                   000000018001c190     Balancing_Logic_sfun_registry.obj
+ 0003:00003220       $SG28132                   000000018001c220     Balancing_Logic_sfun_registry.obj
+ 0003:00003228       $SG28137                   000000018001c228     Balancing_Logic_sfun_registry.obj
+ 0003:00003240       $SG28133                   000000018001c240     Balancing_Logic_sfun_registry.obj
+ 0003:000032d0       $SG28138                   000000018001c2d0     Balancing_Logic_sfun_registry.obj
+ 0003:00003360       $SG28142                   000000018001c360     Balancing_Logic_sfun_registry.obj
+ 0003:00003370       $SG28143                   000000018001c370     Balancing_Logic_sfun_registry.obj
+ 0003:00003400       $SG28147                   000000018001c400     Balancing_Logic_sfun_registry.obj
+ 0003:00003420       $SG28148                   000000018001c420     Balancing_Logic_sfun_registry.obj
+ 0003:000034b0       $SG28152                   000000018001c4b0     Balancing_Logic_sfun_registry.obj
+ 0003:000034d0       $SG28153                   000000018001c4d0     Balancing_Logic_sfun_registry.obj
+ 0003:00003560       $SG28157                   000000018001c560     Balancing_Logic_sfun_registry.obj
+ 0003:00003570       $SG28158                   000000018001c570     Balancing_Logic_sfun_registry.obj
+ 0003:00003600       $SG28162                   000000018001c600     Balancing_Logic_sfun_registry.obj
+ 0003:00003610       $SG28163                   000000018001c610     Balancing_Logic_sfun_registry.obj
+ 0003:000036a0       $SG28167                   000000018001c6a0     Balancing_Logic_sfun_registry.obj
+ 0003:000036b8       $SG28172                   000000018001c6b8     Balancing_Logic_sfun_registry.obj
+ 0003:000036d0       $SG28168                   000000018001c6d0     Balancing_Logic_sfun_registry.obj
+ 0003:00003760       $SG28173                   000000018001c760     Balancing_Logic_sfun_registry.obj
+ 0003:000037f0       $SG28177                   000000018001c7f0     Balancing_Logic_sfun_registry.obj
+ 0003:00003800       $SG28178                   000000018001c800     Balancing_Logic_sfun_registry.obj
+ 0003:00003890       $SG28186                   000000018001c890     Balancing_Logic_sfun_registry.obj
+ 0003:000038a0       $SG28187                   000000018001c8a0     Balancing_Logic_sfun_registry.obj
+ 0003:00003930       $SG28193                   000000018001c930     Balancing_Logic_sfun_registry.obj
+ 0003:00003940       $SG28194                   000000018001c940     Balancing_Logic_sfun_registry.obj
+ 0003:000039d0       $SG28198                   000000018001c9d0     Balancing_Logic_sfun_registry.obj
+ 0003:000039e0       $SG28199                   000000018001c9e0     Balancing_Logic_sfun_registry.obj
+ 0003:00003a70       $SG28204                   000000018001ca70     Balancing_Logic_sfun_registry.obj
+ 0003:00003a80       $SG28205                   000000018001ca80     Balancing_Logic_sfun_registry.obj
+ 0003:00003b10       $SG28209                   000000018001cb10     Balancing_Logic_sfun_registry.obj
+ 0003:00003b88       $SG28252                   000000018001cb88     Balancing_Logic_sfun_registry.obj
+ 0003:00003ba0       $SG28239                   000000018001cba0     Balancing_Logic_sfun_registry.obj
+ 0003:00003cb8       $SG28263                   000000018001ccb8     Balancing_Logic_sfun_registry.obj
+ 0003:00003cc8       $SG28276                   000000018001ccc8     Balancing_Logic_sfun_registry.obj
+ 0003:00003cd8       $SG28287                   000000018001ccd8     Balancing_Logic_sfun_registry.obj
+ 0003:00003ce8       $SG28300                   000000018001cce8     Balancing_Logic_sfun_registry.obj
+ 0003:00003cf8       $SG28311                   000000018001ccf8     Balancing_Logic_sfun_registry.obj
+ 0003:00003d08       $SG28321                   000000018001cd08     Balancing_Logic_sfun_registry.obj
+ 0003:00003d70       sRtwOptimizationInfoStruct 000000018001cd70     Balancing_Logic_sfun.obj
+ 0003:00003d78       sOptimizationInfoFlags     000000018001cd78     Balancing_Logic_sfun.obj
+ 0003:00003d80       sfCAPIsampleTimeZero       000000018001cd80     c1_Balancing_Logic.obj
+ 0003:00003d88       _sfTime_                   000000018001cd88     c1_Balancing_Logic.obj
+ 0003:00003d90       $SG26637                   000000018001cd90     c1_Balancing_Logic.obj
+ 0003:00003d91       $SG26638                   000000018001cd91     c1_Balancing_Logic.obj
+ 0003:00003d92       $SG26639                   000000018001cd92     c1_Balancing_Logic.obj
+ 0003:00003d93       $SG26640                   000000018001cd93     c1_Balancing_Logic.obj
+ 0003:00003d94       $SG26641                   000000018001cd94     c1_Balancing_Logic.obj
+ 0003:00003d95       $SG26642                   000000018001cd95     c1_Balancing_Logic.obj
+ 0003:00003d96       $SG26643                   000000018001cd96     c1_Balancing_Logic.obj
+ 0003:00003d97       $SG26644                   000000018001cd97     c1_Balancing_Logic.obj
+ 0003:00003d98       $SG26645                   000000018001cd98     c1_Balancing_Logic.obj
+ 0003:00003d99       $SG26849                   000000018001cd99     c1_Balancing_Logic.obj
+ 0003:00003d9a       $SG26850                   000000018001cd9a     c1_Balancing_Logic.obj
+ 0003:00003d9b       $SG26852                   000000018001cd9b     c1_Balancing_Logic.obj
+ 0003:00003d9c       $SG26854                   000000018001cd9c     c1_Balancing_Logic.obj
+ 0003:00003d9d       $SG26857                   000000018001cd9d     c1_Balancing_Logic.obj
+ 0003:00003d9e       $SG26859                   000000018001cd9e     c1_Balancing_Logic.obj
+ 0003:00003d9f       $SG26867                   000000018001cd9f     c1_Balancing_Logic.obj
+ 0003:00003da0       $SG26875                   000000018001cda0     c1_Balancing_Logic.obj
+ 0003:00003da1       $SG26880                   000000018001cda1     c1_Balancing_Logic.obj
+ 0003:00003da2       $SG26885                   000000018001cda2     c1_Balancing_Logic.obj
+ 0003:00003da3       $SG26888                   000000018001cda3     c1_Balancing_Logic.obj
+ 0003:00003da4       $SG26889                   000000018001cda4     c1_Balancing_Logic.obj
+ 0003:00003da5       $SG26891                   000000018001cda5     c1_Balancing_Logic.obj
+ 0003:00003da6       $SG26894                   000000018001cda6     c1_Balancing_Logic.obj
+ 0003:00003da7       $SG26895                   000000018001cda7     c1_Balancing_Logic.obj
+ 0003:00003da8       $SG26897                   000000018001cda8     c1_Balancing_Logic.obj
+ 0003:00003da9       $SG26900                   000000018001cda9     c1_Balancing_Logic.obj
+ 0003:00003daa       $SG26901                   000000018001cdaa     c1_Balancing_Logic.obj
+ 0003:00003dab       $SG27076                   000000018001cdab     c1_Balancing_Logic.obj
+ 0003:00003dac       $SG27321                   000000018001cdac     c1_Balancing_Logic.obj
+ 0003:00003dad       $SG27324                   000000018001cdad     c1_Balancing_Logic.obj
+ 0003:00003dae       $SG27327                   000000018001cdae     c1_Balancing_Logic.obj
+ 0003:00003daf       $SG27492                   000000018001cdaf     c1_Balancing_Logic.obj
+ 0003:00003db0       $SG27493                   000000018001cdb0     c1_Balancing_Logic.obj
+ 0003:00003db1       $SG27670                   000000018001cdb1     c1_Balancing_Logic.obj
+ 0003:00003db2       $SG27761                   000000018001cdb2     c1_Balancing_Logic.obj
+ 0003:00003dc0       ?newstr@?1??sf_c1_Balancing_Logic_get_post_codegen_info@@9@9 000000018001cdc0     c1_Balancing_Logic.obj
+ 0003:00004690       sfGlobalMdlStartCallCounts 000000018001d690     Balancing_Logic_sfun_registry.obj
+ 0003:00004694       $SG27684                   000000018001d694     Balancing_Logic_sfun_registry.obj
+ 0003:000046a0       GS_ExceptionRecord         000000018001d6a0     MSVCRT:gs_report.obj
+ 0003:00004740       GS_ContextRecord           000000018001d740     MSVCRT:gs_report.obj
+ 0003:00004c10       ?__proc_attached@@3HA      000000018001dc10     MSVCRT:dll_dllmain.obj
+ 0003:00004c50       ?is_initialized_as_dll@@3_NA 000000018001dc50     MSVCRT:utility.obj
+ 0003:00004c51       ?module_local_atexit_table_initialized@@3_NA 000000018001dc51     MSVCRT:utility.obj
+ 0003:00004c58       ?module_local_atexit_table@@3U_onexit_table_t@@A 000000018001dc58     MSVCRT:utility.obj
+ 0003:00004c70       ?module_local_at_quick_exit_table@@3U_onexit_table_t@@A 000000018001dc70     MSVCRT:utility.obj

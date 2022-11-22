@@ -1,0 +1,6 @@
+*.slxc
+*.zip
+MicroGridNote.md
+
+docs/micro_grid_paper/
+PV_wind_simple_module/

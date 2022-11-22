@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding="utf-8"?>
+<toc version="2.0">
+    <tocitem target="BMS.html">Battery Management System
+        <tocitem target="BMS_CharacterizeCells.html">Characterize Battery Cells</tocitem>
+        <tocitem target="BMS_PlantModel.html">Model Battery Pack</tocitem>
+        <tocitem target="BMS_Algorithms.html">Design and Test BMS Algorithms</tocitem>   
+        <tocitem target="BMS_StateMachine.html">Design BMS State Machine </tocitem>  
+        <tocitem target="BMS_HIL.html">Hardware-in-the-Loop Testing for BMS</tocitem>
+        <tocitem target="BMS_ProductDependencies.html">Products Required for BMS Design</tocitem>
+    </tocitem>
+</toc>
