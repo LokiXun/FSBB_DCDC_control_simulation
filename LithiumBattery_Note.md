@@ -1,5 +1,7 @@
 # 锂电池建模
 
+> GitLab 仓库: https://gitlab.com/tongji_620_group/tongji_micro_grid_program.git
+
 - 需求：实现具有基本功能的锂电池仿真模型，用于后续控制仿真
 
 - Lithium-Battery BMS Functional Structure :star:
@@ -190,9 +192,17 @@ $$
 
 - [ ] **单个电池** 
 
-  - [x] Param Estimate 流程：电流电压的真实电池数据，对RC电路参数估计
-  - [x] 单个电池，获取单个电池模型公式：输入电流，输出 OCV 
-  - [ ] 理解 `LookUp Table` 在参数估计时候更新参数原理（LookUp-Table 公式）
+  - [x] 电池模型选型
+
+  - [x] 搭建单个电池仿真模型：输入电流，输出 SOC，OCV。
+
+  - [x] **Param Estimate 流程**：电流电压的真实电池数据，对RC电路参数估计
+
+    > 分别对于3个温度，真实电池的 [t, i, u] 数据，去拟合 lookup-table 参数
+
+  - [x]  理解参数估计更新参数原理：Parameter-Estimation 优化原理：MSE+非线性最小二乘>>优化；
+
+    > LookUp-Table 如何用在 optimization?
 
   - 优化项
 
@@ -206,23 +216,28 @@ $$
 
 - [ ] **电池组**
 
-  - [x] 调研官方电池组模型，理解模块结构原理：串联 + `heat_flow`
+  - [x] 调研官方电池组模型，**搭建电池组模块**：串联 + `heat_flow`
   - [x] 理解 heat_flow 模块连接原理，及模块 `convection simscape` 代码
-
   - BMS
 
     - [ ] passive Balancing
+    - [ ] SOC 预测：UKF 控制跟踪算法
+    - [ ] 充放电控制
 
 
 
 
-### 电池建模
+### 单个电池
 
 > [锂电池 ECM 原理 博客参考](https://zhuanlan.zhihu.com/p/407572989)
 
 - ECM 模型方程
   
   <img src=".\docs\LithiumBattery_EquivalentCircuit.jpg" style="zoom:67%;" />
+  
+  R0 为内阻，电压源为开路电压 Em。
+  
+  
   $$
   \text{电容}\quad I_{c} = C * \frac{d U_c}{dt} \\
   \text{电感}\quad U_L = L * \frac{di}{dt} \\
@@ -293,7 +308,98 @@ $$
 
 
 
-#### 电池组
+### Parameter Estimate
+
+> [Matlab 参数估计教程](https://ww2.mathworks.cn/help/sldo/gs/estimate-parameters-from-measured-data-using-the-gui.html)
+> [电池参数估计 博客](https://zhuanlan.zhihu.com/p/57051144)
+
+- 使用 `Parameter Estimator` 优化各个参数 (工具栏->APP->参数估计器)
+  ![LithiumBattery_paramEstimation.jpg](.\docs\LithiumBattery_paramEstimation.jpg)
+
+- :grey_question: 加入温度变量，再一起拟合数据，soc 起始0.4 +拟合很烂？
+  论文对多个温度 $T1, T2, T3$，**单独在每个温度 $Ti$ 下单独进校参数估计** :star:，即定死一个温度，收集数据，去估计在 7 个SOC level 下对应的 $E_m, R_i, Ci$ 参数 (1x7数组)，得到最终 `LookUp-Table` 对应温度下的一列，全部数据求完最后平起来得到 2D table
+
+  > :ticket: tips: 最终电池模型的会考虑温度，各个参数 Ri,Em 根据 2 个输入 SOC, Temperature 去事先求得的 2D LookUp-Table 插值查表得到对应的变量值
+  >
+  > | Table_element is variable_value (example Em) | T1(℃)  | T2     | T3     |
+  > | -------------------------------------------- | :----: | ------ | ------ |
+  > | SOC_level1                                   | 3.4966 | 3.5057 | 3.5148 |
+  > | SOC_level2                                   |        |        |        |
+  > | ...                                          |        |        |        |
+  > | SOC_level7                                   |        |        |        |
+
+- 拟合完保存 session，模型参数 $R_i, C_i, E_m$ 可以保存成 mat 文件
+
+  ```matlab
+  save('ssc_lithium_cell_2RC_paramEstimation_20celsius_1iter.mat', 'C1', 'C2', 'Em', 'R0', 'R1', 'R2')
+  ```
+
+  <img src="./docs/LithiumBattery_2RC_custom_ParamEstimation_20celsius.jpg" alt="LithiumBattery_2RC_custom_ParamEstimation_20celsius.jpg" style="zoom:200%;" />
+
+- `tablelookup(x1d, x2d, x3d, x4d, fd, x1, x2, x3, x4, interpolation = linear|smooth, extrapolation = linear|nearest|error)` 
+
+  > [Lookup-Table 模块使用 官方文档](https://ww2.mathworks.cn/help/simscape/lang/tablelookup.html)
+  > [lookup-Table 原理](https://ww2.mathworks.cn/help/simulink/ug/about-lookup-table-blocks.html)
+
+
+
+#### 优化方法
+
+> :grey_question:LookUp Table 在参数估计时候如何更新参数？
+> [官方论文参考local pdf](./docs/LithiumBattery/2013_BatteryModelParameterEstimationUsingLayeredTechnique.pdf) 
+> [How the Software Formulates Parameter Estimation as an Optimization Problem](https://ww2.mathworks.cn/help/sldo/ug/optimization-problem-formulation-for-parameter-estimation.html)
+
+损失函数：使用 `MSE` ，误差 $error = MSE(OCV_{simulate}, OCV_{truth}) $；**Optimization Method**  可选择 **Nonlinear Least Squares**，Gradient Descent, Simple Search, Pattern Search 方法。
+
+> [Methods For Non-Linear Least Squares Problems 博客参考](https://zhuanlan.zhihu.com/p/93344177) :star:
+>
+> [Netwon's method 参考](https://calcworkshop.com/derivatives/newtons-method/)
+> [最小二乘-》牛顿法参考](https://zhuanlan.zhihu.com/p/113946848):star:
+
+求解非线性最小二乘问题：使得 F(X) >> 理解为损失函数，在一组参数 X 下最小
+
+- 最速下降法：$h=-F''(x)$ 梯度反向 >> $F(x) \rightarrow F(x+ah)$ **求步长 a**
+
+- 最小化 $ a = argmin_{a>0} F(x+ah)$  获取步长，该求解过程需要迭代计算，不过线搜索法实际中不怎么采用，一方面计算比较耗时，另一方面是没有必要获得如此精确的步长。
+  最速下降法为在最后的收敛阶段收敛很慢。因此为了在最后的收敛阶段获得较快的收敛速度，通常将**最速下降法与其他方法混合使用（hybrid methods）****，在下降的初始阶段使用最速下降法，在收敛阶段使用其他二次收敛方法，如牛顿法。
+
+- 牛顿法
+  $$
+  x=x_0 的二阶Taylor展开：\\
+  f(x) = f(x_0) + f'(x_0)*(x-x_0) + \frac{f''(x_0)}{2}*(x-x_0)^2 + \underbrace{O(x-x_0)^2}_{可忽略} \\
+  对x求导>> f'(x) = f'(x_0) + f''(x_0)*(x-x_0) \\
+  令x=x_1(极值)，s.t. f'(x_1)=0 \\
+  >> x_1 = x_0 - \frac{f'(x_0)}{f''(x_1)}\\
+  >> x_{n+1} = x_n - \frac{f'(x_n)}{f''(x_n)}
+  $$
+  如果是多元的情况，则一阶导数 $f'(x)$ 被叫做梯度 （**矩阵的梯度为一阶导的转置，函数的梯度为一阶导**）>> `Jacobian 矩阵`；二阶导数矩阵 $f''(x)$ ，也被叫做 `Hessian 矩阵`
+
+  > `Jacobian 矩阵`，`Hessian 矩阵` :baby_chick: TODO
+
+  $$
+  \triangle{x}=x_{n+1}-x_{n} = -\frac{f'(x_n)}{f''(x_n)} = -\frac{J}{H} \\
+  $$
+
+  由于牛顿法需要算二阶导数，如果高阶的话，需要算海塞矩阵，这里是有三个**缺陷**,因此，需要思考别的方法来进行最小二乘问题的优化和求解。
+
+  - 要求**给定的方程需要二阶可导**
+  - 非凸函数的海森矩阵不一定有逆
+  - 数据较大的时候，海塞矩阵的**计算量偏大**
+
+
+
+- 混合方法需要解决的问题是两种方法切换的策略，存在两种不同切换策略的混合方法，分别是**信任区域法**和**阻尼法**
+
+  - 列文伯格-马夸特法（**信赖区域**）：动态调整步长
+    $$
+    \rho = \frac{f(x+\triangle{x})-f(x)}{J(x)^T*\triangle{x}}
+    $$
+
+    -  $\rho$ 接近1，近似是好的，不需要更改；
+    -  $\rho$ 太小，**则实际减少的值小于近似减少的值**，近似较大，需要缩小近似的范围；
+    -  $\rho$ 太大，则实际减少的值大于近似减少的值，近似较小，需要扩大近似的范围。
+
+### 电池组
 
 > - Battery of 80 Cells：考虑 SOC，温度，各节电池**串联**
 >   [ssc_lithium_battery_80Cells.slx](./LithiumIonBattery\batteryModeling_version2017/ssc_lithium_battery_80Cells.slx)
@@ -303,7 +409,8 @@ $$
 
   usage：
   ![LithiumBattery_80BatteryPack_usage.jpg](./docs/LithiumBattery_80BatteryPack_usage.jpg)
-
+  ![LithiumBattery_80CellBatteryPack_output.jpg](./docs/LithiumBattery_80CellBatteryPack_output.jpg)
+  
 - BMS 官方示例中的电池组
   ![LithiumBattery_BatteryPack_inBMS.jpg](./docs/LithiumBattery_BatteryPack_inBMS.jpg)
 
@@ -422,91 +529,6 @@ $$
 
 
 
-### Parameter Estimate
-
-> [Matlab 参数估计教程](https://ww2.mathworks.cn/help/sldo/gs/estimate-parameters-from-measured-data-using-the-gui.html)
-> [电池参数估计 博客](https://zhuanlan.zhihu.com/p/57051144)
-
-- 使用 `Parameter Estimator` 优化各个参数 (工具栏->APP->参数估计器)
-  ![LithiumBattery_paramEstimation.jpg](.\docs\LithiumBattery_paramEstimation.jpg)
-
-- :grey_question: 加入温度变量，再一起拟合数据，soc 起始0.4 +拟合很烂？
-  论文对多个温度 $T1, T2, T3$，**单独在每个温度 $Ti$ 下单独进校参数估计** :star:，即定死一个温度，收集数据，去估计在 7 个SOC level 下对应的 $E_m, R_i, Ci$ 参数 (1x7数组)，得到最终 `LookUp-Table` 对应温度下的一列，全部数据求完最后平起来得到 2D table
-
-  > :ticket: tips: 最终电池模型的会考虑温度，各个参数 Ri,Em 根据 2 个输入 SOC, Temperature 去事先求得的 2D LookUp-Table 插值查表得到对应的变量值
-  >
-  > | Table_element is variable_value (example Em) | T1(℃)  | T2     | T3     |
-  > | -------------------------------------------- | :----: | ------ | ------ |
-  > | SOC_level1                                   | 3.4966 | 3.5057 | 3.5148 |
-  > | SOC_level2                                   |        |        |        |
-  > | ...                                          |        |        |        |
-  > | SOC_level7                                   |        |        |        |
-
-- 拟合完保存 session，模型参数 $R_i, C_i, E_m$ 可以保存成 mat 文件
-
-  ```matlab
-  save('ssc_lithium_cell_2RC_paramEstimation_20celsius_1iter.mat', 'C1', 'C2', 'Em', 'R0', 'R1', 'R2')
-  ```
-
-  ![LithiumBattery_2RC_custom_ParamEstimation_20celsius.jpg](./docs/LithiumBattery_2RC_custom_ParamEstimation_20celsius.jpg)
-
-#### 优化方法
-
-- :grey_question:LookUp Table 在参数估计时候如何更新参数？
-
-  > [官方论文参考local pdf](./docs/LithiumBattery/2013_BatteryModelParameterEstimationUsingLayeredTechnique.pdf) 
-  > [How the Software Formulates Parameter Estimation as an Optimization Problem](https://ww2.mathworks.cn/help/sldo/ug/optimization-problem-formulation-for-parameter-estimation.html)
-
-  损失函数：使用 `MSE` ，误差 $error = MSE(OCV_{simulate}, OCV_{truth}) $；**Optimization Method**  可选择 **Nonlinear Least Squares**，Gradient Descent, Simple Search, Pattern Search 方法。
-
-  > [Methods For Non-Linear Least Squares Problems 博客参考](https://zhuanlan.zhihu.com/p/93344177) :star:
-  >
-  > [Netwon's method 参考](https://calcworkshop.com/derivatives/newtons-method/)
-  > [最小二乘-》牛顿法参考](https://zhuanlan.zhihu.com/p/113946848):star:
-
-  求解非线性最小二乘问题：使得 F(X) >> 理解为损失函数，在一组参数 X 下最小
-
-  - 最速下降法：$h=-F''(x)$ 梯度反向 >> $F(x) \rightarrow F(x+ah)$ **求步长 a**
-
-  - 最小化 $ a = argmin_{a>0} F(x+ah)$  获取步长，该求解过程需要迭代计算，不过线搜索法实际中不怎么采用，一方面计算比较耗时，另一方面是没有必要获得如此精确的步长。
-    最速下降法为在最后的收敛阶段收敛很慢。因此为了在最后的收敛阶段获得较快的收敛速度，通常将**最速下降法与其他方法混合使用（hybrid methods）****，在下降的初始阶段使用最速下降法，在收敛阶段使用其他二次收敛方法，如牛顿法。
-
-  - 牛顿法
-    $$
-    x=x_0 的二阶Taylor展开：\\
-    f(x) = f(x_0) + f'(x_0)*(x-x_0) + \frac{f''(x_0)}{2}*(x-x_0)^2 + \underbrace{O(x-x_0)^2}_{可忽略} \\
-    对x求导>> f'(x) = f'(x_0) + f''(x_0)*(x-x_0) \\
-    令x=x_1(极值)，s.t. f'(x_1)=0 \\
-    >> x_1 = x_0 - \frac{f'(x_0)}{f''(x_1)}\\
-    >> x_{n+1} = x_n - \frac{f'(x_n)}{f''(x_n)}
-    $$
-    如果是多元的情况，则一阶导数 $f'(x)$ 被叫做梯度 （**矩阵的梯度为一阶导的转置，函数的梯度为一阶导**）>> `Jacobian 矩阵`；二阶导数矩阵 $f''(x)$ ，也被叫做 `Hessian 矩阵`
-
-    > `Jacobian 矩阵`，`Hessian 矩阵`
-
-    $$
-    \triangle{x}=x_{n+1}-x_{n} = -\frac{f'(x_n)}{f''(x_n)} = -\frac{J}{H} \\
-    $$
-
-    由于牛顿法需要算二阶导数，如果高阶的话，需要算海塞矩阵，这里是有三个**缺陷**,因此，需要思考别的方法来进行最小二乘问题的优化和求解。
-
-    - 要求**给定的方程需要二阶可导**
-    - 非凸函数的海森矩阵不一定有逆
-    - 数据较大的时候，海塞矩阵的**计算量偏大**
-
-  
-
-  - 混合方法需要解决的问题是两种方法切换的策略，存在两种不同切换策略的混合方法，分别是**信任区域法**和**阻尼法**
-
-    - 列文伯格-马夸特法（**信赖区域**）：动态调整步长
-      $$
-      \rho = \frac{f(x+\triangle{x})-f(x)}{J(x)^T*\triangle{x}}
-      $$
-
-      -  $\rho$ 接近1，近似是好的，不需要更改；
-      - $\rho$ 太小，**则实际减少的值小于近似减少的值**，近似较大，需要缩小近似的范围；
-      - $\rho$ 太大，则实际减少的值大于近似减少的值，近似较小，需要扩大近似的范围。
-
 
 
 
@@ -531,7 +553,7 @@ $$
 
 
 
-## BMS 控制
+## BMS 控制 （TODO）
 
 > [Matlab BMS 充放电控制咨询_视频教程](https://ww2.mathworks.cn/services/consulting/proven-solutions/battery-simulation-and-controls.html)
 > [Microgrid BMS](https://ww2.mathworks.cn/matlabcentral/fileexchange/60550-microgrid-hybrid-pv-wind-battery-management-system?s_tid=ta_fx_results)
@@ -553,28 +575,24 @@ $$
   - 平衡各个电芯的荷电状态 
   - 必要时将电源和电池隔离
 
-### Plant_BatteryModel
+### BMS ECU
+
+![BMS_control_module.jpg](./docs/BMS_control_module.jpg)
+
+- 充放电状态转换
+- SOC预测
+- passive Balancing
+
+
+
+### BatteryModel
 
 ![BMS_PlantStructure.jpg](./docs/BMS_PlantStructure.jpg)
 
 - `passive balancing circuit`
   需要放电时候，开关关必放电，降低 SOC，实现电池均衡，更好利用电池组总容量
 
-  ![BMS_Plant_PassiveBalancingCircuit.jpg](./docs/BMS_Plant_PassiveBalancingCircuit.jpg)
-
 - PreCharge circuit
   在电池组和充电器之间，加上一个电阻，防止激增的电流输入，损坏电池
 
 - 充电装置 + DriveLoad 负载
-
-### BMS software
-
-输入电池组信息：各单个电池 cell 的电压、温度，整个 pack 的电压，pack 电流，充电装置电压，负载电压。
-输出为2部分：**BMS 控制命令**（充电 or 放电电流限额，是否用充电装置充电，etc. :shit: TODO），**BMS预测信息**（SOC, BMS目前状态，系统异常提示）
-
-- BMS_software 功能 :taco:
-
-  - 充放电状态转换：例如给出 bool 指令是否导通 charger 给电池充电
-  - SOC Estimation
-  - Balancing Logic 各个电池 SOC 不同，
-
