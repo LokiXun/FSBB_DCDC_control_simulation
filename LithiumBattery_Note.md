@@ -1,6 +1,6 @@
 # 锂电池建模
 
-> GitLab 仓库: https://gitlab.com/tongji_620_group/tongji_micro_grid_program.git
+> Gitte 仓库: https://gitee.com/tongji620_-group/tongji_micro_grid_program.git
 
 - 需求：实现具有基本功能的锂电池仿真模型，用于后续控制仿真
 
@@ -200,9 +200,12 @@ $$
 
     > 分别对于3个温度，真实电池的 [t, i, u] 数据，去拟合 lookup-table 参数
 
-  - [x]  理解参数估计更新参数原理：Parameter-Estimation 优化原理：MSE+非线性最小二乘>>优化；
+  - [x] 理解参数估计更新参数原理：Parameter-Estimation 优化原理：MSE+非线性最小二乘>>优化；
 
     > LookUp-Table 如何用在 optimization?
+
+  - [ ] 结合具体需求更改仿真模型 :fire:
+    锂电池组是磷酸铁锂电池组，**容量是180kwh, 输出96V**，再接一个**双向DC/DC隔离模块**可以放电也可以充电
 
   - 优化项
 
@@ -218,11 +221,12 @@ $$
 
   - [x] 调研官方电池组模型，**搭建电池组模块**：串联 + `heat_flow`
   - [x] 理解 heat_flow 模块连接原理，及模块 `convection simscape` 代码
-  - BMS
 
-    - [ ] passive Balancing
-    - [ ] SOC 预测：UKF 控制跟踪算法
-    - [ ] 充放电控制
+- BMS
+
+  - [ ] passive Balancing
+  - [ ] SOC 预测：UKF 控制跟踪算法
+  - [ ] 充放电控制
 
 
 
@@ -230,25 +234,47 @@ $$
 ### 单个电池
 
 > [锂电池 ECM 原理 博客参考](https://zhuanlan.zhihu.com/p/407572989)
+> [2012_c462_HighFidelityLithiumBatteryModelwithThermalEffect](https://www.researchgate.net/publication/254026768_High_fidelity_electrical_model_with_thermal_dependence_for_characterization_and_simulation_of_high_power_lithium_battery_cells)
 
 - ECM 模型方程
-  
+
   <img src=".\docs\LithiumBattery_EquivalentCircuit.jpg" style="zoom:67%;" />
-  
+
   R0 为内阻，电压源为开路电压 Em。
-  
-  
+  待拟合参数：$BatteryCapacity, R0, Em, Ri, Ci$
+
   $$
   \text{电容}\quad I_{c} = C * \frac{d U_c}{dt} \\
   \text{电感}\quad U_L = L * \frac{di}{dt} \\
   \text{ECM OCV:}\\\quad OCV=E_m(SOC, T) + U_{RC1} + U_{RC2}+ \underbrace{I}_\text{外部输入电流}*R_0\\
   I = \frac{U_{RCi}}{Ri} + C_i*{\frac{dU_{RCi}}{dt}}\\
   $$
-  
-  - `E_m` 模块：$SOC=1-\frac{Q_e}{C}$ ,  $Qe = \int_{0}^{t}{I_m(\tau)d\tau}$
-  - 待拟合参数：$R0, Em, Ri, Ci$
+
+- `E_m` 电压源
+
+  > SOC 指荷电状态，也叫剩余电量，代表的是电池使用一段时间或长期搁置不用后的**剩余容量与其完全充电状态的容量的比值**，常用百分数表示。其取值范围为0~1，当SOC=0时表示电池放电完全，当SOC=1时表示电池完全充满。
+
+  $$
+  Capacity = LookUp(Temp) \qquad\text{initialized with 31 A*hr}\\
+  SOC = 1-\frac{Q_e}{Capacity} \\  
+  Qe = \int_{0}^{t}{I_m(\tau)d\tau}
+  $$
+
+- Cell capacity
+
+  电池电量受多个因素影响
+
+  - 电池平均放电电流，放电时间 :baby:
+  - inner cell temperature 电池内部温度 :baby:
+  - 放电结束时的电压
+  - 电池储存时间，self-discharge 自放电效应
+  - Number of charge and discharge cycles 充放电循环次数
+
+  对于短时间内的变化，先考虑`电池平均放电电流，放电时间`，`电池内部温度`
 
 
+
+#### 仿真实现
 
 - Battery (Table-Based) Simscape` 官方模块:star: 
 
@@ -416,6 +442,22 @@ $$
 
 
 
+#### 磷酸铁锂电池组
+
+锂电池组是磷酸铁锂电池组，**容量是180kwh, 输出96V** >> 180k/96=1875 mAH，再接一个**双向DC/DC隔离模块**可以放电也可以充电
+
+> - [电池容量单位 参考](https://zhuanlan.zhihu.com/p/410843180)
+>   电池的容量指的是电池可以**保存的电能的量，电能等于功率乘以时间**，最标准的电池容量单位是Wh（瓦时），常用的还有kWh（千瓦时），mWh（毫瓦时）。而 **mAh（毫安时）并不是完整的，完整的应该是V*mA h（伏毫安时）**，这是因为P=UI，功等于电压乘以电流，电能等于功乘以时间，所以把Wh转换为VmAh。
+>
+>   例如一个18650电池有**3.7V 3000mAh**，所以容量是3.7V*3Ah，也可以是11.1Wh。
+>   Wh的应用：例如，一个电池的容量是11.1Wh，一个11.1W功率的设备使用这个电池可以用1小时，如果一个22.2W功率的设备使用这个电池可以使用0.5小时。
+>
+> - :question: 如何保持输出 96V，DC/DC 模块？
+>
+> - :question: 如何切换充放电方向
+
+
+
 ### heat convection :fire:
 
 > [simulink model: ssc_lithium_battery_80Cells.slx](./LithiumIonBattery\batteryModeling_version2017/ssc_lithium_battery_80Cells.slx)
@@ -506,7 +548,7 @@ $$
 - 单个电池内部的温度模块：获取温度用于之后 $E_m, R_i, C_i, R_0$ 查表
   ![LithiumBattery_ThermalModel_structure.jpg](./docs/LithiumBattery_ThermalModel_structure.jpg)
 
-  H 端口：外部连接电池时，传入的 `heat_flow` ；P_in 端口：电池 ECM 中 2 电阻输出的 $Q(W)=u*i $
+  H 端口：外部连接电池时，传入的 `heat_flow` ；P_in 端口：电池 ECM 中 2 电阻输出的 功 $Q(W)=u*i $
 
   - Thermal mass
 
@@ -527,9 +569,10 @@ $$
 
     The block positive direction is from port A to port B. This means that **positive signal at port S generates heat flow in the direction from A to B.**
 
-
-
-
+> :grey_question: heat flow 连线连接 功$W=U*I$， 和 heat flow $Q$，功和热量啥关系？
+>
+> [参考 ](https://energyeducation.ca/encyclopedia/Heat_vs_work) 》》热和功可以相互转化
+> **Heat can be transformed into work and vice verse** (see [mechanical equivalent of heat](https://energyeducation.ca/encyclopedia/Mechanical_equivalent_of_heat)), but they aren't the same thing. The [first law of thermodynamics](https://energyeducation.ca/encyclopedia/First_law_of_thermodynamics) states that heat and work both contribute to the total internal energy of a system, but the [second law of thermodynamics](https://energyeducation.ca/encyclopedia/Second_law_of_thermodynamics) limits the amount of heat that can be turned into work.
 
 
 
@@ -551,21 +594,22 @@ $$
 
 
 
+## BMS 控制
 
+![LithiumBattery_BMS_structure.jpg](./docs/LithiumBattery_BMS_structure.jpg)
 
-## BMS 控制 （TODO）
-
-> [Matlab BMS 充放电控制咨询_视频教程](https://ww2.mathworks.cn/services/consulting/proven-solutions/battery-simulation-and-controls.html)
-> [Microgrid BMS](https://ww2.mathworks.cn/matlabcentral/fileexchange/60550-microgrid-hybrid-pv-wind-battery-management-system?s_tid=ta_fx_results)
 > [Youtube Matlab 官方BMS视频](https://www.youtube.com/playlist?list=PLn8PRpmsu08pYXwR-qihN6abrK3Io97NN)  :star:
-> [BMS_ProjectFileExchange](https://ww2.mathworks.cn/matlabcentral/fileexchange/72865-design-and-test-lithium-ion-battery-management-algorithms)
+> [BMS_ProjectFileExchange](https://ww2.mathworks.cn/matlabcentral/fileexchange/72865-design-and-test-lithium-ion-battery-management-algorithms) :+1: 
+> [Matlab BMS 充放电控制咨询_视频教程](https://ww2.mathworks.cn/services/consulting/proven-solutions/battery-simulation-and-controls.html)
+> [Microgrid PV/BMS](https://ww2.mathworks.cn/matlabcentral/fileexchange/60550-microgrid-hybrid-pv-wind-battery-management-system?s_tid=ta_fx_results)
 >
 > - :grey_question: youtube下面官方给出 export file url 是 `bit.ly 短链接`怎么访问 
 >  `hxxps://http://bit.ly/xxxxxx`换成`hxxps://j.mp/xxxxxx`
+>   :warning: 下载用 `wget` 下载，否则可能下载下来的 zip 损坏（只有80K）不能用
 >
->  :warning: 下载用 `wget` 下载，否则可能下载下来的zip损坏（只有80K）不能用
-
-![LithiumBattery_BMS_structure.jpg](./docs/LithiumBattery_BMS_structure.jpg)
+> :notebook: Matlab BMS FileExchange, the control system's state_logic is for self-driving, but not much difference.
+>
+> [BMS StimulationEntranceFile](./LithiumIonBattery/BMS/Tests/System/BMS_ClosedLoop_Harness_Dashboard.slx)
 
 - :grey_question:(BMS 反馈 + 控制算法) **控制对象**
   - 监测电芯电压和温度
@@ -575,24 +619,94 @@ $$
   - 平衡各个电芯的荷电状态 
   - 必要时将电源和电池隔离
 
-### BMS ECU
-
-![BMS_control_module.jpg](./docs/BMS_control_module.jpg)
-
-- 充放电状态转换
-- SOC预测
-- passive Balancing
 
 
-
-### BatteryModel
+### Battery Model
 
 ![BMS_PlantStructure.jpg](./docs/BMS_PlantStructure.jpg)
 
-- `passive balancing circuit`
-  需要放电时候，开关关必放电，降低 SOC，实现电池均衡，更好利用电池组总容量
+- Battery Pack 电池组，输出各电池温度、电压，根据 BMS 控制信号实现电池均衡 passive balancing
 
 - PreCharge circuit
-  在电池组和充电器之间，加上一个电阻，防止激增的电流输入，损坏电池
+  根据 BMS 控制信号，控制开关，使得电池组使用 Charger 充电（加上一个电容，防止激增的电流输入，损坏电池） or 使用 Loader 负载供电。
 
-- 充电装置 + DriveLoad 负载
+- 充电装置 + DriveLoad 负载：用电流源模拟
+
+
+
+### BMS 控制算法
+
+![BMS_control_module.jpg](./docs/BMS_control_module.jpg)
+
+#### `Current_Power_Limits_Calc`
+
+根据各个电池的最高、最低电压和最高、最低温度，计算**电池的充放电电流限制**。
+
+- **放电电流限制**：在低 SOC（低电压）情况下，放电电流过大，会导致电压大幅下降，使得电压低于电池厂家标定的 cutoff voltage 终止电压。
+
+  > Cuttoff voltage **终止电压**是指电池放电时，电压下降到电池不宜再继续放电的最低工作电压值
+
+  $$
+  DischargeCurrentLimit = 
+  min\begin{cases}
+  \frac{MinVolt-电池电压下线}{R_0} \\
+  LowTempDischarge(TempMin) \\
+  HighTempDischarge(TempMax)\\ 
+  \end{cases}\\
+  \text{where LowTempDischarge,.. is 2D-LookUpTable}
+  $$
+
+  
+
+- **充电电流限制**：电池温度已经很高情况下，充电电流过大，会使得电池过热
+  $$
+  ChargeCurrentLimit=
+  min\begin{cases}
+  \frac{电池电压上限 - MaxV}{R_0} \\
+  LowTempChrg(TempMin) \\
+  HighTempChrg(TempMax) \\
+  \end{cases}
+  $$
+
+
+
+#### `State_Machine`
+
+> [StateFlow 官方教程](https://ww2.mathworks.cn/help/stateflow/getting-started.html?lang=en)
+
+使用 `Stateflow` >> State_logic 工具，实现 4 个并行（可同时激活）的 state 状态，
+
+- MainStateMachine
+- FaultMonitoring
+- ChargerContactorState
+  用于充放电控制，避免充电初期，电流瞬间过大，损坏电池
+- InverterContactorState
+
+
+
+#### `SOC_Estimation`
+仿真模型提供了 3 种预测 SOC 的方法，实际使用一种就行，这里为了比较方法优劣。
+
+- Coulomb Counting
+  对流经电池组的电流进性积分，统计 Qe，实现跟踪 SOC = 1 - Qe/C
+  简单，计算量小；:shit: 缺点：累计误差，无法从错误的初始值恢复
+  
+- UKF_EKF(unscented and extended Kalman filters)
+  使用 UKF or EKF 根据电流电压刺激，预测电池内部状态（含有 SOC）。UKF 和 EKF 算法的选择：根据系统非线性程度，电池仿真里为 OCV-SOC 关系的非线性程度，非线性程度较为缓和，**使用 EKF 足够**。
+
+Common Filter Algorithms 含有 StateUpdate 和 MeasurementUpdate 两部分
+
+- StateUpdate
+  根据 上一个状态值 和 输入 预测当前状态
+- MeasurementUpdate
+  根据最新的数据，修正 StateUpdate 输出的状态
+
+
+
+#### `Balancing_logic`
+
+如果电池组各电池，SOC 差很多，导致充电量不足，使得电池无法被有效利用。电压差超过指定值，`BalancingCommand` 为 N*1 boolean 向量（N个电池），需要放电的单个电池，连通 **bleed resistor**，使得该电池放电降低 SOC。同时，SOC低的电池不连通放电，实现SOC均衡。
+
+> :question: Bleed resistor？[参考](https://www.electrical4u.com/bleeder-resistor/)
+> A bleeder resistor is a standard [resistor ](https://www.electrical4u.com/what-is-resistor/)connected in parallel with the output of a high-voltage power supply circuit for the purpose of **discharging the electric charge stored in the power supply’s filter [capacitors](https://www.electrical4u.com/what-is-capacitor/)** when the equipment is turned OFF. **This is done for safety reasons.** >> 设备关闭时，电容里面还有电！
+
