@@ -11123,7 +11123,7 @@ DataMapInfo . mmi . InstanceMap . fullPath , ( NULL ) , loggedName ,
 origSigName , propName , & forEachMdlRefDims ) ; sdiUpdateForEachLeafName ( &
 srcInfo , hForEachParent ) ; } mhghcysq2pf . oyzx0samzr . AQHandles =
 sdiStartAsyncioQueueCreation ( hDT , & srcInfo , djmxej3cna -> DataMapInfo .
-mmi . InstanceMap . fullPath , "290a26d6-541a-4d2a-9313-1279a6d40b58" ,
+mmi . InstanceMap . fullPath , "8a3af846-86cf-4b67-b9c3-b5208814a56d" ,
 sigComplexity , & sigDims , DIMENSIONS_MODE_FIXED , stCont , "V" ) ;
 sdiCompleteAsyncioQueueCreation ( mhghcysq2pf . oyzx0samzr . AQHandles , hDT
 , & srcInfo ) ; if ( mhghcysq2pf . oyzx0samzr . AQHandles ) {
@@ -11220,7 +11220,7 @@ modelParameters . mStartTime = 0.0 ; cumyr1omp00 . modelParameters .
 mLoadInitialState = false ; cumyr1omp00 . modelParameters . mUseSimState =
 false ; cumyr1omp00 . modelParameters . mLinTrimCompile = false ; cumyr1omp00
 . modelParameters . mLoggingMode = SSC_LOGGING_NONE ; cumyr1omp00 .
-modelParameters . mRTWModifiedTimeStamp = 5.89947535E+8 ; cumyr1omp00 .
+modelParameters . mRTWModifiedTimeStamp = 5.92239034E+8 ; cumyr1omp00 .
 modelParameters . mZcDisabled = true ; cumyr1omp00 . d = 0.001 ; cumyr1omp00
 . modelParameters . mSolverTolerance = cumyr1omp00 . d ; cumyr1omp00 . d =
 0.1 ; cumyr1omp00 . modelParameters . mFixedStepSize = cumyr1omp00 . d ;
@@ -11262,7 +11262,7 @@ modelParameters_cl54gopm0x . mLoadInitialState = false ; cumyr1omp00 .
 modelParameters_cl54gopm0x . mUseSimState = false ; cumyr1omp00 .
 modelParameters_cl54gopm0x . mLinTrimCompile = false ; cumyr1omp00 .
 modelParameters_cl54gopm0x . mLoggingMode = SSC_LOGGING_NONE ; cumyr1omp00 .
-modelParameters_cl54gopm0x . mRTWModifiedTimeStamp = 5.89947535E+8 ;
+modelParameters_cl54gopm0x . mRTWModifiedTimeStamp = 5.92239034E+8 ;
 cumyr1omp00 . modelParameters_cl54gopm0x . mZcDisabled = true ; cumyr1omp00 .
 d = 0.001 ; cumyr1omp00 . modelParameters_cl54gopm0x . mSolverTolerance =
 cumyr1omp00 . d ; cumyr1omp00 . d = 0.1 ; cumyr1omp00 .
@@ -11306,7 +11306,7 @@ modelParameters_kkiq3xxxve . mLoadInitialState = false ; cumyr1omp00 .
 modelParameters_kkiq3xxxve . mUseSimState = false ; cumyr1omp00 .
 modelParameters_kkiq3xxxve . mLinTrimCompile = false ; cumyr1omp00 .
 modelParameters_kkiq3xxxve . mLoggingMode = SSC_LOGGING_NONE ; cumyr1omp00 .
-modelParameters_kkiq3xxxve . mRTWModifiedTimeStamp = 5.89947535E+8 ;
+modelParameters_kkiq3xxxve . mRTWModifiedTimeStamp = 5.92239034E+8 ;
 cumyr1omp00 . modelParameters_kkiq3xxxve . mZcDisabled = true ; cumyr1omp00 .
 d = 0.001 ; cumyr1omp00 . modelParameters_kkiq3xxxve . mSolverTolerance =
 cumyr1omp00 . d ; cumyr1omp00 . d = 0.1 ; cumyr1omp00 .
@@ -12181,11 +12181,11 @@ fjpvnssfnv ) , rtdwData , 0 , 22 , sizeof ( mhghcysq2pf . fjpvnssfnv ) ) ;
 mr_Battery_Model_restoreDataFromMxArray ( ( void * ) & ( mhghcysq2pf .
 hbt31irajz ) , rtdwData , 0 , 23 , sizeof ( mhghcysq2pf . hbt31irajz ) ) ; }
 } void mr_Battery_Model_RegisterSimStateChecksum ( SimStruct * S ) { const
-uint32_T chksum [ 4 ] = { 3251132352U , 2148454479U , 737764856U ,
-2123662207U , } ; slmrModelRefRegisterSimStateChecksum ( S , "Battery_Model"
-, & chksum [ 0 ] ) ; } mxArray * mr_Battery_Model_GetSimStateDisallowedBlocks
-( ) { mxArray * data = mxCreateCellMatrix ( 4 , 3 ) ; mwIndex subs [ 2 ] ,
-offset ; { static const char * blockType [ 4 ] = { "SimscapeRtp" ,
+uint32_T chksum [ 4 ] = { 614387418U , 385667305U , 1923803575U , 398601645U
+, } ; slmrModelRefRegisterSimStateChecksum ( S , "Battery_Model" , & chksum [
+0 ] ) ; } mxArray * mr_Battery_Model_GetSimStateDisallowedBlocks ( ) {
+mxArray * data = mxCreateCellMatrix ( 4 , 3 ) ; mwIndex subs [ 2 ] , offset ;
+{ static const char * blockType [ 4 ] = { "SimscapeRtp" ,
 "SimscapeExecutionBlock" , "SimscapeExecutionBlock" ,
 "SimscapeExecutionBlock" , } ; static const char * blockPath [ 4 ] = {
 "Battery_Model/Solver Configuration/RTP_1" ,

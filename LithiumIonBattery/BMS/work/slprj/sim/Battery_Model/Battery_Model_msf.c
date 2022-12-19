@@ -370,7 +370,7 @@ DISALLOW_SAMPLE_TIME_INHERITANCE ) ; ssSetAcceptsFcnCallInputs ( S ) ;
 ssSetModelReferenceNormalModeSupport ( S ,
 MDL_START_AND_MDL_PROCESS_PARAMS_OK ) ; ssSupportsMultipleExecInstances ( S ,
 false ) ; ssRegisterMsgForNotSupportingMultiExecInst ( S ,
- "<diag_root><diag id=\"Simulink:blocks:BlockDoesNotSupportMultiExecInstances\" pr=\"d\"><arguments><arg type=\"encoded\">QgBhAHQAdABlAHIAeQBfAE0AbwBkAGUAbAAvAEMAaABhAHIAZwBlAHIAXwBMAG8AYQBkAC8ARAByAGkAdgBlAEwAbwBhAGQALwBCAGEAdAB0AEMAdQByAHIAZQBuAHQAIABGAHIAbwBtACAARAByAGkAdgBlAEMAeQBjAGwAZQAvAHMAdABhAHIAdABUAGkAbQBlAAAA</arg><arg type=\"encoded\">PABfAF8AaQBpAFMAUwBfAF8APgA8AC8AXwBfAGkAaQBTAFMAXwBfAD4AAAA=</arg><arg type=\"encoded\">PABfAF8AaQB0AGUAcgBCAGwAawBfAF8APgA8AC8AXwBfAGkAdABlAHIAQgBsAGsAXwBfAD4AAAA=</arg></arguments><hs><h>AAAAIAD+pUBb</h></hs></diag></diag_root>"
+ "<diag_root><diag id=\"Simulink:blocks:BlockDoesNotSupportMultiExecInstances\" pr=\"d\"><arguments><arg type=\"encoded\">QgBhAHQAdABlAHIAeQBfAE0AbwBkAGUAbAAvAEMAaABhAHIAZwBlAHIAXwBMAG8AYQBkAC8ARAByAGkAdgBlAEwAbwBhAGQALwBCAGEAdAB0AEMAdQByAHIAZQBuAHQAIABGAHIAbwBtACAARAByAGkAdgBlAEMAeQBjAGwAZQAvAHMAdABhAHIAdABUAGkAbQBlAAAA</arg><arg type=\"encoded\">PABfAF8AaQBpAFMAUwBfAF8APgA8AC8AXwBfAGkAaQBTAFMAXwBfAD4AAAA=</arg><arg type=\"encoded\">PABfAF8AaQB0AGUAcgBCAGwAawBfAF8APgA8AC8AXwBfAGkAdABlAHIAQgBsAGsAXwBfAD4AAAA=</arg></arguments><hs><h>AAAABAAe1kBb</h></hs></diag></diag_root>"
 ) ; ssHasStateInsideForEachSS ( S , false ) ; ssSetOptions ( S ,
 SS_OPTION_ALLOW_CONSTANT_PORT_SAMPLE_TIME |
 SS_OPTION_PORT_SAMPLE_TIMES_ASSIGNED | SS_OPTION_SUPPORTS_ALIAS_DATA_TYPES |
