@@ -4475,29 +4475,29 @@ NeModeData * s_major_mode_data = NULL ; static NeZCData s_zc_data [ 90 ] = {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/pwl_diode.ssc"
 , 29U , 8U , 29U , 14U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } } ; static NeAssertData
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } } ; static NeAssertData
 s_assert_data [ 204 ] = { {
 "Battery_Model/Battery_Pack/Battery_Pack_1Module/Cell_Module_1TC/Battery_Cell1"
 , 1U , 0U , "Battery_Pack.Battery_Pack_1Module.Cell_Module_1TC.Battery_Cell1"
@@ -6055,17 +6055,17 @@ NeRange s_assert_range [ 204 ] = { {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/pwl_diode.ssc"
 , 30U , 34U , 30U , 37U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 16U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 16U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 16U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 16U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 16U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 16U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 16U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 16U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 16U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 16U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 16U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 16U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/battery/shared_library/m/+batteryecm/table_battery.sscp"
 , 1U , 1U , 1U , 1U , NE_RANGE_TYPE_PROTECTED , } , {
  "E:/MATLAB_2022/toolbox/physmod/battery/shared_library/m/+batteryecm/table_battery.sscp"
@@ -6235,17 +6235,17 @@ NeRange s_assert_range [ 204 ] = { {
  "E:/MATLAB_2022/toolbox/physmod/battery/shared_library/m/+batteryecm/table_battery.sscp"
 , 1U , 1U , 1U , 1U , NE_RANGE_TYPE_PROTECTED , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 16U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 16U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 16U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 16U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 16U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 16U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 16U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 16U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 16U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 16U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 16U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } } ; static NeAssertData *
+, 49U , 16U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } } ; static NeAssertData *
 s_param_assert_data = NULL ; static NeRange * s_param_assert_range = NULL ;
 static NeAssertData * s_initial_assert_data = NULL ; static NeRange *
 s_initial_assert_range = NULL ; static NeRange s_equation_range [ 194 ] = { {
@@ -6362,41 +6362,41 @@ s_initial_assert_range = NULL ; static NeRange s_equation_range [ 194 ] = { {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/pwl_diode.ssc"
 , 32U , 7U , 32U , 18U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 46U , 9U , 46U , 24U , NE_RANGE_TYPE_NORMAL , } , {
+, 47U , 9U , 47U , 24U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 9U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 9U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 46U , 9U , 46U , 24U , NE_RANGE_TYPE_NORMAL , } , {
+, 47U , 9U , 47U , 24U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 9U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 9U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 46U , 9U , 46U , 24U , NE_RANGE_TYPE_NORMAL , } , {
+, 47U , 9U , 47U , 24U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 9U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 9U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 46U , 9U , 46U , 24U , NE_RANGE_TYPE_NORMAL , } , {
+, 47U , 9U , 47U , 24U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 9U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 9U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 46U , 9U , 46U , 24U , NE_RANGE_TYPE_NORMAL , } , {
+, 47U , 9U , 47U , 24U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 9U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 9U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 46U , 9U , 46U , 24U , NE_RANGE_TYPE_NORMAL , } , {
+, 47U , 9U , 47U , 24U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 9U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 9U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/battery/shared_library/m/+batteryecm/table_battery.sscp"
 , 1U , 1U , 1U , 1U , NE_RANGE_TYPE_PROTECTED , } , {
  "E:/MATLAB_2022/toolbox/physmod/battery/shared_library/m/+batteryecm/table_battery.sscp"
@@ -6602,41 +6602,41 @@ s_initial_assert_range = NULL ; static NeRange s_equation_range [ 194 ] = { {
  "E:/MATLAB_2022/toolbox/physmod/battery/shared_library/m/+batteryecm/table_battery.sscp"
 , 1U , 1U , 1U , 1U , NE_RANGE_TYPE_PROTECTED , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 46U , 9U , 46U , 24U , NE_RANGE_TYPE_NORMAL , } , {
+, 47U , 9U , 47U , 24U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 9U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 9U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 46U , 9U , 46U , 24U , NE_RANGE_TYPE_NORMAL , } , {
+, 47U , 9U , 47U , 24U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 9U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 9U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 46U , 9U , 46U , 24U , NE_RANGE_TYPE_NORMAL , } , {
+, 47U , 9U , 47U , 24U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 9U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 9U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 46U , 9U , 46U , 24U , NE_RANGE_TYPE_NORMAL , } , {
+, 47U , 9U , 47U , 24U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 9U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 9U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 46U , 9U , 46U , 24U , NE_RANGE_TYPE_NORMAL , } , {
+, 47U , 9U , 47U , 24U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 9U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 49U , 9U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 45U , 8U , 45U , 22U , NE_RANGE_TYPE_NORMAL , } , {
+, 46U , 8U , 46U , 22U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 46U , 9U , 46U , 24U , NE_RANGE_TYPE_NORMAL , } , {
+, 47U , 9U , 47U , 24U , NE_RANGE_TYPE_NORMAL , } , {
  "E:/MATLAB_2022/toolbox/physmod/simscape/library/m/+foundation/+electrical/+elements/controlled_switch.ssc"
-, 48U , 9U , 48U , 22U , NE_RANGE_TYPE_NORMAL , } } ; static NeRange *
+, 49U , 9U , 49U , 22U , NE_RANGE_TYPE_NORMAL , } } ; static NeRange *
 s_cer_range = NULL ; static NeRange s_icr_range [ 24 ] = { {
  "E:/MATLAB_2022/toolbox/physmod/battery/shared_library/m/+batteryecm/table_battery.sscp"
 , 1U , 1U , 1U , 1U , NE_RANGE_TYPE_PROTECTED , } , {

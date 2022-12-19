@@ -1,6 +1,7 @@
 # 锂电池建模
 
 > Gitte 仓库: https://gitee.com/tongji620_-group/tongji_micro_grid_program.git
+> [96V 混动平台仿真进度表](https://epropulsion.feishu.cn/sheets/shtcnCAXpokp1OzqzOkEQzbrPze)
 
 - 需求：实现具有基本功能的锂电池仿真模型，用于后续控制仿真
 
@@ -8,7 +9,7 @@
 
   BMS(Battery Management System) >> 电池模型所需要有的功能+架构
 
-  > 选用 2-RC ECM 作为电池模型
+  > 选用 `2-RC ECM` 作为电池模型
 
 ![BMS_function_structure.jpg](./docs/BMS_function_structure.jpg)
 
@@ -224,9 +225,15 @@ $$
 
 - BMS
 
-  - [ ] passive Balancing
-  - [ ] SOC 预测：UKF 控制跟踪算法
-  - [ ] 充放电控制
+  - [ ] 完成符合电池容量和 BMS 的仿真
+  
+    - :question: 如何保持输出 96V，DC/DC 模块？
+  
+  - [ ] **双向 DCDC** 实现双向充/放电
+  
+    > 如何实现充放电：参考电动车充电桩传输协议
+    >
+    > DC/DC 控制？车用充电桩**通讯协议** 》》控制是否充电，命令请求 [参考](https://zhuanlan.zhihu.com/p/460767664)
 
 
 
@@ -242,14 +249,13 @@ $$
 
   R0 为内阻，电压源为开路电压 Em。
   待拟合参数：$BatteryCapacity, R0, Em, Ri, Ci$
-
   $$
   \text{电容}\quad I_{c} = C * \frac{d U_c}{dt} \\
   \text{电感}\quad U_L = L * \frac{di}{dt} \\
   \text{ECM OCV:}\\\quad OCV=E_m(SOC, T) + U_{RC1} + U_{RC2}+ \underbrace{I}_\text{外部输入电流}*R_0\\
   I = \frac{U_{RCi}}{Ri} + C_i*{\frac{dU_{RCi}}{dt}}\\
   $$
-
+  
 - `E_m` 电压源
 
   > SOC 指荷电状态，也叫剩余电量，代表的是电池使用一段时间或长期搁置不用后的**剩余容量与其完全充电状态的容量的比值**，常用百分数表示。其取值范围为0~1，当SOC=0时表示电池放电完全，当SOC=1时表示电池完全充满。
@@ -444,17 +450,50 @@ $$
 
 #### 磷酸铁锂电池组
 
-锂电池组是磷酸铁锂电池组，**容量是180kwh, 输出96V** >> 180k/96=1875 mAH，再接一个**双向DC/DC隔离模块**可以放电也可以充电
+> [LFP-100Ah（8S）捆扎模组产品 参考](https://epropulsion.feishu.cn/file/boxcnnuTOKmcj1f6dT2SQ5Kt2rf)
+> [G102-100 电池文档参考](https://epropulsion.feishu.cn/docx/doxcndgpk2qpBiJfda1Sn7ms5Cc)
+
+锂电池组是磷酸铁锂电池组，**容量是180kwh, 输出96V** >> 180k/96=1875 mAH，再接一个**双向 DC/DC 隔离模块**实现充电。*单个电池 3.2V，容量230AH。* 电池组 180kwh 分成两个 90kwh 的两个大模块（外面母线并联）,等于单个电池组 BMS 只需要 90KWH 就好。
+$$
+30 串: 30*3.2V = 96V \\
+4*230 = 920A\\
+P = UI = 96 * 920 =
+$$
 
 > - [电池容量单位 参考](https://zhuanlan.zhihu.com/p/410843180)
 >   电池的容量指的是电池可以**保存的电能的量，电能等于功率乘以时间**，最标准的电池容量单位是Wh（瓦时），常用的还有kWh（千瓦时），mWh（毫瓦时）。而 **mAh（毫安时）并不是完整的，完整的应该是V*mA h（伏毫安时）**，这是因为P=UI，功等于电压乘以电流，电能等于功乘以时间，所以把Wh转换为VmAh。
 >
->   例如一个18650电池有**3.7V 3000mAh**，所以容量是3.7V*3Ah，也可以是11.1Wh。
+>   例如一个18650电池有 **3.7V 3000mAh**，所以容量是3.7V*3Ah，也可以是11.1Wh。
 >   Wh的应用：例如，一个电池的容量是11.1Wh，一个11.1W功率的设备使用这个电池可以用1小时，如果一个22.2W功率的设备使用这个电池可以使用0.5小时。
->
-> - :question: 如何保持输出 96V，DC/DC 模块？
->
-> - :question: 如何切换充放电方向
+
+- :question: 如何保持输出 96V，DC/DC 模块？目前单个电池的输出电压？
+
+  > [博客参考](https://zhuanlan.zhihu.com/p/389712545)
+
+  锂电芯主要分**磷酸铁锂电池电芯**和**聚合物锂电芯**两大类，它们的电芯电压由于制造的化学原材料本身的特性不同，所以电芯电压会不同
+
+  - 聚合物锂电芯的满电电压有4.2V（常用）、4.35V、4.4V，甚至有4.45V的，终止电压是3.2V的
+  - 磷酸铁锂电池 :star:
+    磷酸铁锂电池电芯的**满电电压是3.65V，放电终止电压是2.0V**
+
+  **电池组方面**来了解锂电池电压范围是多少，市场上只要是6V或以上的电池，都是通过**锂电芯串联**后达到的，容量的大小则是通过电芯三大并联方式来实现的
+
+  > example：24V 电压 20000mAh 容量的锂电池 :+1:
+  > 假如它使用的电芯是**标称3.7V**，满电电压 4.2V 的聚合物锂电池的话，单颗电芯容量是 5000mAh，那么它需要多少颗电芯来通过串联和并联实现的呢？`math.ceil(24/3.7)==math.ceil(6.5)==7`，那么就需要 **7 颗电芯串联后才能达到所需电压**，然后**并联 4 组同样的串联电芯组合后，才能达到 20000mAh 的容量**，那么一共就需要 7*4 == 28颗电芯
+  >
+  > - :question: 单个电池参数？标压，容量
+
+  96V 标称3.7V >> `ceil(96/3.7) == 26` 个电池串联，180kWh/96V = 1875 mAh >> 是否要并联？
+
+  > 3.2V，230AH, 30 串4并
+
+  ![LithiumBattery_BatteryPack_result.jpg](./docs/LithiumBattery_BatteryPack_result.jpg)
+
+  
+
+
+
+
 
 
 
@@ -599,7 +638,7 @@ $$
 ![LithiumBattery_BMS_structure.jpg](./docs/LithiumBattery_BMS_structure.jpg)
 
 > [Youtube Matlab 官方BMS视频](https://www.youtube.com/playlist?list=PLn8PRpmsu08pYXwR-qihN6abrK3Io97NN)  :star:
-> [BMS_ProjectFileExchange](https://ww2.mathworks.cn/matlabcentral/fileexchange/72865-design-and-test-lithium-ion-battery-management-algorithms) :+1: 
+> [BMS_ProjectFileExchange 2020Version](https://ww2.mathworks.cn/matlabcentral/fileexchange/72865-design-and-test-lithium-ion-battery-management-algorithms) :+1: 
 > [Matlab BMS 充放电控制咨询_视频教程](https://ww2.mathworks.cn/services/consulting/proven-solutions/battery-simulation-and-controls.html)
 > [Microgrid PV/BMS](https://ww2.mathworks.cn/matlabcentral/fileexchange/60550-microgrid-hybrid-pv-wind-battery-management-system?s_tid=ta_fx_results)
 >
@@ -625,12 +664,15 @@ $$
 
 ![BMS_PlantStructure.jpg](./docs/BMS_PlantStructure.jpg)
 
-- Battery Pack 电池组，输出各电池温度、电压，根据 BMS 控制信号实现电池均衡 passive balancing
+- Battery Pack 电池组
+  输出各电池温度、电压，根据 BMS 控制信号实现电池均衡 passive balancing
+  - Balancing Module
+    串联的电池之间连接 Bleech resistor ，其用于吸收ECM 电容内的电量
 
 - PreCharge circuit
   根据 BMS 控制信号，控制开关，使得电池组使用 Charger 充电（加上一个电容，防止激增的电流输入，损坏电池） or 使用 Loader 负载供电。
-
-- 充电装置 + DriveLoad 负载：用电流源模拟
+- 充电装置 + DriveLoad 负载
+  用电流源模拟
 
 
 
@@ -682,6 +724,8 @@ $$
   用于充放电控制，避免充电初期，电流瞬间过大，损坏电池
 - InverterContactorState
 
+- OCV + 二次积分
+
 
 
 #### `SOC_Estimation`
@@ -710,3 +754,70 @@ Common Filter Algorithms 含有 StateUpdate 和 MeasurementUpdate 两部分
 > :question: Bleed resistor？[参考](https://www.electrical4u.com/bleeder-resistor/)
 > A bleeder resistor is a standard [resistor ](https://www.electrical4u.com/what-is-resistor/)connected in parallel with the output of a high-voltage power supply circuit for the purpose of **discharging the electric charge stored in the power supply’s filter [capacitors](https://www.electrical4u.com/what-is-capacitor/)** when the equipment is turned OFF. **This is done for safety reasons.** >> 设备关闭时，电容里面还有电！
 
+
+
+### 双向 DCDC
+
+> [参考](https://mp.weixin.qq.com/s/yjU_8Bh02C6wXPwhk93ZJA)
+> [matlab 官方文件](https://www.mathworks.com/matlabcentral/fileexchange/92458-battery-controller-design-bidirectional-dc-dc-converter)
+> [Battery Charging/Discharging Controller 参考](https://ww2.mathworks.cn/matlabcentral/fileexchange/91750-battery-charging-discharging-controller?s_tid=srchtitle) 
+> [mosfet 组件](https://ww2.mathworks.cn/help/sps/powersys/ref/mosfet.html)
+
+- 电池组参数
+
+  > [Battery generic module ](https://ww2.mathworks.cn/help/sps/powersys/ref/battery.html;jsessionid=9ca809318d4c883085c006b72809):star:
+  >
+  > 目前先将电池组视为一个整体，先不考虑内部组织形式。
+
+  - Maximum Capacity(Ah) 90kWh
+    可根据实船需求电量配，没有固定的
+  - Nominal Voltage 102.4V ?
+    电池额定电压
+  - Rate Capacity 879Ah
+  - Fully charged voltage(V) 115.2V?
+    充电截止电压
+  - Nominal discharge current(A) 100A
+    支持1C放电，所以是100A
+  - Maximum Capacity(Ah) 90kWh / 102.4(V) == 879 Ah ?
+  - Internal resistance (Ohms)
+  - Capacity (Ah) at nominal voltage
+  - Exponential zone [Voltage (V), Capacity (Ah)]
+
+- 双向 Buck-Boost 电路
+
+  > [What is bidirectional DC to DC converter?](https://www.quora.com/What-is-bidirectional-DC-to-DC-converter)
+  > [Matlab offical Bidirectional_DCDC module](https://ww2.mathworks.cn/help/sps/ref/bidirectionaldcdcconverter.html)
+
+  - IGBT
+    The IGBT turns on when the collector-emitter voltage is positive and greater than Vf and a positive signal is applied at the gate input (g > 0). It turns off when the collector-emitter voltage is positive and a 0 signal is applied at the gate input (g = 0).
+
+
+
+# Matlab
+
+- simulink 模块锁定 [参考](https://ww2.mathworks.cn/help/simulink/ug/lock-links-to-library.html)
+
+- [Connecting Simscape Diagrams to Simulink Sources and Scopes](https://www.mathworks.com/help/simscape/ug/connecting-simscape-diagrams-to-simulink-sources-and-scopes.html)
+
+- `sldd`文件
+
+  > [参考](https://mp.weixin.qq.com/s?__biz=MzAxMDYxMTkxNQ==&mid=2649091741&idx=1&sn=fe87332a3a0166e4a2a93c99e5739296&chksm=835cf339b42b7a2f173d475bce8e3c1460c20bb01d33f4d60487da8c39553ce7a08f8cfa0dcd&scene=21#wechat_redirect)
+
+  开发过程中需要**长久性的存储设计数据**时一般会使用数据字典的形式来进行存储，使用数据字典代替基础工作区来分区数据、跟踪更改、控制访问和共享数据。
+
+  数据字典中包括三个部分：
+
+  -   **Design Data：**包含定义参数、信号以及决定模型行为的设计数据的变量和数据类型。在字典中创建或导入的设计数据存储在此分区中。
+  -   **Configurations：**包含决定如何在仿真过程中配置模型的配置集，如采样时间和仿真开始时间。
+  -   **Other Data：**包含与模型有关但在仿真过程中模型不使用的信息，例如描述模型所表示的物理设备和过程的数据。
+  
+  ```
+  SharedDictionaryObj = Simulink.data.dictionary.open('Shared_DD.sldd');
+  try removeDataSource(SharedDictionaryObj,'Battery_1Pack_1RC.sldd')
+  end
+  try removeDataSource(SharedDictionaryObj,'Battery_16Packs_1RC.sldd')
+  end
+  addDataSource(SharedDictionaryObj,'Battery_16Packs_1RC.sldd')
+  ```
+  
+  
