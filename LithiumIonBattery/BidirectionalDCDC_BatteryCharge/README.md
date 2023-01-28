@@ -5,15 +5,18 @@
 - 仿真文件
 
   ```shell
-  ./Battery_charge_discharge_ChgDiscModeChange.slx   
+  ./Battery_charge_discharge_2directionalBuckBoost_ChgDiscModeChange.slx   
   # latest 1.实现双向非隔离DCDC充放电（母线电压闭环方式）
   # 2.手动充放电切换逻辑 + 母线电压稳定
   
-  ./Battery_charge_discharge_100ah_only2directionChrgDischarge.mdl  
+  ./Battery_charge_discharge_2directionalBuckBoost_VoltageCurrentCycle.mdl
   # 第一版：实现双向充电，无充放电切换逻辑
   
   ./OneDirection_battery_Charg_disCharg_from_DCSource_bidirectionalDCConv.slxc
   # rawVersion: 双向非隔离DCDC，只能满足网侧电压 > 电池电压的情况
+  
+  ./Battery_charge_discharge_FSBB_DCDC.slx
+  # 四开关BuckBoost
   ```
 
 - **需求描述 :necktie:**
@@ -26,12 +29,25 @@
 
     现在是微电网项目里面锂电池的一个模块，想要实现 **90kwh（电量，不固定） 的锂电池组模块（100Ah 容量, 102.4V 电压变化范围85-112V， 具体信息参考下面的文档）**，通过**并联多个双向非隔离 dcdc 连到母线（96V）**实现双向充放电的功能。
 
-    - 100Ah 102.4V 锂电池组，组合成 90kwh电池组（目前视为一个整体，组合的话仿真太慢跑不动），这个锂电池组是船上一个动力锂电池。
-      96V/3.2== 30 串，
+    - 100Ah 102.4V 锂电池组，组合成 90kwh电池组（目前视为一个整体，组合的话仿真太慢跑不动），这个锂电池组是船上一个动力锂电池。96V/3.2== 30 串
       - 整体电池组 SOC 估计
-    - 多个双向非隔离 dcdc：母线电压96V，电池电压85-115v 需要那种双向 boostbuck即能升又能降得那种，就是电池电压过低 < 96V 时候，需要母线给电池充电要升压。
-
+    - 多个双向非隔离 dcdc：母线电压96V，电池电压 85-115v 需要那种双向 boostbuck 即能升又能降得那种，就是电池电压过低 < 96V 时候，需要母线给电池充电要升压。
     
+
+
+
+## DCDC
+
+- 双向非隔离DCDC：实现高斯宝结构的 **H 型全桥-双向非隔离 DCDC**
+  就是一个基本的H桥结构，每个开关管由三个并联组合来分流，可以实现电压双极性输出
+  ![双向非隔离DCDC_高斯宝.png](./docs/双向非隔离DCDC_高斯宝.png)
+- 测试：控制 dcdc 输出电压，维持电池模块（电池+dcdc）的输出功率恒定3kw～然后测试满充满放
+
+
+
+
+
+
 
 ## 充放电的逻辑
 
@@ -57,7 +73,7 @@
 
 #### -5A恒流充电
 
-母线电压100V(>96V)，给电池充电。电池以电流 -5A 进行充电，电压稳定在92.15V ：电池 SOC 上升，电流恒流
+母线电压100V(>96V)，给电池充电。电池以电流 -5A 进行充电，电压稳定在 92.15V ：电池 SOC 上升，电流恒流
 
 ![BatteryCharge_BatteryCurrent-5A.jpg](./docs/BatteryCharge_BatteryCurrent-5A.jpg)
 
