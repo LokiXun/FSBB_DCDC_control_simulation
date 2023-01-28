@@ -2,6 +2,8 @@
 
 > Gitte 仓库: https://gitee.com/tongji620_-group/tongji_micro_grid_program.git
 > [96V 混动平台仿真进度表](https://epropulsion.feishu.cn/sheets/shtcnCAXpokp1OzqzOkEQzbrPze)
+>
+> [开关电源相关电子书 pdf 上这个网站找找看](http://download.eeworld.com.cn/detail/eisbergeisberg/625410)
 
 - 需求：实现具有基本功能的锂电池仿真模型，用于后续控制仿真
 
@@ -191,7 +193,7 @@ $$
 
 ### TODO :taco:
 
-- [ ] **单个电池** 
+- [x] **单个电池** 
 
   - [x] 电池模型选型
 
@@ -205,35 +207,30 @@ $$
 
     > LookUp-Table 如何用在 optimization?
 
-  - [ ] 结合具体需求更改仿真模型 :fire:
-    锂电池组是磷酸铁锂电池组，**容量是180kwh, 输出96V**，再接一个**双向DC/DC隔离模块**可以放电也可以充电
-
   - 优化项
-
+  
     - [ ] SOC estimate：对电池输入电流、测量的端电压加噪声（模拟传感器误差），使用 UKF 跟踪
-
+  
       > 待了解 UKF模块实现原理
-
+  
     - [ ] 电池 Aging：多次循环充放电，AEKF 预测期间电池 $R_0$ 变化
-
+  
     - [ ]  N-RC 模型，增加 hysteresis 延迟特性，进一步提升拟合准确率
-
-- [ ] **电池组**
+  
+- [x] **电池组**
 
   - [x] 调研官方电池组模型，**搭建电池组模块**：串联 + `heat_flow`
   - [x] 理解 heat_flow 模块连接原理，及模块 `convection simscape` 代码
 
 - BMS
 
-  - [ ] 完成符合电池容量和 BMS 的仿真
+  - [x] 完成符合电池容量和 BMS 的仿真
   
-    - :question: 如何保持输出 96V，DC/DC 模块？
+  - [x] **双向 DCDC** 实现双向充/放电
   
-  - [ ] **双向 DCDC** 实现双向充/放电
+    > 目前使用一个matlab 官方电池模块模拟整个电池组**。后续若要考虑各个电池的负载均衡，可以进行优化。
   
-    > 如何实现充放电：参考电动车充电桩传输协议
-    >
-    > DC/DC 控制？车用充电桩**通讯协议** 》》控制是否充电，命令请求 [参考](https://zhuanlan.zhihu.com/p/460767664)
+  - [ ] H 桥双向 DCDC
 
 
 
@@ -452,12 +449,15 @@ $$
 
 > [LFP-100Ah（8S）捆扎模组产品 参考](https://epropulsion.feishu.cn/file/boxcnnuTOKmcj1f6dT2SQ5Kt2rf)
 > [G102-100 电池文档参考](https://epropulsion.feishu.cn/docx/doxcndgpk2qpBiJfda1Sn7ms5Cc)
+>
+> - 区分容量和电量（wh >> 用电量）
+>   锂电池仿真确定容量（Ah）就行
 
 锂电池组是磷酸铁锂电池组，**容量是180kwh, 输出96V** >> 180k/96=1875 mAH，再接一个**双向 DC/DC 隔离模块**实现充电。*单个电池 3.2V，容量230AH。* 电池组 180kwh 分成两个 90kwh 的两个大模块（外面母线并联）,等于单个电池组 BMS 只需要 90KWH 就好。
 $$
 30 串: 30*3.2V = 96V \\
 4*230 = 920A\\
-P = UI = 96 * 920 =
+额定容量（Ah) 
 $$
 
 > - [电池容量单位 参考](https://zhuanlan.zhihu.com/p/410843180)
@@ -466,7 +466,7 @@ $$
 >   例如一个18650电池有 **3.7V 3000mAh**，所以容量是3.7V*3Ah，也可以是11.1Wh。
 >   Wh的应用：例如，一个电池的容量是11.1Wh，一个11.1W功率的设备使用这个电池可以用1小时，如果一个22.2W功率的设备使用这个电池可以使用0.5小时。
 
-- :question: 如何保持输出 96V，DC/DC 模块？目前单个电池的输出电压？
+- 目前单个电池的输出电压
 
   > [博客参考](https://zhuanlan.zhihu.com/p/389712545)
 
@@ -480,9 +480,7 @@ $$
 
   > example：24V 电压 20000mAh 容量的锂电池 :+1:
   > 假如它使用的电芯是**标称3.7V**，满电电压 4.2V 的聚合物锂电池的话，单颗电芯容量是 5000mAh，那么它需要多少颗电芯来通过串联和并联实现的呢？`math.ceil(24/3.7)==math.ceil(6.5)==7`，那么就需要 **7 颗电芯串联后才能达到所需电压**，然后**并联 4 组同样的串联电芯组合后，才能达到 20000mAh 的容量**，那么一共就需要 7*4 == 28颗电芯
-  >
-  > - :question: 单个电池参数？标压，容量
-
+  
   96V 标称3.7V >> `ceil(96/3.7) == 26` 个电池串联，180kWh/96V = 1875 mAh >> 是否要并联？
 
   > 3.2V，230AH, 30 串4并
@@ -491,7 +489,25 @@ $$
 
   
 
+- 电池组参数
 
+  > [Battery generic module ](https://ww2.mathworks.cn/help/sps/powersys/ref/battery.html;jsessionid=9ca809318d4c883085c006b72809):star:
+  >
+  > 目前先将电池组视为一个整体，先不考虑内部组织形式。
+
+  - Maximum Capacity(Ah) 90kWh
+    可根据实船需求电量配，没有固定的
+  - Nominal Voltage 102.4V ?
+    电池额定电压
+  - Rate Capacity 879Ah
+  - Fully charged voltage(V) 115.2V?
+    充电截止电压
+  - Nominal discharge current(A) 100A
+    支持1C放电，所以是100A
+  - Maximum Capacity(Ah) 90kWh / 102.4(V) == 879 Ah ?
+  - Internal resistance (Ohms)
+  - Capacity (Ah) at nominal voltage
+  - Exponential zone [Voltage (V), Capacity (Ah)]
 
 
 
@@ -756,40 +772,182 @@ Common Filter Algorithms 含有 StateUpdate 和 MeasurementUpdate 两部分
 
 
 
-### 双向 DCDC
+## 双向 DCDC
 
 > [参考](https://mp.weixin.qq.com/s/yjU_8Bh02C6wXPwhk93ZJA)
 > [matlab 官方文件](https://www.mathworks.com/matlabcentral/fileexchange/92458-battery-controller-design-bidirectional-dc-dc-converter)
 > [Battery Charging/Discharging Controller 参考](https://ww2.mathworks.cn/matlabcentral/fileexchange/91750-battery-charging-discharging-controller?s_tid=srchtitle) 
 > [mosfet 组件](https://ww2.mathworks.cn/help/sps/powersys/ref/mosfet.html)
+>
+> - Buck Boost 电路
+>   [BuckBoost 电路基本概念](https://recom-power.com/en/rec-n-an-introduction-to-buck,-boost,-and-buck!sboost-converters-131.html?1)
+>   [BuckBoost 讲解视频](https://www.youtube.com/watch?v=vwJYIorz_Aw) :star:
+>
+> [What is bidirectional DC to DC converter?](https://www.quora.com/What-is-bidirectional-DC-to-DC-converter)
+> [Matlab offical Bidirectional_DCDC module](https://ww2.mathworks.cn/help/sps/ref/bidirectionaldcdcconverter.html)
+> [双向DCDC参考](./docs/DC_DC/双向全桥DC-DC变换器的优化控制策略研究_李文君.caj)
 
-- 电池组参数
+双向 DC-DC 变换器（Bi-directional DC-DC Converter，BDC）就是在保持输入、输出电压极性不变的情况下，根据实际所需的改变电流的方向，实现双象限运行的双向直直变换器。
 
-  > [Battery generic module ](https://ww2.mathworks.cn/help/sps/powersys/ref/battery.html;jsessionid=9ca809318d4c883085c006b72809):star:
+:rabbit2: 锂电池模块希望输出功率恒定：**通过`双向DC/DC` 模块，维持输出的电压 $U$ 恒压**。当电阻 $ R$ 一定的条件下，$电功率 P=\frac{U^2}{R}$ 恒定。
+
+### buck-boost
+
+> [博客参考：Buck, boost 充放电公式推导](https://blog.csdn.net/highman110/article/details/127239261?spm=1001.2014.3001.5502)
+
+#### **Buck**
+
+$V_{in}> V_{out}$ 降压 >> 开关闭合，给一丢丢能量到电感，电压升一丢丢不太多，然后打开就一点，释放电感里面的能量，实现**降压**。
+
+A buck or step-down converter is a DC/DC switch mode power supply that is intended to buck (or lower) the input voltage of an unregulated DC supply to a stabilized lower output voltage. Buck converters are, especially compared to traditional voltage regulators, widely valued for their extremely high efficiencies which can easily exceed 95%. 
+![Buck_Circuit_topology.gif](./docs/Buck_Circuit_topology.gif)
+
+- 电容：开关断开，**避免负载电压直接降为0**
+- 电感：如果只使用电容，开关闭合后，**电路电流激增会烧掉电容** or 负载，因此使用 resistor or inductor 电阻or电感作为缓冲。其中电阻存在能量损失的问题，即电流流过，一部分能量被转换为热量，造成能量损失，因此使用电感。
+- diode 二极管：使用 L （电感）+ C （电容）的电路，当开关打开，电路中仍有电流流过开关（开关在电源 + 电感之间，即使开关打开，电感仍有电流，整体电路可以认为是导通的，等于开关没用了）。此时在电感和电源之间，**并联一个二极管，实现当开关打开，电流不再流过电源**。
+- 理想开关：使用 IGBT + Diode
+
+
+
+#### **Boost** 
+
+负载的供电电源相当于输入的电压 $V_i$ 加上电感的感应电动势，从而实现升压
+A boost converter is a DC/DC switch mode power supply that is intended to boost (or increase) the input voltage of an unregulated DC supply to a stabilized higher output voltage. **boost converters are very popular in battery powered devices,** where perhaps a pair of batteries deliver 3V but need to supply a 5V circuit.
+开关关闭，给电感充电，右侧负载使用电容的电压。开关打开后，电感里面存储的电流给负载充电，实现升压。控制开关的开闭时间，实现负载部分升压，并维持在指定电压。
+![BoostCircuit_topology.gif](./docs/BoostCircuit_topology.gif)
+
+
+
+- **Buck-Boost Converter**
+  A buck-boost boost converter can supply a regulated DC output from a power source delivering a voltage either below or above the regulated output voltage.
+
+> - **占空比**：负载或电路**开启的时间**与负载或电路**关闭的时间**之比。
+> - IGBT
+>   The IGBT **turns on when the collector-emitter voltage is positive and greater than Vf** and a positive signal is applied at the gate input (g > 0). It turns off when the collector-emitter voltage is positive and a 0 signal is applied at the gate input (g = 0).
+
+### 隔离 dcdc
+
+- [反激拓扑](https://blog.csdn.net/highman110/article/details/127268118?spm=1001.2014.3001.5502)
+  将**升降压电路中的电感替换成互相耦合的电感**N1和N2（也就是变压器）就是反激拓扑
+- [正激电路](https://blog.csdn.net/highman110/article/details/127287720?spm=1001.2014.3001.5502) :star:
+  - 次边加二极管：开关断开，避免次边短路
+  - 磁复位：开关联通，次边持续充磁，由于加了二极管无法转换为电能释放掉，导致磁饱和后近似短路，原边产生大电流。因此在**变压器上增加磁复位绕组**。
+
+
+
+### 全/半/H桥拓扑
+
+> [参考](https://blog.csdn.net/highman110/article/details/127319090?spm=1001.2014.3001.5502)
+
+全桥变换器的逆变电路由四个开关组成，互为对角的两个开关同时导通，而同一侧开关交替导通
+
+- [H 桥拓扑](https://zhuanlan.zhihu.com/p/343603197)
+
+
+
+## 双向全桥 dcdc 控制
+
+> [论文参考](./docs/DC_DC/双向全桥DC-DC变换器的优化控制策略研究_李文君.caj)
+>
+> - 背靠背双 pwm 控制
+
+![双向非隔离DCDC_高斯宝.png](./docs/双向非隔离DCDC_高斯宝.png)
+
+双向全桥 DC-DC 变换器(Bi-Directional Full Bridge DC-DC Converter)由**全桥逆变和全桥整流组合而成**，两边为对称结构，均为电压型。
+双向全桥 DC-DC 变换器**一、二次侧均为全桥结构**。**两个单向的直流变换器反向并联连接**，就得到双向直流变换器，因此双向 DC-DC 变换器能够实现能量的双向传输。
+![双向全桥DC-DC变换器拓扑.jpg](./docs/DC_DC/双向全桥DC-DC变换器拓扑.jpg)
+
+
+
+## 四开关Buck-Boost
+
+> [改进型H桥Buck-Boost电路在光伏系统中的应用研究](https://cdmd.cnki.com.cn/Article/CDMD-10613-1016177539.htm)
+> [非隔离四开关 BuckBoost 双向DCDC](https://kns.cnki.net/kcms2/article/abstract?v=3uoqIhG8C475KOm_zrgu4sq25HxUBNNTmIbFx6y0bOQ0cH_CuEtpsMwBWEAhUpEAdP0ot6svXzoz39yGw8rI_c5TaWUn5Ipf&uniplatform=NZKPT) :star:
+> [b站教程](https://www.bilibili.com/video/BV1Va41167Jg/?spm_id_from=333.337.search-card.all.click&vd_source=eee3c3d2035e37c90bb007ff46c6e881)
+>
+> - :question: 死区时间？
+> - PWM [参考](https://zhuanlan.zhihu.com/p/374083276)
+>   Pulse Width Modulation 脉冲宽度调制
+
+
+
+### 硬件参数
+
+![双向非隔离DCDC_高斯宝.png](./docs/双向非隔离DCDC_高斯宝.png)
+
+单桥臂 3MOS并联（每个 mos 采用相同的开关频率，同时通断控制）
+输入输出各8电容(160V,180UF)，开关频率45k，电感20uh
+
+
+
+### FSBB 工作时序
+
+> - 用途：设计并控制符合其工况需求的工作时序，**用于实现后续的控制策略**
+> - :question: 开关状态和 buck / boost / buck-boost 的关系？
+> - :question: 如何构造各个开关的输入信号？
+> - :question: 电压闭环？
+> - ZVS 是啥？[参考](https://blog.csdn.net/qq_25164233/article/details/87940006)
+>   零电压开关(Zero Voltage Switch)，即开关管关断时，开关管导通时，其两端的电压已经为0。这样**开关管的开关损耗可以降到最低**。
+
+- 电感电流**连续**：拓扑的一个周期工作阶段主要可分为三段（电感蓄能、能量传递、续流阶段）
+  电路本身的输出特性相对优越，*软开关实现复杂且困难，对模块体积有一定的增大*
+
+- 伪断续（四个阶段） :star:
+  伪断续状态的输出特性相对较差，会造成输出电压纹波较大，而且会带来一定的电磁干扰问题，
+  但该状态下的拓扑的 ZVS 实现可通过对电感电流的控制实现，**不需要额外添加 ZVS 辅助电路**，对模块体积要求小，有利于实现模块的**高能量密度要求**。
+  ![FSBB_伪断续工作状态下_电感电流波形.jpg](./docs/DC_DC/FSBB/FSBB_伪断续工作状态下_电感电流波形.jpg)
+
+  > ps: 这个图是另一个论文的结构图，**对应到本文 S3 S4 换一下位置**
   >
-  > 目前先将电池组视为一个整体，先不考虑内部组织形式。
+  > - 为什么要按这个伪断续工作状态设定开关？
+  >   如果系统能够一直保证拓扑的四个开关管的动作顺序如图所设定的不变的话，即主电感的电流能够一直依次
+  >   的按照图中波形极性、时序出现的话，那么就能够**保证该拓扑会如同下文根据软开关原理所设计的主电感电流的伪断续状态正常工作**。
 
-  - Maximum Capacity(Ah) 90kWh
-    可根据实船需求电量配，没有固定的
-  - Nominal Voltage 102.4V ?
-    电池额定电压
-  - Rate Capacity 879Ah
-  - Fully charged voltage(V) 115.2V?
-    充电截止电压
-  - Nominal discharge current(A) 100A
-    支持1C放电，所以是100A
-  - Maximum Capacity(Ah) 90kWh / 102.4(V) == 879 Ah ?
-  - Internal resistance (Ohms)
-  - Capacity (Ah) at nominal voltage
-  - Exponential zone [Voltage (V), Capacity (Ah)]
+  - 四个工作模式
 
-- 双向 Buck-Boost 电路
+    - t0-t1：给主电感储能
 
-  > [What is bidirectional DC to DC converter?](https://www.quora.com/What-is-bidirectional-DC-to-DC-converter)
-  > [Matlab offical Bidirectional_DCDC module](https://ww2.mathworks.cn/help/sps/ref/bidirectionaldcdcconverter.html)
+    - t1-t2：输入电压+主电感同时放电
 
-  - IGBT
-    The IGBT turns on when the collector-emitter voltage is positive and greater than Vf and a positive signal is applied at the gate input (g > 0). It turns off when the collector-emitter voltage is positive and a 0 signal is applied at the gate input (g = 0).
+    - t2-t3：主电感释放能量给负载
+
+    - t3-t4：负电流，**增加控制的可靠性**
+
+- 占空比 :duck:
+  FSBB 变换器包括两个部分：Q1、Q2 组成 Buck 单元，Q3、Q4 组成 Boost 单元，
+  定义**开关管 Q1 的占空比为D1，Q1 与 Q2 互补导通；开关管 Q3 的占空比为D2，Q3 与 Q4 互补导通** :star:
+  $$
+  \text{FSBB 变换器输入与输出之间电压的关系}\\
+  V_{out} = \frac{D_1}{1-D_2}V_{in}
+  $$
+  所以，**不同组合的占空比 D1,D2 可以实现升压 / 降压**。
+
+- 如何实现 buck，boost？
+
+  在这四种不同的工作模式中，当变换器在**工作模式 1、2 之间切换时，等效为同步升压电路；在工作模式 2、3 之间切换时，等效为同步降压电路；在工作模式 1、3 之间切换，等效为传统的升降压电路**。:fire:
+
+
+
+### 3模式控制策略
+
+> [^1]: [基于三模式控制的四开关Buck-Boost变换器研究](https://cdmd.cnki.com.cn/Article/CDMD-10361-1019093653.htm)Section 2.4
+
+为了使 FSBB 变换器在输入电压或负载大小发生变化时，保持输出的稳定，
+需要对变换器进行闭环控制设计。由于 FSBB 变换器有三种不同的工作模式（Buck，Boost，Buck-Boost），因此就需要对三种模式分别建立状态空间模型并进行闭环控制设计，最后对 FSBB变换器进行仿真分析，验证闭环控制设计是否合理。 [^1]
+
+> 变换器参数：输入电压
+
+- Buck 变换器开环传递函数
+  $$
+  G_{vd1}(s)= \frac{V_{in}}{1+s\frac{L}{R}+ s^2LC}
+  $$
+
+- Boost 变换器开环传递函数
+  $$
+  G_{vd2}(s) = \frac{V_{in}(1-\frac{sL}{{D^`}^2R})}{{D^`}^2+s\frac{L}{R}+s^2LC}
+  $$
+
+输入电压 $V_{in}$ 先与设定好的临界点电压进行比较，从而判断电路处于何种工作模式；其次再与输出电压进行比较，完成系统的闭环控制，最后输出四路 PWM 脉冲控制开关管的导通与关断。 
 
 
 
