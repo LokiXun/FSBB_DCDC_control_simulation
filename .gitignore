@@ -8,3 +8,7 @@ docs/micro_grid_paper/
 PV_wind_simple_module/
 **/slprj/
 *.autosave
+
+
+# large-file
+**/开关电源控制环路设计(法)克里斯多夫 巴索.pdf
