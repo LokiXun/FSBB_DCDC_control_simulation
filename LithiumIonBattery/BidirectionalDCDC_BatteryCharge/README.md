@@ -5,14 +5,14 @@
 - 仿真文件
 
   ```shell
-  ./Battery_charge_discharge_2directionalBuckBoost_ChgDiscModeChange.slx   
+  ./Battery_charge_discharge_ChgDiscModeChange.slx   
   # latest 1.实现双向非隔离DCDC充放电（母线电压闭环方式）
   # 2.手动充放电切换逻辑 + 母线电压稳定
   
-  ./Battery_charge_discharge_2directionalBuckBoost_VoltageCurrentCycle.mdl
+  ./Battery_charge_discharge_100ah_only2directionChrgDischarge.mdl
   # 第一版：实现双向充电，无充放电切换逻辑
   
-  ./OneDirection_battery_Charg_disCharg_from_DCSource_bidirectionalDCConv.slxc
+  ./battery_Charg_disCharg_from_DCSource_bidirectionalDCConv.slx
   # rawVersion: 双向非隔离DCDC，只能满足网侧电压 > 电池电压的情况
   
   ./Battery_charge_discharge_FSBB_DCDC.slx
