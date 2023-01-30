@@ -4,13 +4,14 @@ clear;clc;close all;
 %% DCDC 参数
 fs=45e3;         %工作频率
 
-%% 
 BatteryOutputVoltage_min = 85.85;  % V
 BatteryOutputVoltage_max = 116.15; 
 MotherLineVoltageReference = 96;
 MotherLineVoltageErrorRange = 0.05;  % 5%
 MotherLineVoltage_deltaRange = ...
     floor(MotherLineVoltageReference * MotherLineVoltageErrorRange); % <5%
+
+Ts = 2e-6;  %时间常数>>求导
 
 % R=1;            %电阻
 % Vin=102.5;         %输入电压
