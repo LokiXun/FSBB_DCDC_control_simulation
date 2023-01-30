@@ -951,6 +951,11 @@ A boost converter is a DC/DC switch mode power supply that is intended to boost 
 
 
 
+> [matlab 官方 FSBB 例子](https://ww2.mathworks.cn/help/sps/ug/four-switch-buck-boost-converter-control.html;jsessionid=c34f863bf266bc8e10c21c4b9fe6)
+> [Youtube FSBB教程](https://www.youtube.com/watch?v=5YT7cERlMrg)
+
+
+
 # Matlab
 
 - simulink 模块锁定 [参考](https://ww2.mathworks.cn/help/simulink/ug/lock-links-to-library.html)
