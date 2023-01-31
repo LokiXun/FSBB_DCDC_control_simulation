@@ -1,10 +1,14 @@
-# 锂电池双向充放电
+# 锂电池+双向dcdc充放电 :zap:
 
 > - :tipping_hand_man:  基本原理和波形的核对，所有的模块双击会有help，可以参考着学习
 
 - 仿真文件
 
+  > 仿真文件统一存放再 gitee 远程仓库下: [gitee远程仓库url](https://gitee.com/tongji620_-group/tongji_micro_grid_program) :fire:
+
   ```shell
+  # base_path = "LithiumIonBattery/BidirectionalDCDC_BatteryCharge"  # 参考git仓库目录
+  
   ./Battery_charge_discharge_ChgDiscModeChange.slx   
   # latest 1.实现双向非隔离DCDC充放电（母线电压闭环方式）
   # 2.手动充放电切换逻辑 + 母线电压稳定
@@ -16,7 +20,7 @@
   # rawVersion: 双向非隔离DCDC，只能满足网侧电压 > 电池电压的情况
   
   ./Battery_charge_discharge_FSBB_DCDC.slx
-  # 四开关BuckBoost
+  # 四开关BuckBoost: 实现 buck-boost，类似高斯宝硬件结构
   ```
 
 - **需求描述 :necktie:**
@@ -36,20 +40,25 @@
 
 
 
-## DCDC
+## 测试目标
 
-- 双向非隔离DCDC：实现高斯宝结构的 **H 型全桥-双向非隔离 DCDC**
-  就是一个基本的H桥结构，每个开关管由三个并联组合来分流，可以实现电压双极性输出
-  ![双向非隔离DCDC_高斯宝.png](./docs/双向非隔离DCDC_高斯宝.png)
-- 测试：控制 dcdc 输出电压，维持电池模块（电池+dcdc）的输出功率恒定3kw～然后测试满充满放
+- 实现基本硬件电路：电池组+双向DCDC
 
+  - 电池组模块： 100ah, 电压范围 85-119V，可实现 SOC 输出
 
-
-
+  - 双向非隔离 DC/DC：DC/DC 结构参考高斯宝硬件电路 ，四开关 Buck-Boost，输入输出各8电容(160V,180UF)，开关频率 45k，电感20uh
+    ![双向非隔离DCDC_高斯宝.png](./docs/双向非隔离DCDC_高斯宝.png)
 
 
+- 控制 dcdc 输出电压，维持电池模块（电池+dcdc）的输出功率恒定3kw
+- 测试负载突卸，输出电压是否仍稳定于 96V
+- 测试电池满充满放：目前测试方案暂定为，输入电压跳变 102.5V -> 96V
 
-## 充放电的逻辑
+
+
+
+
+## 双向buck-boost测试
 
 > 目前实现了：1.双向充放电；2. 母线电压稳定+超调<1%；3. 满足电池组电压范围 85-112V的充放电
 >
@@ -98,6 +107,45 @@
 
 
 
+## FSBB 测试 :crossed_swords:
+
+> 控制算法参考论文 [Passivity Based Control of Four-Switch Buck-Boost DC-DC Converter without Operation Mode Detection](https://ieeexplore.ieee.org/document/9968779) + [youtube视频教程](https://www.youtube.com/watch?v=5YT7cERlMrg) :honey_pot:
+>
+> 仿真文件 `path = LithiumIonBattery/BidirectionalDCDC_BatteryCharge/Battery_charge_discharge_FSBB_DCDC.slx`
+
+### 仿真拓扑
+
+![FSBB_simulation_layout.jpg](./docs/FSBB_simulation_layout.jpg)
+
+
+
+
+
+### 论文参数测试
+
+仿真1.5s，$V_{in}$ 输入电压（电池一侧）初始24V，0.7s 跳变至 36V。输出参考电压 24V。负载初始 10Ω，0.4s时负载突卸，降至5Ω。
+
+- 开关间接控制信号 $u_1, u_2$ 未使用饱和环接
+  ![FSBB_PassivityBasedControlOfFSBB_paperParam_realization.jpg](./docs/FSBB_PassivityBasedControlOfFSBB_paperParam_realization.jpg)
+
+- 使用 [-1, 1] 的饱和环接：效果类似
+  ![FSBB_PassivityBasedControlOfFSBB_paperParam_realization_withSaturation.jpg](./docs/FSBB_PassivityBasedControlOfFSBB_paperParam_realization_withSaturation.jpg)
+
+
+
+### 更改为实际参数
+
+> **负载的初始大小**对仿真结果，Vc 输出电压结果的赋值影响很大
+
+- 电池 102.5 -> 93V （0.7s）; **0.4s 负载跳变从 6Ω-> 3Ω**，Vc=96V；PI、电容等参数使用论文中的值
+  ![FSBB_PassivityBasedControl_YiDongTest_Vc96_R6.jpg](./docs/FSBB_PassivityBasedControl_YiDongTest_Vc96_R6.jpg)
+
+- 电池 102.5 -> 93V （0.7s）**; 0.4s 负载跳变从 3Ω-> 1.5Ω**，Vc=96V；PI、电容等参数使用论文中的值
+  ![FSBB_PassivityBasedControl_YiDongTest_Vc96_R3.jpg](./docs/FSBB_PassivityBasedControl_YiDongTest_Vc96_R3.jpg)
+
+- 电池 102.5 -> 93V （0.7s）; 0.4s 负载跳变从 3Ω-> 1.5Ω，**Vc=55V**
+  ![FSBB_PassivityBasedControl_YiDongTest_Vc55_R3.jpg](./docs/FSBB_PassivityBasedControl_YiDongTest_Vc55_R3.jpg)
+
 
 
 ## 后续优化
@@ -107,13 +155,8 @@
 - 控制策略：目前使用 PI 控制
   - 模糊 PI
   - SMC 滑模控制
-  
-- 拓扑结构：目前使用非隔离双向DCDC（半桥：2个开关管）
-  - 隔离型DCDC（全桥》》4个开关管 + 逆变器）
-  
-  
-  
-- **充放电切换：目前为手动模式**，后续与风力发电整体进行联调，修改其切换策略，有了大的整体系统在进行修改。
+- 拓扑结构：目前使用非隔离双向DCDC，更新为隔离型DCDC
+- **充放电切换逻辑：目前为手动模式**，后续与风力发电整体进行联调，修改其切换策略，有了大的整体系统在进行修改。
 
 
 
@@ -159,11 +202,10 @@
 - 锂电池
 
   - 电池组内部考虑 SOC均衡
-    不建议搞，如果考虑电池内部组合情况，会出现**SOC不均衡环流的情况**，更加难以控制。
-    仿真开发周期更长，SOC均衡复杂，且数量越多越复杂。
-
+    咨询电网仿真工作人员，说不建议搞，如果考虑电池内部组合情况，会出现**SOC不均衡环流的情况**，更加难以控制。仿真开发周期更长，SOC均衡复杂，且数量越多越复杂。
+    
   - 电池参数
-
+  
     ```json
     {
         "Type": "Lithium-Ion"  // 磷酸铁锂电池
@@ -186,7 +228,7 @@
         }
     }
     ```
-
+  
     - 标称电压 Nominal_Voltage
     
       理论标称电压为 102.4V，但初始 SOC 设置为 80%，要调整一下。
