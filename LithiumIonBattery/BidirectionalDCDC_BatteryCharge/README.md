@@ -113,11 +113,27 @@
 >
 > 仿真文件 `path = LithiumIonBattery/BidirectionalDCDC_BatteryCharge/Battery_charge_discharge_FSBB_DCDC.slx`
 
+
+
 ### 仿真拓扑
 
 ![FSBB_simulation_layout.jpg](./docs/FSBB_simulation_layout.jpg)
 
+- 待调整参数 
 
+  >  目前不确定如何调整此参数 :question:
+
+  ```shell
+  P, I  # PI 模块
+  C, L, R_L  # 电容电感参数计算
+  saturation_range  # u1, u2 控制信号饱和环接参数
+  triangular_wave_frequency  # 三角波频率
+  z1, z2  # dumping_gains
+  ```
+
+- 存在问题
+
+  使用 switch 实现 if-else 的问题：咨询了一个电网里面做仿真的朋友，说这种需要切换状态的四开关buckBoost 不好实现，matlab里面仿真延迟很严重，会存在上个状态还没切换完成，实际变换到下一个状态的情况，他了解的都是把模式拆看单独看，每次只验证一种buck 或者 boost的情况。
 
 
 
@@ -139,12 +155,22 @@
 
 - 电池 102.5 -> 93V （0.7s）; **0.4s 负载跳变从 6Ω-> 3Ω**，Vc=96V；PI、电容等参数使用论文中的值
   ![FSBB_PassivityBasedControl_YiDongTest_Vc96_R6.jpg](./docs/FSBB_PassivityBasedControl_YiDongTest_Vc96_R6.jpg)
-
 - 电池 102.5 -> 93V （0.7s）**; 0.4s 负载跳变从 3Ω-> 1.5Ω**，Vc=96V；PI、电容等参数使用论文中的值
   ![FSBB_PassivityBasedControl_YiDongTest_Vc96_R3.jpg](./docs/FSBB_PassivityBasedControl_YiDongTest_Vc96_R3.jpg)
-
 - 电池 102.5 -> 93V （0.7s）; 0.4s 负载跳变从 3Ω-> 1.5Ω，**Vc=55V**
   ![FSBB_PassivityBasedControl_YiDongTest_Vc55_R3.jpg](./docs/FSBB_PassivityBasedControl_YiDongTest_Vc55_R3.jpg)
+
+
+
+- 使用实际电池模块：电池 102.5 -> 93V （0.7s）; **0.4s 负载跳变从 6Ω-> 3Ω**，Vc=96V；PI、电容等参数使用论文中的值
+  ![FSBB_PassivityBasedControl_YiDongTest_Vc96_R6_BatteryBlock.jpg](./docs/FSBB_PassivityBasedControl_YiDongTest_Vc96_R6_BatteryBlock.jpg)
+
+- 电容、电感更改为高斯宝提供参数
+
+  > - 高斯宝：输入输出各8电容(160V,180UF)，开关频率 45k，电感20uh；
+  > - 目前拓扑存在差异，**仅使用输出并联 8 个电容（使用一个电容 1440e-6代替），电感20uh**，开关频率使用 10k（45k仿真速度太慢）
+
+
 
 
 
