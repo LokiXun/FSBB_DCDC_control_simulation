@@ -5,6 +5,8 @@
 - 仿真文件
 
   > 仿真文件统一存放再 gitee 远程仓库下: [gitee远程仓库url](https://gitee.com/tongji620_-group/tongji_micro_grid_program) :fire:
+  >
+  > **:warning: Matlab Version: R2022**
 
   ```shell
   # base_path = "LithiumIonBattery/BidirectionalDCDC_BatteryCharge"  # 参考git仓库目录
