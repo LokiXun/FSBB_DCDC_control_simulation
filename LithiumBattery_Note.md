@@ -876,7 +876,7 @@ A boost converter is a DC/DC switch mode power supply that is intended to boost 
 ![双向非隔离DCDC_高斯宝.png](./docs/双向非隔离DCDC_高斯宝.png)
 
 单桥臂 3MOS并联（每个 mos 采用相同的开关频率，同时通断控制）
-输入输出各8电容(160V,180UF)，开关频率45k，电感20uh
+输入输出各8电容(160V,180UF)，开关频率40k，电感20uh
 
 
 
@@ -953,6 +953,50 @@ A boost converter is a DC/DC switch mode power supply that is intended to boost 
 
 > [matlab 官方 FSBB 例子](https://ww2.mathworks.cn/help/sps/ug/four-switch-buck-boost-converter-control.html;jsessionid=c34f863bf266bc8e10c21c4b9fe6)
 > [Youtube FSBB教程](https://www.youtube.com/watch?v=5YT7cERlMrg)
+
+
+
+### 电池充电
+
+> [硬件电路充放电方式参考规格书](./docs/YiDong_documents/G15××双向DCDC模块规格.pdf)
+>
+> 快充电池在`Constant Current Regulation Mode`阶段，增加电流实现加速充电
+>
+> - [Battery C Rate 定义:star:](https://www.power-sonic.com/blog/what-is-a-battery-c-rating/): **measurement of current** in which a battery is charged or discharged at. **描述充放电速率**
+>   $$
+>   E_r = \text{Rated Energy(Ah)},\quad C_r = \text{C Rate}\\
+>   I = \text{Current of charge / discharge(Amps)}\\
+>   I = E_r * C_r (Amps)\\
+>   time = \frac{1}{C_r} (hours)
+>   $$
+>   10Ah(Rated Energy额定电量) 的电池 1C 充电，表明可以按 10A 的电流在 1h 实现满充。0.5C 放电：电池以 10*0.5 = 5A 放电，可以维持 10/5=2h
+>   If it is a 1000mAh battery, 1C means the charging current is 1A; for a 2000mAh battery, 1C means the charging current is 2A, and so on.
+
+- 锂电池充电 3 个模式 [参考](https://www.grepow.com/blog/what-are-the-3-stages-of-lithium-battery-charging.html)
+  ![BatteryChargerOperationModes.jpg](./docs/BatteryChargerOperationModes.jpg)
+
+  - Pre-charge Mode
+    **Definition: When the Battery is completely empty, the charger first charges the lithium battery with a constant current with a small current to make it slowly reactivate.**
+    In the pre-charge phase, the battery is charged at a **low-rate** (typical of 1/10 the Constant Current Regulation Mode) when the battery cell voltage is below **3.0 V**. This provides **recovery of the passivating layer** which might be dissolved after prolonged storage in deep discharge state, also prevents overheating at 1C charge when partial copper decomposition appears on anode-shorted cells on over-discharge. When the battery cell voltage reaches **3.0 V**, **the charger will increase the constant current and gradually increase the voltage**, which is the main stage of lithium battery charging. 恢复钝化层（久置后会消失），防止1C充电时候过热。
+
+  - Constant Current Regulation Mode (CC) 恒流充电，电池电压程类似指数曲线升高
+    **Definition: Replaces ≈80% of the battery's state of charge at the fastest possible rate.** 
+    This stage typically leaves the batteries at around **80%** of their capacity. It accomplishes this by maintaining a constant relatively high current. The current is held constant against the rising internal resistance to charge current by raising the battery voltage. 
+
+  - Constant Voltage Regulation Mode (CV) 恒压充电（防止过高电压损伤电池）
+    **Definition: Voltage is held constant in order to prevent damage and keep batteries at a full charge, replenishes the remaining 20% of charge.**
+    Maintaining a constant voltage gradually **reduces the current until it reaches around 0.1 C**, at which point charging is terminated. If the charger is left connected to the battery, a periodic ‘top-up’ charge is applied to counteract battery self-discharge. The top-up charge is typically initiated when the open-circuit voltage of the battery drops to less than 3.9V to 4V, and terminates when the full-charge voltage of 4.1V to 4.2V is again attained.
+
+    
+
+  
+
+- 高斯宝硬件充放电方式
+
+  - 正向：模块正向充电时，85.85V-101V 恒流 30A 输出，101V-116.15V 恒功率 3000W 输出，85.85V 以下 是否需要内缩根据后期调试并机来确定。
+  - 逆向：模块反向放电时，87.9V-103.5V 恒流 29A 输出，103.5V-119V 恒功率 3000W 输出，87.9V 以下是 否需要内缩根据后期调试并机来确定。
+
+  
 
 
 
