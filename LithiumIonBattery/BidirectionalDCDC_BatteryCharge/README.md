@@ -174,6 +174,22 @@
 
 
 
+### 负载突变压降
+
+修改参数后，实现电压突变 < 2%
+
+```shell
+P=15, I=1000  # PI 模块
+C_motherLine=1440e-6, L=20e-6, R_L=0.004  # 电容电感参数计算
+saturation_range=None "not used"  # u1, u2 控制信号饱和环接参数
+triangular_wave_frequency=45e3  # 三角波频率
+z1=6, z2=0.08  # dumping_gains
+```
+
+![FSBB_PassivityBasedControl_YiDongTest_Vc96_R6_optimize_SuddenVoltageDrop.jpg](./docs/FSBB_PassivityBasedControl_YiDongTest_Vc96_R6_optimize_SuddenVoltageDrop.jpg)
+
+
+
 
 
 ## 后续优化
