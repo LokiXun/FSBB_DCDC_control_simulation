@@ -949,8 +949,6 @@ A boost converter is a DC/DC switch mode power supply that is intended to boost 
 
 输入电压 $V_{in}$ 先与设定好的临界点电压进行比较，从而判断电路处于何种工作模式；其次再与输出电压进行比较，完成系统的闭环控制，最后输出四路 PWM 脉冲控制开关管的导通与关断。 
 
-
-
 > [matlab 官方 FSBB 例子](https://ww2.mathworks.cn/help/sps/ug/four-switch-buck-boost-converter-control.html;jsessionid=c34f863bf266bc8e10c21c4b9fe6)
 > [Youtube FSBB教程](https://www.youtube.com/watch?v=5YT7cERlMrg)
 
@@ -993,10 +991,17 @@ A boost converter is a DC/DC switch mode power supply that is intended to boost 
 
 - 高斯宝硬件充放电方式
 
+  > 参考 "规格书" P14
+  
   - 正向：模块正向充电时，85.85V-101V 恒流 30A 输出，101V-116.15V 恒功率 3000W 输出，85.85V 以下 是否需要内缩根据后期调试并机来确定。
   - 逆向：模块反向放电时，87.9V-103.5V 恒流 29A 输出，103.5V-119V 恒功率 3000W 输出，87.9V 以下是 否需要内缩根据后期调试并机来确定。
-
   
+  恒功率：电压 116V，若要 3kw 输出功率，需要电流 26A。**如果电流不够，就减小输出端的电阻，使得电流增加**，直到 26A 左右，进入恒功率状态。此时如果再减小电阻（why）电流继续增加，若要维持 3kw，需要减小输出电压。如果输出电压降低到101V，则转为恒流（**恒功率和恒流的分界点**），这时候你继续减小电阻，同样降低输出电压，使输出电流恒定在30 A
+  
+  - :question: 期望的电流根据 3kw/电压 算出来，如何控制电流？
+    使用控制输出端电阻的方式，输出端电阻是 dcdc 的内阻？**电阻值怎么设置**？
+
+
 
 
 
