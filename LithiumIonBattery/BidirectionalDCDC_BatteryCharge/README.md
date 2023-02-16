@@ -190,6 +190,25 @@ z1=6, z2=0.08  # dumping_gains
 
 
 
+### 恒流放电
+
+电池放电，给负载供电
+
+参考 FSBB IEEE论文，控制变量更改为负载电流，电感电流
+
+- i_ref = 15A，输出端只有一个 6Ω 负载
+  ![FSBB_constantCurrent_batterydischarge15A_6R.jpg](./docs/FSBB_constantCurrent_batterydischarge15A_6R.jpg)
+
+  - 0.3s 并联一个 6 Ω电阻，负载变为 3 Ω（负载突卸）
+    ![FSBB_constantCurrent_batterydischarge15A_6-3R.jpg](./docs/FSBB_constantCurrent_batterydischarge15A_6-3R.jpg)
+
+  
+
+- i_ref = 30A 则达不到参考值的恒流
+  ![FSBB_constantCurrent_batterydischarge30A_6-3R.jpg](./docs/FSBB_constantCurrent_batterydischarge30A_6-3R.jpg)
+
+
+
 
 
 ## 后续优化
