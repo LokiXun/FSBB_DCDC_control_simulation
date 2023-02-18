@@ -192,20 +192,26 @@ z1=6, z2=0.08  # dumping_gains
 
 ### 恒流放电
 
-电池放电，给负载供电
+能够实现 dcdc 输出恒流；外部电源给 dcdc 内部电池恒流充电
 
-参考 FSBB IEEE论文，控制变量更改为负载电流，电感电流
+- 期望的输出电流值（恒流）i_out_ref = 15A，dcdc 恒流输出，0.3s 负载突加（6Ω，再并联一个 6Ω）
+  ![FSBB_constantCurrent_IoutRef15A_6-3ohm.jpg](./docs/FSBB_constantCurrent_IoutRef15A_6-3ohm.jpg)
 
-- i_ref = 15A，输出端只有一个 6Ω 负载
-  ![FSBB_constantCurrent_batterydischarge15A_6R.jpg](./docs/FSBB_constantCurrent_batterydischarge15A_6R.jpg)
+- 期望的输出电流值（恒流）i_out_ref = 30A，dcdc 恒流输出，0.3s 负载突加（6Ω，再并联一个 6Ω）
 
-  - 0.3s 并联一个 6 Ω电阻，负载变为 3 Ω（负载突卸）
-    ![FSBB_constantCurrent_batterydischarge15A_6-3R.jpg](./docs/FSBB_constantCurrent_batterydischarge15A_6-3R.jpg)
+  给外部电池充电
+  ![FSBB_constantCurrent_IoutRef30A_6-3ohm.jpg](./docs/FSBB_constantCurrent_IoutRef30A_6-3ohm.jpg)
 
-  
+  电池 SOC 变化情况：左侧为 dcdc 内部电池，右侧为输出端连接的电池。0.3s 之前恒流充电，之后突加负载（并联一个 6ohm）
 
-- i_ref = 30A 则达不到参考值的恒流
-  ![FSBB_constantCurrent_batterydischarge30A_6-3R.jpg](./docs/FSBB_constantCurrent_batterydischarge30A_6-3R.jpg)
+  ![FSBB_constantCurrent_IoutRef30A_6-3ohm_batterySOC.jpg](./docs/FSBB_constantCurrent_IoutRef30A_6-3ohm_batterySOC.jpg)
+
+
+
+- :question: 观察恒流模式下，电池电压在 0s 刚启动的时候接近 0，电流接近-8000
+  ![FSBB_constantCurrent_IoutRef30A_6-3ohm_Problem_initialSurge.jpg](./docs/FSBB_constantCurrent_IoutRef30A_6-3ohm_Problem_initialSurge.jpg)
+
+
 
 
 
