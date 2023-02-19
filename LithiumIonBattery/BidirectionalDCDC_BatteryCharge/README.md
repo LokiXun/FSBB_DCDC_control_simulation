@@ -1,8 +1,10 @@
-# 锂电池+双向dcdc充放电 :zap:
+# FSBB_battery_control :zap:
 
-> - :tipping_hand_man:  基本原理和波形的核对，所有的模块双击会有help，可以参考着学习
+Author LokiXun
 
-- 仿真文件
+![FSBB_simulation_layout.jpg](./docs/FSBB_simulation_layout.jpg)
+
+- Simulation file
 
   > 仿真文件统一存放再 gitee 远程仓库下: [gitee远程仓库url](https://gitee.com/tongji620_-group/tongji_micro_grid_program) :fire:
   >
@@ -22,10 +24,10 @@
   # rawVersion: 双向非隔离DCDC，只能满足网侧电压 > 电池电压的情况
   
   ./Battery_charge_discharge_FSBB_DCDC.slx
-  # 四开关BuckBoost: 实现 buck-boost，类似高斯宝硬件结构
+  # 四开关BuckBoost: 实现四开关 buck-boost
   ```
 
-- **需求描述 :necktie:**
+- **requirement description:necktie:**
 
   > - 电池组参数信息参考
   >   [LFP-100Ah（8S）捆扎模组产品 参考](https://epropulsion.feishu.cn/file/boxcnnuTOKmcj1f6dT2SQ5Kt2rf)
@@ -42,7 +44,7 @@
 
 
 
-## 测试目标
+## Simulation Target
 
 - 实现基本硬件电路：电池组+双向DCDC
 
@@ -60,7 +62,7 @@
 
 
 
-## 双向buck-boost测试
+## Bi-direction buck-boost
 
 > 目前实现了：1.双向充放电；2. 母线电压稳定+超调<1%；3. 满足电池组电压范围 85-112V的充放电
 >
@@ -109,15 +111,16 @@
 
 
 
-## FSBB 测试 :crossed_swords:
+## FSBB  :crossed_swords:
 
-> 控制算法参考论文 [Passivity Based Control of Four-Switch Buck-Boost DC-DC Converter without Operation Mode Detection](https://ieeexplore.ieee.org/document/9968779) + [youtube视频教程](https://www.youtube.com/watch?v=5YT7cERlMrg) :honey_pot:
+> referenced paper:  [Passivity Based Control of Four-Switch Buck-Boost DC-DC Converter without Operation Mode Detection](https://ieeexplore.ieee.org/document/9968779) 
+> [paper's youtube video tutorial](https://www.youtube.com/watch?v=5YT7cERlMrg) :honey_pot:
 >
 > 仿真文件 `path = LithiumIonBattery/BidirectionalDCDC_BatteryCharge/Battery_charge_discharge_FSBB_DCDC.slx`
 
 
 
-### 仿真拓扑
+### Topology
 
 ![FSBB_simulation_layout.jpg](./docs/FSBB_simulation_layout.jpg)
 
@@ -139,7 +142,7 @@
 
 
 
-### 论文参数测试
+### 论文复现
 
 仿真1.5s，$V_{in}$ 输入电压（电池一侧）初始24V，0.7s 跳变至 36V。输出参考电压 24V。负载初始 10Ω，0.4s时负载突卸，降至5Ω。
 
@@ -151,7 +154,9 @@
 
 
 
-### 更改为实际参数
+
+
+### Constant Voltage
 
 > **负载的初始大小**对仿真结果，Vc 输出电压结果的赋值影响很大
 
@@ -172,9 +177,7 @@
   > - 高斯宝：输入输出各8电容(160V,180UF)，开关频率 45k，电感20uh；
   > - 目前拓扑存在差异，**仅使用输出并联 8 个电容（使用一个电容 1440e-6代替），电感20uh**，开关频率使用 10k（45k仿真速度太慢）
 
-
-
-### 负载突变压降
+#### Sudden Load drop
 
 修改参数后，实现电压突变 < 2%
 
@@ -190,7 +193,7 @@ z1=6, z2=0.08  # dumping_gains
 
 
 
-### 恒流放电
+### Constant Current
 
 能够实现 dcdc 输出恒流；外部电源给 dcdc 内部电池恒流充电
 
@@ -217,7 +220,7 @@ z1=6, z2=0.08  # dumping_gains
 
 
 
-## 后续优化
+## Later improvement
 
 该部分锂电池模块，目前实现了基本充放电需求。待连入整体微电网结构，进一步优化，**主要分为两方面的优化：控制策略、拓扑结构**
 
