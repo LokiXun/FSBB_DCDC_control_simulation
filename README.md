@@ -2,7 +2,9 @@
 
 Author LokiXun
 
-![FSBB_simulation_layout.jpg](./docs/FSBB_simulation_layout.jpg)
+![FSBB_simulation_layout.jpg](./LithiumIonBattery/BidirectionalDCDC_BatteryCharge/docs/FSBB_simulation_layout.jpg)
+
+> FSBB DC/DC referenced paper:  [Passivity Based Control of Four-Switch Buck-Boost DC-DC Converter without Operation Mode Detection](https://ieeexplore.ieee.org/document/9968779) 
 
 - Simulation file
 
@@ -88,10 +90,10 @@ Author LokiXun
 
 母线电压100V(>96V)，给电池充电。电池以电流 -5A 进行充电，电压稳定在 92.15V ：电池 SOC 上升，电流恒流
 
-![BatteryCharge_BatteryCurrent-5A.jpg](./docs/BatteryCharge_BatteryCurrent-5A.jpg)
+![BatteryCharge_BatteryCurrent-5A.jpg](./LithiumIonBattery/BidirectionalDCDC_BatteryCharge/docs/BatteryCharge_BatteryCurrent-5A.jpg)
 
 此时的母线一侧电压
-![BatteryCharge_MainBranchVoltageDrop.jpg](./docs/BatteryCharge_MainBranchVoltageDrop.jpg)
+![BatteryCharge_MainBranchVoltageDrop.jpg](./LithiumIonBattery/BidirectionalDCDC_BatteryCharge/docs/BatteryCharge_MainBranchVoltageDrop.jpg)
 
 
 
@@ -102,12 +104,12 @@ Author LokiXun
 母线一侧电压小于96V（使用90V测试）：由蓄电池放电曲线稳定在 96V，超调量<0.5%；电源控制模块：使用 `mode==3` 使用20A恒流放电
 
 - overall
-  ![BatteryCharge_BatteryDischarge_MainBranchVoltage96VResult_1.jpg](./docs/BatteryCharge_BatteryDischarge_MainBranchVoltage96VResult_1.jpg)
+  ![BatteryCharge_BatteryDischarge_MainBranchVoltage96VResult_1.jpg](./LithiumIonBattery/BidirectionalDCDC_BatteryCharge/docs/BatteryCharge_BatteryDischarge_MainBranchVoltage96VResult_1.jpg)
 - detail
-  ![BatteryCharge_BatteryDischarge_MainBranchVoltage96VResult_2_detail.jpg](./docs/BatteryCharge_BatteryDischarge_MainBranchVoltage96VResult_2_detail.jpg)
+  ![BatteryCharge_BatteryDischarge_MainBranchVoltage96VResult_2_detail.jpg](./LithiumIonBattery/BidirectionalDCDC_BatteryCharge/docs/BatteryCharge_BatteryDischarge_MainBranchVoltage96VResult_2_detail.jpg)
 
 - 电池SOC 、电压曲线
-  ![BatteryCharge_BatteryDischarge_BatterySOCdecrease.jpg](./docs/BatteryCharge_BatteryDischarge_BatterySOCdecrease.jpg)
+  ![BatteryCharge_BatteryDischarge_BatterySOCdecrease.jpg](./LithiumIonBattery/BidirectionalDCDC_BatteryCharge/docs/BatteryCharge_BatteryDischarge_BatterySOCdecrease.jpg)
 
 
 
@@ -122,7 +124,7 @@ Author LokiXun
 
 ### Topology
 
-![FSBB_simulation_layout.jpg](./docs/FSBB_simulation_layout.jpg)
+![FSBB_simulation_layout.jpg](./LithiumIonBattery/BidirectionalDCDC_BatteryCharge/docs/FSBB_simulation_layout.jpg)
 
 - 待调整参数 
 
@@ -147,10 +149,10 @@ Author LokiXun
 仿真1.5s，$V_{in}$ 输入电压（电池一侧）初始24V，0.7s 跳变至 36V。输出参考电压 24V。负载初始 10Ω，0.4s时负载突卸，降至5Ω。
 
 - 开关间接控制信号 $u_1, u_2$ 未使用饱和环接
-  ![FSBB_PassivityBasedControlOfFSBB_paperParam_realization.jpg](./docs/FSBB_PassivityBasedControlOfFSBB_paperParam_realization.jpg)
+  ![FSBB_PassivityBasedControlOfFSBB_paperParam_realization.jpg](./LithiumIonBattery/BidirectionalDCDC_BatteryCharge/docs/FSBB_PassivityBasedControlOfFSBB_paperParam_realization.jpg)
 
 - 使用 [-1, 1] 的饱和环接：效果类似
-  ![FSBB_PassivityBasedControlOfFSBB_paperParam_realization_withSaturation.jpg](./docs/FSBB_PassivityBasedControlOfFSBB_paperParam_realization_withSaturation.jpg)
+  ![FSBB_PassivityBasedControlOfFSBB_paperParam_realization_withSaturation.jpg](./LithiumIonBattery/BidirectionalDCDC_BatteryCharge/docs/FSBB_PassivityBasedControlOfFSBB_paperParam_realization_withSaturation.jpg)
 
 
 
@@ -161,11 +163,11 @@ Author LokiXun
 > **负载的初始大小**对仿真结果，Vc 输出电压结果的赋值影响很大
 
 - 电池 102.5 -> 93V （0.7s）; **0.4s 负载跳变从 6Ω-> 3Ω**，Vc=96V；PI、电容等参数使用论文中的值
-  ![FSBB_PassivityBasedControl_YiDongTest_Vc96_R6.jpg](./docs/FSBB_PassivityBasedControl_YiDongTest_Vc96_R6.jpg)
+  ![FSBB_PassivityBasedControl_YiDongTest_Vc96_R6.jpg](./LithiumIonBattery/BidirectionalDCDC_BatteryCharge/docs/FSBB_PassivityBasedControl_YiDongTest_Vc96_R6.jpg)
 - 电池 102.5 -> 93V （0.7s）**; 0.4s 负载跳变从 3Ω-> 1.5Ω**，Vc=96V；PI、电容等参数使用论文中的值
-  ![FSBB_PassivityBasedControl_YiDongTest_Vc96_R3.jpg](./docs/FSBB_PassivityBasedControl_YiDongTest_Vc96_R3.jpg)
+  ![FSBB_PassivityBasedControl_YiDongTest_Vc96_R3.jpg](./LithiumIonBattery/BidirectionalDCDC_BatteryCharge/docs/FSBB_PassivityBasedControl_YiDongTest_Vc96_R3.jpg)
 - 电池 102.5 -> 93V （0.7s）; 0.4s 负载跳变从 3Ω-> 1.5Ω，**Vc=55V**
-  ![FSBB_PassivityBasedControl_YiDongTest_Vc55_R3.jpg](./docs/FSBB_PassivityBasedControl_YiDongTest_Vc55_R3.jpg)
+  ![FSBB_PassivityBasedControl_YiDongTest_Vc55_R3.jpg](./LithiumIonBattery/BidirectionalDCDC_BatteryCharge/docs/FSBB_PassivityBasedControl_YiDongTest_Vc55_R3.jpg)
 
 
 
@@ -186,7 +188,7 @@ triangular_wave_frequency=45e3  # 三角波频率
 z1=6, z2=0.08  # dumping_gains
 ```
 
-![FSBB_PassivityBasedControl_YiDongTest_Vc96_R6_optimize_SuddenVoltageDrop.jpg](./docs/FSBB_PassivityBasedControl_YiDongTest_Vc96_R6_optimize_SuddenVoltageDrop.jpg)
+![FSBB_PassivityBasedControl_YiDongTest_Vc96_R6_optimize_SuddenVoltageDrop.jpg](./LithiumIonBattery/BidirectionalDCDC_BatteryCharge/docs/FSBB_PassivityBasedControl_YiDongTest_Vc96_R6_optimize_SuddenVoltageDrop.jpg)
 
 
 
@@ -195,21 +197,21 @@ z1=6, z2=0.08  # dumping_gains
 能够实现 dcdc 输出恒流；外部电源给 dcdc 内部电池恒流充电
 
 - 期望的输出电流值（恒流）i_out_ref = 15A，dcdc 恒流输出，0.3s 负载突加（6Ω，再并联一个 6Ω）
-  ![FSBB_constantCurrent_IoutRef15A_6-3ohm.jpg](./docs/FSBB_constantCurrent_IoutRef15A_6-3ohm.jpg)
+  ![FSBB_constantCurrent_IoutRef15A_6-3ohm.jpg](./LithiumIonBattery/BidirectionalDCDC_BatteryCharge/docs/FSBB_constantCurrent_IoutRef15A_6-3ohm.jpg)
 
 - 期望的输出电流值（恒流）i_out_ref = 30A，dcdc 恒流输出，0.3s 负载突加（6Ω，再并联一个 6Ω）
 
   给外部电池充电
-  ![FSBB_constantCurrent_IoutRef30A_6-3ohm.jpg](./docs/FSBB_constantCurrent_IoutRef30A_6-3ohm.jpg)
+  ![FSBB_constantCurrent_IoutRef30A_6-3ohm.jpg](./LithiumIonBattery/BidirectionalDCDC_BatteryCharge/docs/FSBB_constantCurrent_IoutRef30A_6-3ohm.jpg)
 
   电池 SOC 变化情况：左侧为 dcdc 内部电池，右侧为输出端连接的电池。0.3s 之前恒流充电，之后突加负载（并联一个 6ohm）
 
-  ![FSBB_constantCurrent_IoutRef30A_6-3ohm_batterySOC.jpg](./docs/FSBB_constantCurrent_IoutRef30A_6-3ohm_batterySOC.jpg)
+  ![FSBB_constantCurrent_IoutRef30A_6-3ohm_batterySOC.jpg](./LithiumIonBattery/BidirectionalDCDC_BatteryCharge/docs/FSBB_constantCurrent_IoutRef30A_6-3ohm_batterySOC.jpg)
 
 
 
 - :question: 观察恒流模式下，电池电压在 0s 刚启动的时候接近 0，电流接近-8000
-  ![FSBB_constantCurrent_IoutRef30A_6-3ohm_Problem_initialSurge.jpg](./docs/FSBB_constantCurrent_IoutRef30A_6-3ohm_Problem_initialSurge.jpg)
+  ![FSBB_constantCurrent_IoutRef30A_6-3ohm_Problem_initialSurge.jpg](./LithiumIonBattery/BidirectionalDCDC_BatteryCharge/docs/FSBB_constantCurrent_IoutRef30A_6-3ohm_Problem_initialSurge.jpg)
 
 
 
