@@ -186,7 +186,29 @@ triangular_wave_frequency=45e3  # 三角波频率
 z1=6, z2=0.08  # dumping_gains
 ```
 
-![FSBB_PassivityBasedControl_YiDongTest_Vc96_R6_optimize_SuddenVoltageDrop.jpg](./docs/FSBB_PassivityBasedControl_YiDongTest_Vc96_R6_optimize_SuddenVoltageDrop.jpg)
+
+
+**恒压放电**
+
+- 输出端仅连接负载，0.3s负载突加 6ohm -》3ohm![FSBB_constantVoltage_discharge_6-3ohm.jpg](./docs/FSBB_constantVoltage_discharge_6-3ohm.jpg)
+
+- 输出端连接：SOC=80% 的电池模块
+  ![FSBB_constantVoltage_discharge_connect_output_battery.jpg](./docs/FSBB_constantVoltage_discharge_connect_output_battery.jpg)
+- 输出连接电池 + 负载（0.3s 负载突加）
+  ![FSBB_constantVoltage_output_battery+6-3ohm.jpg](./docs/FSBB_constantVoltage_output_battery+6-3ohm.jpg)
+
+- 输出连接 96V 电压源 + 负载（0.3s 负载突加）
+  ![FSBB_constantVoltage_output_96Vbus+6ohm.jpg](./docs/FSBB_constantVoltage_output_96Vbus+6ohm.jpg)
+
+
+
+**恒压给 DC/DC 内电池充电**
+
+![FSBB_constantVoltage_charge_output_battery_input_96Vbus+6ohm.jpg](./docs/FSBB_constantVoltage_charge_output_battery_input_96Vbus+6ohm.jpg)
+
+
+
+
 
 
 
@@ -213,6 +235,10 @@ z1=6, z2=0.08  # dumping_gains
 
 
 
+### constant Power :shit: TODO
+
+
+
 
 
 
@@ -231,16 +257,14 @@ z1=6, z2=0.08  # dumping_gains
 
 ### QA
 
+- 恒流、恒压无法稳定在参考值？
+  调整电池串联的电阻，或者母线电压源串联的电阻
+
+
+
 - DCDC 
 
-  - 电路里面，电容、电感的值如何选取：**参数根据波形调试，没有啥理论计算**
-  - DCDC 结构
-
-  > 双向非隔离型 BuckBoost 电路，Q1Q2互补关系》》输入门信号 S1、S2 互补（方波高低频信号）
-  >
-  > [参考](https://www.bilibili.com/read/cv12062283)
-
-  这个脉冲信号在充放电两个情况下，后续电压波形就稳定了，脉冲类似。
+  电路里面，电容、电感的值如何选取：**参数根据波形调试**
 
 
 
