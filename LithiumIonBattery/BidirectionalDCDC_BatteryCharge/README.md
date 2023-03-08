@@ -274,6 +274,8 @@ z1=6, z2=0.08  # dumping_gains
 
 恒功率，使用电流恒流实现。对于某一时刻的电流参考值，根据当前输出电压计算出来  $I_{ref}= P / U_{out}$。
 
+**Battery discharge**
+
 ```
 45kHz
 40e-6H
@@ -285,6 +287,12 @@ z1=6, z2=0.08  # dumping_gains
 负载突卸时的功率曲线
 
 ![FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor_LoadSuddenChange_details.jpg](./docs/FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor_LoadSuddenChange_details.jpg)
+
+
+
+**charge Battery**
+
+![FSBB_constantPower_charge_6-3ohm_withDMinductor_40uH_mainInductor.jpg](./docs/FSBB_constantPower_charge_6-3ohm_withDMinductor_40uH_mainInductor.jpg)
 
 
 
