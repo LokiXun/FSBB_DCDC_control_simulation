@@ -233,11 +233,58 @@ z1=6, z2=0.08  # dumping_gains
 - :question: 观察恒流模式下，电池电压在 0s 刚启动的时候接近 0，电流接近-8000
   ![FSBB_constantCurrent_IoutRef30A_6-3ohm_Problem_initialSurge.jpg](./docs/FSBB_constantCurrent_IoutRef30A_6-3ohm_Problem_initialSurge.jpg)
 
+- 规格书中的`电流设置精度`
+
+  给电池恒流充电，充电电流是50A，而我的电源检测的电流也是50A，这就是没有误差，如果我上报是51A就代表有1A的误差
+
+- :question: 恒流模式下，电流纹波太大，接近2A
+
+  电流纹波在电感上产生的，取决于电感电流 $\triangle{}I$ 的变化量，加大电感或者开关频率会有改善。电源规格书都没有电流纹波这个东西
 
 
-### constant Power :shit: TODO
+
+#### Lower Current oscillation
+
+**根据实际电路修改拓扑，在输入输出端增加两个$2.2e-6H$ 的差模电阻 **
+
+![FSBB_constantCurrent_discharge_6-3ohm_withDMinductor_20uH_mainInductor.jpg](./docs/FSBB_constantCurrent_discharge_6-3ohm_withDMinductor_20uH_mainInductor.jpg)
+
+```shell
+45e3  # 开关频率 Hz
+20e-6  # 主电感 H
+2.2e-6  # 差模电感 H
+
+```
+
+增大主电感至 $40e-6 H$，输出电流纹波略微减小
+
+![FSBB_constantCurrent_discharge_6-3ohm_withDMinductor.jpg](./docs/FSBB_constantCurrent_discharge_6-3ohm_withDMinductor_40uH_mainInductor.jpg)
 
 
+
+80e-6 H 主电感 + 100hz
+
+![FSBB_constantCurrent_discharge_6-3ohm_withDMinductor_80uH_mainInductor_100Hz.jpg](./docs/FSBB_constantCurrent_discharge_6-3ohm_withDMinductor_80uH_mainInductor_100Hz.jpg)
+
+
+
+
+
+### constant Power
+
+恒功率，使用电流恒流实现。对于某一时刻的电流参考值，根据当前输出电压计算出来  $I_{ref}= P / U_{out}$。
+
+```
+45kHz
+40e-6H
+2.2e-6H
+```
+
+![FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor.jpg](./docs/FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor.jpg)
+
+负载突卸时的功率曲线
+
+![FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor_LoadSuddenChange_details.jpg](./docs/FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor_LoadSuddenChange_details.jpg)
 
 
 
