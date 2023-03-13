@@ -118,6 +118,32 @@ Author LokiXun
 >
 > 仿真文件 `path = LithiumIonBattery/BidirectionalDCDC_BatteryCharge/Battery_charge_discharge_FSBB_DCDC.slx`
 
+### TODO :turtle:
+
+- 充放电模块功能测试
+
+  - [x] 搭建硬件类似拓扑，实现恒压、恒流、恒功率模块
+
+  - [x] 恒流纹波太大
+
+    **调整电路拓扑**，在输入输出增加差模电感，配合 PI 控制，降低电流纹波
+
+    - [x] 调整恒压模块 `u1,u2` 推导公式
+      1. 简化版本：用一个差模电感代替输入输出的两个查谟电阻
+      2. 精确版本：公式中输入端的差模电感组合 u1，输出端差模电感组合 u2，更新 u1，u2 的计算公式
+
+  - [ ] 充电模式切换
+
+    参考高斯宝规格书，实现恒流-恒功率切换
+
+  - [ ] 满充-满放-满充
+
+- 模块封装
+
+  - [ ] 整合充电、放电模块，使用 2 个标志位进行手动切换
+
+    使用 `simulink if-then` 模块
+
 
 
 ### Topology
