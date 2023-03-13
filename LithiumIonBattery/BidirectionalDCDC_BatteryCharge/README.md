@@ -128,19 +128,21 @@ Author LokiXun
 
     **调整电路拓扑**，在输入输出增加差模电感，配合 PI 控制，降低电流纹波
 
-    - [x] 调整恒压模块 `u1,u2` 推导公式
+    - [x] 调整恒压模块 `u1,u2` 推导公式，目前用的简化版本方式，效果可以
       1. 简化版本：用一个差模电感代替输入输出的两个查谟电阻
       2. 精确版本：公式中输入端的差模电感组合 u1，输出端差模电感组合 u2，更新 u1，u2 的计算公式
 
-  - [ ] 充电模式切换
+  - [x] 充电模式切换
 
     参考高斯宝规格书，实现恒流-恒功率切换
+
+    - [ ] 电压在103.5V零界点切换存在问题，电压波动剧烈，从而造成恒功率失效，电流的参考值根据 U 计算出来也会波对剧烈
 
   - [ ] 满充-满放-满充
 
 - 模块封装
 
-  - [ ] 整合充电、放电模块，使用 2 个标志位进行手动切换
+  - [x] 整合充电、放电模块，使用 2 个标志位进行手动切换
 
     使用 `simulink if-then` 模块
 
@@ -341,8 +343,6 @@ z1=6, z2=0.08  # dumping_gains
 - 恒流、恒压无法稳定在参考值？
   调整电池串联的电阻，或者母线电压源串联的电阻
 
-
-
 - DCDC 
 
   电路里面，电容、电感的值如何选取：**参数根据波形调试**
@@ -366,10 +366,46 @@ z1=6, z2=0.08  # dumping_gains
 
   
 
-- 三种模式各自功能：**电压电流双闭环，与恒流充放电如何切换呢？**
-  **电压电流双闭环（维持母线96V稳定）**、恒流-5A（电池充电）、恒流20A（电池放电）的切换，**具体的切换规则需要看具体场景**：因为实际电网会存在很多情况，比如，切除负荷，单独给蓄电池充电，或者蓄电池检查性放电。
+- if-Block
 
-  - 当下只能手动切换，后期放在风力系统可以动态
+  > [参考](https://ww2.mathworks.cn/help/simulink/slref/if.html)
+
+  The If block, along with [If Action Subsystem](https://ww2.mathworks.cn/help/simulink/slref/ifactionsubsystem.html) blocks that contain an [Action Port](https://ww2.mathworks.cn/help/simulink/slref/actionport.html) block, implements if-else logic to control subsystem execution.
+
+  - output
+
+    `Action` — Action signal for an If Action Subsystem block
+
+    Outputs from the `if`, `else`, and `elseif` ports are **action signals** to If Action Subsystem blocks.
+
+  **merge**
+
+  用于将多个 `if-action` 的 output 同一变量结果合并，merge 模块使**用最新更新的数据**。
+  The output value at any time is equal to the **most recently computed output** of its driving blocks.
+
+  - :question: Do not branch a signal that is input to a Merge block.
+    要输入 merge 的信号不可以分支用到别的地方。PWM信号发生器里面 u1, u2 取反的关系，不能直接将 u1，u2 连到各自的 merge。
+
+    If a signal line goes to a Merge block, this signal line can't go anywhere else (branched). If you really need to use this signal line somewhere else, insert a **Signal Conversion block**  and set it to do "Signal Copy".  没用。。
+
+    [Solution ref](https://ww2.mathworks.cn/en/support/search.html/answers/1699700-branched-signals-cannot-be-fed-into-a-merge-block.html?fq%5B%5D=asset_type_name:answer&fq%5B%5D=category:simulink/sources&page=1)
+
+  
+
+  **sample time mismatch**
+
+  > [参考](https://ww2.mathworks.cn/help/simulink/slref/ratetransition.html)
+
+  integrator 模块 sample_time=0, 和 if-block 5e-6 不一致。在 if-block 输入地方采样时间加上 `Rate Transition Block` 使得其也变成0
+
+  
+
+  **Limitations**
+
+  1. Values for an `if` or `elseif` expression cannot be tuned during a simulation in normal or accelerator mode
+  2. It does not support custom storage classes.
+
+  
 
 
 
