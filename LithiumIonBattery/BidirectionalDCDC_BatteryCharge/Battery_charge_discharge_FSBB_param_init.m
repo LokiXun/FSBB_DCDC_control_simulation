@@ -26,6 +26,9 @@ time_step = 1 / wave_freq;  %时间常数>>求导
 fprintf("FSBB initialize success!")
 
 % u1 == 1 & (u2 > 103.5 & u2 <= 119), u1 == 1 & (u2 < 87.9 | u2 >119), 
+% charge
+% u1 == 0 & (u3>=85.5 & u3 <=101)
+% u1 == 0 & (u3 > 101 & u3 <=116.15)
 
 
 
