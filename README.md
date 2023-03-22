@@ -1,48 +1,8 @@
 # FSBB_battery_control :zap:
 
-Author LokiXun
+Author `Loki Xun`
 
-![FSBB_simulation_layout.jpg](./docs/FSBB_simulation_layout.jpg)
-
-- Simulation file
-
-  > 仿真文件统一存放再 gitee 远程仓库下: [gitee远程仓库url](https://gitee.com/tongji620_-group/tongji_micro_grid_program) :fire:
-  >
-  > **:warning: Matlab Version: R2022**
-
-  ```shell
-  # base_path = "LithiumIonBattery/BidirectionalDCDC_BatteryCharge"  # 参考git仓库目录
-  
-  ./Battery_charge_discharge_ChgDiscModeChange.slx   
-  # latest 1.实现双向非隔离DCDC充放电（母线电压闭环方式）
-  # 2.手动充放电切换逻辑 + 母线电压稳定
-  
-  ./Battery_charge_discharge_100ah_only2directionChrgDischarge.mdl
-  # 第一版：实现双向充电，无充放电切换逻辑
-  
-  ./battery_Charg_disCharg_from_DCSource_bidirectionalDCConv.slx
-  # rawVersion: 双向非隔离DCDC，只能满足网侧电压 > 电池电压的情况
-  
-  ./Battery_charge_discharge_FSBB_DCDC.slx
-  # 四开关BuckBoost: 实现四开关 buck-boost
-  ```
-
-- **requirement description:necktie:**
-
-  > - 电池组参数信息参考
-  >   [LFP-100Ah（8S）捆扎模组产品 参考](https://epropulsion.feishu.cn/file/boxcnnuTOKmcj1f6dT2SQ5Kt2rf)
-  >   [G102-100 电池文档参考](https://epropulsion.feishu.cn/docx/doxcndgpk2qpBiJfda1Sn7ms5Cc)
-
-  - 基本功能
-
-    现在是微电网项目里面锂电池的一个模块，想要实现 **90kwh（电量，不固定） 的锂电池组模块（100Ah 容量, 102.4V 电压变化范围85-112V， 具体信息参考下面的文档）**，通过**并联多个双向非隔离 dcdc 连到母线（96V）**实现双向充放电的功能。
-
-    - 100Ah 102.4V 锂电池组，组合成 90kwh电池组（目前视为一个整体，组合的话仿真太慢跑不动），这个锂电池组是船上一个动力锂电池。96V/3.2== 30 串
-      - 整体电池组 SOC 估计
-    - 多个双向非隔离 dcdc：母线电压96V，电池电压 85-115v 需要那种双向 boostbuck 即能升又能降得那种，就是电池电压过低 < 96V 时候，需要母线给电池充电要升压。
-    
-
-
+![FSBB_simulation_layout.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_simulation_layout.jpg)
 
 ## Simulation Target
 
@@ -51,12 +11,76 @@ Author LokiXun
   - 电池组模块： 100ah, 电压范围 85-119V，可实现 SOC 输出
 
   - 双向非隔离 DC/DC：DC/DC 结构参考高斯宝硬件电路 ，四开关 Buck-Boost，输入输出各8电容(160V,180UF)，开关频率 45k，电感20uh
-    ![双向非隔离DCDC_高斯宝.png](./docs/双向非隔离DCDC_高斯宝.png)
+    ![双向非隔离DCDC_高斯宝.png](./docs/DC_DC/FSBB_simulation_test/双向非隔离DCDC_高斯宝.png)
 
 
 - 控制 dcdc 输出电压，维持电池模块（电池+dcdc）的输出功率恒定3kw
 - 测试负载突卸，输出电压是否仍稳定于 96V
 - 测试电池满充满放：目前测试方案暂定为，输入电压跳变 102.5V -> 96V
+
+
+
+**requirement description:necktie:**
+
+> - 电池组参数信息参考
+>   [LFP-100Ah（8S）捆扎模组产品 参考](https://epropulsion.feishu.cn/file/boxcnnuTOKmcj1f6dT2SQ5Kt2rf)
+>   [G102-100 电池文档参考](https://epropulsion.feishu.cn/docx/doxcndgpk2qpBiJfda1Sn7ms5Cc)
+
+- 基本功能
+
+  现在是微电网项目里面锂电池的一个模块，想要实现 **90kwh（电量，不固定） 的锂电池组模块（100Ah 容量, 102.4V 电压变化范围85-112V， 具体信息参考下面的文档）**，通过**并联多个双向非隔离 dcdc 连到母线（96V）**实现双向充放电的功能。
+
+  - 100Ah 102.4V 锂电池组，组合成 90kwh电池组（目前视为一个整体，组合的话仿真太慢跑不动），这个锂电池组是船上一个动力锂电池。96V/3.2== 30 串
+    - 整体电池组 SOC 估计
+  - 多个双向非隔离 dcdc：母线电压96V，电池电压 85-115v 需要那种双向 boostbuck 即能升又能降得那种，就是电池电压过低 < 96V 时候，需要母线给电池充电要升压。
+
+
+
+## Setup
+
+> [`gitee` repository](https://gitee.com/tongji620_-group/tongji_micro_grid_program)   [`github` repository](https://github.com/LokiXun/FSBB_DCDC_control_simulation.git):fire:
+
+:warning: This project is programed under `Matlab` (Version: R2022)
+
+
+
+## File structure
+
+Whole Project File structure
+
+```shell
+|─batteryModeling  # Battery Moudle Simulation
+├─batteryModeling_version2017
+├─battery_control_combined  # Buck-Boost DCDC + battery (official example)
+├─BidirectionalDCDC_BatteryCharge  # FSBB DCDC + battery Simualtion(Main)
+│  └─Battery_charge_discharge_ChgDiscModeChange.slx
+│  └─Battery_charge_discharge_100ah_only2directionChrgDischarge.mdl
+│  └─battery_Charg_disCharg_from_DCSource_bidirectionalDCConv.slx
+│  └─Battery_charge_discharge_FSBB_DCDC.slx  # FSBB_simulation (Main Structure)
+└─BMS  # Battery Management System Simulation(official example)
+```
+
+
+
+For `BidirectionalDCDC_BatteryCharge` Module
+
+```shell
+# base_path = "LithiumIonBattery/BidirectionalDCDC_BatteryCharge"
+
+./Battery_charge_discharge_ChgDiscModeChange.slx   
+# 1.实现双向 Buck-Boost(非隔离)DCDC充放电（母线电压闭环方式）
+# 2.手动充放电切换逻辑 + 母线电压稳定
+
+./Battery_charge_discharge_100ah_only2directionChrgDischarge.mdl
+# 第一版：实现双向充电，无充放电切换逻辑
+
+./battery_Charg_disCharg_from_DCSource_bidirectionalDCConv.slx
+# rawVersion: 双向非隔离DCDC，只能满足网侧电压 > 电池电压的情况
+
+./Battery_charge_discharge_FSBB_DCDC.slx
+# 四开关BuckBoost: 实现四开关 buck-boost
+./Battery_charge_discharge_FSBB_param_init.m  # (used for initialization)
+```
 
 
 
@@ -88,10 +112,10 @@ Author LokiXun
 
 母线电压100V(>96V)，给电池充电。电池以电流 -5A 进行充电，电压稳定在 92.15V ：电池 SOC 上升，电流恒流
 
-![BatteryCharge_BatteryCurrent-5A.jpg](./docs/BatteryCharge_BatteryCurrent-5A.jpg)
+![BatteryCharge_BatteryCurrent-5A.jpg](./docs/DC_DC/FSBB_simulation_test/BatteryCharge_BatteryCurrent-5A.jpg)
 
 此时的母线一侧电压
-![BatteryCharge_MainBranchVoltageDrop.jpg](./docs/BatteryCharge_MainBranchVoltageDrop.jpg)
+![BatteryCharge_MainBranchVoltageDrop.jpg](./docs/DC_DC/FSBB_simulation_test/BatteryCharge_MainBranchVoltageDrop.jpg)
 
 
 
@@ -102,12 +126,12 @@ Author LokiXun
 母线一侧电压小于96V（使用90V测试）：由蓄电池放电曲线稳定在 96V，超调量<0.5%；电源控制模块：使用 `mode==3` 使用20A恒流放电
 
 - overall
-  ![BatteryCharge_BatteryDischarge_MainBranchVoltage96VResult_1.jpg](./docs/BatteryCharge_BatteryDischarge_MainBranchVoltage96VResult_1.jpg)
+  ![BatteryCharge_BatteryDischarge_MainBranchVoltage96VResult_1.jpg](./docs/DC_DC/FSBB_simulation_test/BatteryCharge_BatteryDischarge_MainBranchVoltage96VResult_1.jpg)
 - detail
-  ![BatteryCharge_BatteryDischarge_MainBranchVoltage96VResult_2_detail.jpg](./docs/BatteryCharge_BatteryDischarge_MainBranchVoltage96VResult_2_detail.jpg)
+  ![BatteryCharge_BatteryDischarge_MainBranchVoltage96VResult_2_detail.jpg](./docs/DC_DC/FSBB_simulation_test/BatteryCharge_BatteryDischarge_MainBranchVoltage96VResult_2_detail.jpg)
 
 - 电池SOC 、电压曲线
-  ![BatteryCharge_BatteryDischarge_BatterySOCdecrease.jpg](./docs/BatteryCharge_BatteryDischarge_BatterySOCdecrease.jpg)
+  ![BatteryCharge_BatteryDischarge_BatterySOCdecrease.jpg](./docs/DC_DC/FSBB_simulation_test/BatteryCharge_BatteryDischarge_BatterySOCdecrease.jpg)
 
 
 
@@ -118,11 +142,49 @@ Author LokiXun
 >
 > 仿真文件 `path = LithiumIonBattery/BidirectionalDCDC_BatteryCharge/Battery_charge_discharge_FSBB_DCDC.slx`
 
+### TODO :turtle:
+
+- 充放电模块功能测试
+
+  - [x] 搭建硬件类似拓扑，实现恒压、恒流、恒功率模块
+
+    - [x] 修复输出端串联 96V 电压源 +  电阻，恒压模式下在负载突卸时，电压突降赋值太大。
+
+  - [x] 恒流纹波太大
+
+    **调整电路拓扑**，在输入输出增加差模电感，配合 PI 控制，降低电流纹波
+
+    - [x] 调整恒压模块 `u1,u2` 推导公式，目前用的简化版本方式，效果可以
+      1. 简化版本：用一个差模电感代替输入输出的两个查谟电阻
+      2. 精确版本：公式中输入端的差模电感组合 u1，输出端差模电感组合 u2，更新 u1，u2 的计算公式
+
+  - [x] 充电模式切换
+
+    参考高斯宝规格书，实现恒流-恒功率切换
+
+    - [x] 电压在103.5V零界点切换存在问题，电压波动剧烈，从而造成恒功率失效，电流的参考值根据 U 计算出来也会波对剧烈
+
+      恒流恒功率 分成了 2 个 if-then 模块，里面的 matlab_function 计算导数会用到上一次的值，若频繁切换会使得导数计算错误，导致失效。由于恒流恒功率都用的是 `恒流模块` 实现，因此合并成一个 if-then 模块，里面用 switch 选择恒流 or 恒功率的参考电流值，来作为 PI 的输入
+
+  - [x] 放电模式切换
+
+  - [ ] 满充-满放-满充测试
+
+    - [ ] 恒流放电模式下负载跳变、外部电压跳变时，电流跳变过大
+      - [ ] 模仿实际硬件通过调节输出电压来实现，恒流点过压保护 3.22
+      - [ ] 调研双闭环控制方式
+  
+- 模块封装
+
+  - [x] 整合充电、放电模块，使用 2 个标志位进行手动切换
+
+    使用 `simulink if-then` 模块
+
 
 
 ### Topology
 
-![FSBB_simulation_layout.jpg](./docs/FSBB_simulation_layout.jpg)
+![FSBB_simulation_layout.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_simulation_layout.jpg)
 
 - 待调整参数 
 
@@ -147,10 +209,10 @@ Author LokiXun
 仿真1.5s，$V_{in}$ 输入电压（电池一侧）初始24V，0.7s 跳变至 36V。输出参考电压 24V。负载初始 10Ω，0.4s时负载突卸，降至5Ω。
 
 - 开关间接控制信号 $u_1, u_2$ 未使用饱和环接
-  ![FSBB_PassivityBasedControlOfFSBB_paperParam_realization.jpg](./docs/FSBB_PassivityBasedControlOfFSBB_paperParam_realization.jpg)
+  ![FSBB_PassivityBasedControlOfFSBB_paperParam_realization.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_PassivityBasedControlOfFSBB_paperParam_realization.jpg)
 
 - 使用 [-1, 1] 的饱和环接：效果类似
-  ![FSBB_PassivityBasedControlOfFSBB_paperParam_realization_withSaturation.jpg](./docs/FSBB_PassivityBasedControlOfFSBB_paperParam_realization_withSaturation.jpg)
+  ![FSBB_PassivityBasedControlOfFSBB_paperParam_realization_withSaturation.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_PassivityBasedControlOfFSBB_paperParam_realization_withSaturation.jpg)
 
 
 
@@ -161,13 +223,12 @@ Author LokiXun
 > **负载的初始大小**对仿真结果，Vc 输出电压结果的赋值影响很大
 
 - 电池 102.5 -> 93V （0.7s）; **0.4s 负载跳变从 6Ω-> 3Ω**，Vc=96V；PI、电容等参数使用论文中的值
-  ![FSBB_PassivityBasedControl_YiDongTest_Vc96_R6.jpg](./docs/FSBB_PassivityBasedControl_YiDongTest_Vc96_R6.jpg)
+  ![FSBB_PassivityBasedControl_YiDongTest_Vc96_R6.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_PassivityBasedControl_YiDongTest_Vc96_R6.jpg)
+  
 - 电池 102.5 -> 93V （0.7s）**; 0.4s 负载跳变从 3Ω-> 1.5Ω**，Vc=96V；PI、电容等参数使用论文中的值
-  ![FSBB_PassivityBasedControl_YiDongTest_Vc96_R3.jpg](./docs/FSBB_PassivityBasedControl_YiDongTest_Vc96_R3.jpg)
-- 电池 102.5 -> 93V （0.7s）; 0.4s 负载跳变从 3Ω-> 1.5Ω，**Vc=55V**
-  ![FSBB_PassivityBasedControl_YiDongTest_Vc55_R3.jpg](./docs/FSBB_PassivityBasedControl_YiDongTest_Vc55_R3.jpg)
-
-
+  ![FSBB_PassivityBasedControl_YiDongTest_Vc96_R3.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_PassivityBasedControl_YiDongTest_Vc96_R3.jpg)
+  
+  
 
 - 电容、电感更改为高斯宝提供参数
 
@@ -190,48 +251,38 @@ z1=6, z2=0.08  # dumping_gains
 
 **恒压放电**
 
-- 输出端仅连接负载，0.3s负载突加 6ohm -》3ohm![FSBB_constantVoltage_discharge_6-3ohm.jpg](./docs/FSBB_constantVoltage_discharge_6-3ohm.jpg)
+- 输出端仅连接负载，0.3s负载突加 6ohm -》3ohm![FSBB_constantVoltage_discharge_6-3ohm.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantVoltage_discharge_6-3ohm.jpg)
 
 - 输出端连接：SOC=80% 的电池模块
-  ![FSBB_constantVoltage_discharge_connect_output_battery.jpg](./docs/FSBB_constantVoltage_discharge_connect_output_battery.jpg)
+  ![FSBB_constantVoltage_discharge_connect_output_battery.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantVoltage_discharge_connect_output_battery.jpg)
 - 输出连接电池 + 负载（0.3s 负载突加）
-  ![FSBB_constantVoltage_output_battery+6-3ohm.jpg](./docs/FSBB_constantVoltage_output_battery+6-3ohm.jpg)
+  ![FSBB_constantVoltage_output_battery+6-3ohm.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantVoltage_output_battery+6-3ohm.jpg)
 
 - 输出连接 96V 电压源 + 负载（0.3s 负载突加）
-  ![FSBB_constantVoltage_output_96Vbus+6ohm.jpg](./docs/FSBB_constantVoltage_output_96Vbus+6ohm.jpg)
-
-
-
-**恒压给 DC/DC 内电池充电**
-
-![FSBB_constantVoltage_charge_output_battery_input_96Vbus+6ohm.jpg](./docs/FSBB_constantVoltage_charge_output_battery_input_96Vbus+6ohm.jpg)
-
-
-
-
+  ![FSBB_constantVoltage_output_96Vbus+6ohm.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantVoltage_output_96Vbus+6ohm.jpg)
 
 
 
 ### Constant Current
 
-能够实现 dcdc 输出恒流；外部电源给 dcdc 内部电池恒流充电
+目标效果：能够实现 dcdc 恒流输出，恒流给电池充电
 
 - 期望的输出电流值（恒流）i_out_ref = 15A，dcdc 恒流输出，0.3s 负载突加（6Ω，再并联一个 6Ω）
-  ![FSBB_constantCurrent_IoutRef15A_6-3ohm.jpg](./docs/FSBB_constantCurrent_IoutRef15A_6-3ohm.jpg)
+  ![FSBB_constantCurrent_IoutRef15A_6-3ohm.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantCurrent_IoutRef15A_6-3ohm.jpg)
 
 - 期望的输出电流值（恒流）i_out_ref = 30A，dcdc 恒流输出，0.3s 负载突加（6Ω，再并联一个 6Ω）
 
   给外部电池充电
-  ![FSBB_constantCurrent_IoutRef30A_6-3ohm.jpg](./docs/FSBB_constantCurrent_IoutRef30A_6-3ohm.jpg)
+  ![FSBB_constantCurrent_IoutRef30A_6-3ohm.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantCurrent_IoutRef30A_6-3ohm.jpg)
 
   电池 SOC 变化情况：左侧为 dcdc 内部电池，右侧为输出端连接的电池。0.3s 之前恒流充电，之后突加负载（并联一个 6ohm）
 
-  ![FSBB_constantCurrent_IoutRef30A_6-3ohm_batterySOC.jpg](./docs/FSBB_constantCurrent_IoutRef30A_6-3ohm_batterySOC.jpg)
+  ![FSBB_constantCurrent_IoutRef30A_6-3ohm_batterySOC.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantCurrent_IoutRef30A_6-3ohm_batterySOC.jpg)
 
 
 
 - :question: 观察恒流模式下，电池电压在 0s 刚启动的时候接近 0，电流接近-8000
-  ![FSBB_constantCurrent_IoutRef30A_6-3ohm_Problem_initialSurge.jpg](./docs/FSBB_constantCurrent_IoutRef30A_6-3ohm_Problem_initialSurge.jpg)
+  ![FSBB_constantCurrent_IoutRef30A_6-3ohm_Problem_initialSurge.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantCurrent_IoutRef30A_6-3ohm_Problem_initialSurge.jpg)
 
 - 规格书中的`电流设置精度`
 
@@ -247,7 +298,7 @@ z1=6, z2=0.08  # dumping_gains
 
 **根据实际电路修改拓扑，在输入输出端增加两个$2.2e-6H$ 的差模电阻 **
 
-![FSBB_constantCurrent_discharge_6-3ohm_withDMinductor_20uH_mainInductor.jpg](./docs/FSBB_constantCurrent_discharge_6-3ohm_withDMinductor_20uH_mainInductor.jpg)
+![FSBB_constantCurrent_discharge_6-3ohm_withDMinductor_20uH_mainInductor.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantCurrent_discharge_6-3ohm_withDMinductor_20uH_mainInductor.jpg)
 
 ```shell
 45e3  # 开关频率 Hz
@@ -256,35 +307,81 @@ z1=6, z2=0.08  # dumping_gains
 
 ```
 
+
+
 增大主电感至 $40e-6 H$，输出电流纹波略微减小
 
-![FSBB_constantCurrent_discharge_6-3ohm_withDMinductor.jpg](./docs/FSBB_constantCurrent_discharge_6-3ohm_withDMinductor_40uH_mainInductor.jpg)
+![FSBB_constantCurrent_discharge_6-3ohm_withDMinductor.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantCurrent_discharge_6-3ohm_withDMinductor_40uH_mainInductor.jpg)
 
 
 
 80e-6 H 主电感 + 100hz
 
-![FSBB_constantCurrent_discharge_6-3ohm_withDMinductor_80uH_mainInductor_100Hz.jpg](./docs/FSBB_constantCurrent_discharge_6-3ohm_withDMinductor_80uH_mainInductor_100Hz.jpg)
+![FSBB_constantCurrent_discharge_6-3ohm_withDMinductor_80uH_mainInductor_100Hz.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantCurrent_discharge_6-3ohm_withDMinductor_80uH_mainInductor_100Hz.jpg)
 
 
 
 
 
-### constant Power
+### Constant Power
 
 恒功率，使用电流恒流实现。对于某一时刻的电流参考值，根据当前输出电压计算出来  $I_{ref}= P / U_{out}$。
 
-```
-45kHz
-40e-6H
-2.2e-6H
+```shell
+45kHz  # 开关频率
+40e-6H  # 主电感
+2.2e-6H  # 输入输出端的差模电感
 ```
 
-![FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor.jpg](./docs/FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor.jpg)
+
+
+**Battery discharge**
+
+![FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor.jpg)
 
 负载突卸时的功率曲线
 
-![FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor_LoadSuddenChange_details.jpg](./docs/FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor_LoadSuddenChange_details.jpg)
+![FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor_LoadSuddenChange_details.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor_LoadSuddenChange_details.jpg)
+
+
+
+**charge Battery**
+
+![FSBB_constantPower_charge_6-3ohm_withDMinductor_40uH_mainInductor.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantPower_charge_6-3ohm_withDMinductor_40uH_mainInductor.jpg)
+
+
+
+
+
+### Test
+
+恒流、恒功率切换硬件实现
+
+DCDC 内部电路拓扑
+
+![FSBB_topology.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_topology.jpg)
+
+输出端拓扑
+
+![FSBB_output_topology.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_output_topology.jpg)
+
+
+
+
+
+**单个模式下测试负载跳变**
+
+1. 放电模式下，输出端并联 104V 电压源，再并联 6ohm 负载，在 0.5s 突加 6ohm 的负载
+
+   功率跳变太大，电流反向了 :shit:![FSBB_test_output_Discharge_SuddenLoadDrop.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_test_output_Discharge_SuddenLoadDrop.jpg)
+
+2. 输出端接 96V 电压源， 0.5s 突加 6ohm 的负载
+
+   ![FSBB_test_output_Discharge_SuddenLoadDrop_96V.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_test_output_Discharge_SuddenLoadDrop_96V.jpg)
+
+> **电流跳变太大原因**：**电感电流变化没有控制**，目前只有外环控制（控制输出端电流），增加双闭环结构试试看
+
+
 
 
 
@@ -304,15 +401,10 @@ z1=6, z2=0.08  # dumping_gains
 
 ### QA
 
-- 恒流、恒压无法稳定在参考值？
-  调整电池串联的电阻，或者母线电压源串联的电阻
+- 恒压无法稳定在参考值？
+  调整电池串联的电阻，或者母线电压源串联的电阻，电阻太小分压不够
 
-
-
-- DCDC 
-
-  电路里面，电容、电感的值如何选取：**参数根据波形调试**
-
+- DCDC 电路里面，电容、电感的值如何选取：**参数根据波形调试**
 
 
 - `BatteryController` 控制部分
@@ -332,10 +424,46 @@ z1=6, z2=0.08  # dumping_gains
 
   
 
-- 三种模式各自功能：**电压电流双闭环，与恒流充放电如何切换呢？**
-  **电压电流双闭环（维持母线96V稳定）**、恒流-5A（电池充电）、恒流20A（电池放电）的切换，**具体的切换规则需要看具体场景**：因为实际电网会存在很多情况，比如，切除负荷，单独给蓄电池充电，或者蓄电池检查性放电。
+- if-Block
 
-  - 当下只能手动切换，后期放在风力系统可以动态
+  > [参考](https://ww2.mathworks.cn/help/simulink/slref/if.html)
+
+  The If block, along with [If Action Subsystem](https://ww2.mathworks.cn/help/simulink/slref/ifactionsubsystem.html) blocks that contain an [Action Port](https://ww2.mathworks.cn/help/simulink/slref/actionport.html) block, implements if-else logic to control subsystem execution.
+
+  - output
+
+    `Action` — Action signal for an If Action Subsystem block
+
+    Outputs from the `if`, `else`, and `elseif` ports are **action signals** to If Action Subsystem blocks.
+
+  **merge**
+
+  用于将多个 `if-action` 的 output 同一变量结果合并，merge 模块使**用最新更新的数据**。
+  The output value at any time is equal to the **most recently computed output** of its driving blocks.
+
+  - :question: Do not branch a signal that is input to a Merge block.
+    要输入 merge 的信号不可以分支用到别的地方。PWM信号发生器里面 u1, u2 取反的关系，不能直接将 u1，u2 连到各自的 merge。
+
+    If a signal line goes to a Merge block, this signal line can't go anywhere else (branched). If you really need to use this signal line somewhere else, insert a **Signal Conversion block**  and set it to do "Signal Copy".  没用。。
+
+    [Solution ref](https://ww2.mathworks.cn/en/support/search.html/answers/1699700-branched-signals-cannot-be-fed-into-a-merge-block.html?fq%5B%5D=asset_type_name:answer&fq%5B%5D=category:simulink/sources&page=1)
+
+  
+
+  **sample time mismatch**
+
+  > [参考](https://ww2.mathworks.cn/help/simulink/slref/ratetransition.html)
+
+  integrator 模块 sample_time=0, 和 if-block 5e-6 不一致。在 if-block 输入地方采样时间加上 `Rate Transition Block` 使得其也变成0
+
+  
+
+  **Limitations**
+
+  1. Values for an `if` or `elseif` expression cannot be tuned during a simulation in normal or accelerator mode
+  2. It does not support custom storage classes.
+
+  
 
 
 
