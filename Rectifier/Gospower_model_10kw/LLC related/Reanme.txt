@@ -1,0 +1,5 @@
+1.LLC parameter selection is based on Gospower's.
+
+2.Resolution of LLC no-load drift height problem：https://www.docin.com/p-809307474.html
+
+3.Voltage Gain Distortion and Digital Burst Scheme under LLC Light Load：https://www.docin.com/p-1758014277.html.

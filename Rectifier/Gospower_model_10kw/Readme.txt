@@ -1,0 +1,1 @@
+Switch to the parameters of Gaussbaud, use the burst mode, change the operating frequency, and change the rectifier output voltage to meet the requirements of stable 96V at no-load and full load, and achieve 200us recovery to within 95.5V at no-load switching and full load, and the no-load voltage is closer to 96V, allowing you to be in the burp mode;
