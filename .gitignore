@@ -5,6 +5,7 @@
 *.xml
 *.pptx
 MicroGridNote.md
+README.pdf
 
 docs/micro_grid_paper/
 docs/LithiumBattery/DL_in_battery/
