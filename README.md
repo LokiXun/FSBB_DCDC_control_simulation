@@ -167,30 +167,32 @@ For `BidirectionalDCDC_BatteryCharge` Module
   
       恒流恒功率 分成了 2 个 if-then 模块，里面的 matlab_function 计算导数会用到上一次的值，若频繁切换会使得导数计算错误，导致失效。由于恒流恒功率都用的是 `恒流模块` 实现，因此合并成一个 if-then 模块，里面用 switch 选择恒流 or 恒功率的参考电流值，来作为 PI 的输入
   
-  - [ ] 满充-满放-满充测试
+  - [ ] 负载跳变、满充满放测试
   
-    - [ ] 仿真起始的电池电压从 0 开始上升，导致放电起始电流反向
+    - [x] 仿真起始的电池电压从 0 开始上升，导致放电起始电流反向
+  
+      电池并联了电容，电容设置初始电压即可
   
     - [x] 沟通高斯宝硬件技术，测试的外部拓扑是否正确
   
       1. DCDC电源模块放电，**外部只用可调负载来模拟母线**，电池向外输出 96V
       2. DCDC 电源模块充电，把电池当作负载（电池有变动的阻值）
       3. 控制方式：可调节电压（恒压）来实现恒流，恒功率；恒压控制时候一边的管子常开，另一边根据输出电压调整占空比
-    
+  
     - [x] 咨询使用环境，测试拓扑
   
       外部要并联电压源 + 并联负载
   
-    - [ ] 恒流放电模式下负载跳变、外部电压跳变时，电流跳变过大
+    - [x] 测试当前拓扑的效果，记录测试文档
+  
+    - [ ] ~~恒流放电模式下负载跳变、外部电压跳变时，电流跳变过大~~
   
       - [ ] 尝试通过调整 PI 参数
       - [ ] 调研双闭环控制方式
-    
-    - [ ] 调研 FSBB 硬件类似的控制方式
-    
-    - [ ] 实现过压、欠压保护
-    
-      （硬件实现）电流过大，I = U/R, 降低电压，如果电压低于保护点，把 4 个驱动输出 0 （驱动直接关掉），然后需要手动指令去恢复
+  
+  - [ ] 实现过压、欠压保护
+  
+    （硬件实现）电流过大，I = U/R, 降低电压，如果电压低于保护点，把 4 个驱动输出 0 （驱动直接关掉），然后需要手动指令去恢复
   
 - 模块封装
 
@@ -373,27 +375,93 @@ z1=6, z2=0.08  # dumping_gains
 
 ### Load Test
 
-> 1. 负载 == 功率 $P = U^2 /R$
->
->    25%～50%、50%～75%负载跳变 $0.25*P = U^2 /R$ 计算出相应负载
->
-> 2. 满载
+测试目标：恒流、恒功率模式下的 25%-50% 的负载跳变
 
-
-
-恒流、恒功率切换硬件实现，DCDC 内部电路拓扑
+- FSBB DCDC 内部电路拓扑
 
 ![FSBB_topology.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_topology.jpg)
 
-输出端拓扑
+1. 在 85.85 -> 101 V 为恒流模式
 
-![FSBB_output_topology.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_output_topology.jpg)
+   满载电流= 29A，25% 负载是 I * 0.25，电流可以在 0 - 29A 范围内变化，恒流固定在一个值就行。  需要固定一个电压值，然后满载电阻就是 $R = \frac{U}{30}$ , 25% 负载是指 电流25%的情况下的电阻, $R * 4 =  U/ {(30*0.25)}$。
+
+   ```shell
+   Voltage_current_mode = 96;
+   Current_100 = 29;
+   load_percent_list =
+   
+       0.2500    0.5000    0.7500    1.0000
+   
+   R_current_mode_load_change =
+   
+      13.2414    6.6207    4.4138    3.3103
+   
+   I_current_mode_load_change =
+   
+       7.2500   14.5000   21.7500   29.0000
+   ```
+
+2. 101 -> 116.15 V 恒功率模式
+
+   满载功率 3kW, $R = U^2 / P$ 
+
+   ```shell
+   Voltage_power_mode = 105;
+   P_100 = 3000;
+   load_percent_list =
+   
+       0.2500    0.5000    0.7500    1.0000
+   
+   Power_power_mode_load_change =
+   
+            750        1500        2250        3000
+   
+   R_power_mode_load_change =
+   
+      14.7000    7.3500    4.9000    3.6750
+   ```
+   
+3. 恒压模式
+
+   ```
+   load_percent_list =
+   
+       0.2500    0.5000    0.7500    1.0000
+   
+   R_voltage_mode_load_change =
+   
+      12.2880    6.1440    4.0960    3.0720
+   
+   Power_voltage_mode_load_change =
+   
+            750        1500        2250        3000
+   ```
+
+
+
+**恒压模式下，测试负载跳变**
+
+> :question: 开机过冲 104V
+
+- 25% -> 50%
+
+  ![FSBB_ConstantVoltage_Discharge_Load25-50.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_ConstantVoltage_Discharge_Load25-50.jpg)
+
+- 50%-75%
+
+  ![FSBB_ConstantVoltage_Discharge_Load50-75.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_ConstantVoltage_Discharge_Load50-75.jpg)
+
+- 75%-100%
+
+  ![FSBB_ConstantVoltage_Discharge_Load75-100.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_ConstantVoltage_Discharge_Load75-100.jpg)
 
 
 
 
 
-**单个模式下测试负载跳变**
+
+
+**恒流模式下，测试负载跳变**
 
 1. 放电模式下，输出端并联 104V 电压源，再并联 6ohm 负载，在 0.5s 突加 6ohm 的负载
 
