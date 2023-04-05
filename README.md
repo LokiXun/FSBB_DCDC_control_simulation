@@ -11,7 +11,6 @@ Author `Loki Xun`
   - 电池组模块： 100ah, 电压范围 85-119V，可实现 SOC 输出
 
   - 双向非隔离 DC/DC：DC/DC 结构参考高斯宝硬件电路 ，四开关 Buck-Boost，输入输出各8电容(160V,180UF)，开关频率 45k，电感20uh
-    ![双向非隔离DCDC_高斯宝.png](./docs/DC_DC/FSBB_simulation_test/双向非隔离DCDC_高斯宝.png)
 
 
 - 控制 dcdc 输出电压，维持电池模块（电池+dcdc）的输出功率恒定3kw
@@ -137,9 +136,6 @@ For `BidirectionalDCDC_BatteryCharge` Module
 
 ## FSBB  :crossed_swords:
 
-> referenced paper:  [Passivity Based Control of Four-Switch Buck-Boost DC-DC Converter without Operation Mode Detection](https://ieeexplore.ieee.org/document/9968779) 
-> [paper's youtube video tutorial](https://www.youtube.com/watch?v=5YT7cERlMrg) :honey_pot:
->
 > 仿真文件 `path = LithiumIonBattery/BidirectionalDCDC_BatteryCharge/Battery_charge_discharge_FSBB_DCDC.slx`
 
 ### TODO :turtle:
@@ -167,7 +163,7 @@ For `BidirectionalDCDC_BatteryCharge` Module
   
       恒流恒功率 分成了 2 个 if-then 模块，里面的 matlab_function 计算导数会用到上一次的值，若频繁切换会使得导数计算错误，导致失效。由于恒流恒功率都用的是 `恒流模块` 实现，因此合并成一个 if-then 模块，里面用 switch 选择恒流 or 恒功率的参考电流值，来作为 PI 的输入
   
-  - [ ] 负载跳变、满充满放测试
+  - [x] 负载跳变测试
   
     - [x] 仿真起始的电池电压从 0 开始上升，导致放电起始电流反向
   
@@ -183,16 +179,31 @@ For `BidirectionalDCDC_BatteryCharge` Module
   
       外部要并联电压源 + 并联负载
   
-    - [x] 测试当前拓扑的效果，记录测试文档
-  
     - [ ] ~~恒流放电模式下负载跳变、外部电压跳变时，电流跳变过大~~
   
-      - [ ] 尝试通过调整 PI 参数
-      - [ ] 调研双闭环控制方式
+      目前放电模式只使用恒压稳定 96V 即可。
+  
+      实际硬件恒流模式的控制方式，设置额定电压，在正常带载的情况下进性恒压控制。随着负载满载or超载 （外部等效电阻，阻值减小），电流持续升高，达到29A恒流点。此时根据 $I = U / R$，外部电阻阻值 R 减小 ，降低电压的参考值 U，即通过恒压方式来实现恒流。
+  
+    - [ ] 空载，满载切换，电压跳变太大
+  
+      - [ ] 测试 PI 参数
+      - [ ] 测试阻尼比
+      - [ ] 检测负载跳变，加入优化条件：增加一个gain
+      - [ ] 更换控制方式
+  
+  - [ ] 充放电切换测试
+  
+    - [ ] 实现恒流、恒压模式切换
   
   - [ ] 实现过压、欠压保护
   
     （硬件实现）电流过大，I = U/R, 降低电压，如果电压低于保护点，把 4 个驱动输出 0 （驱动直接关掉），然后需要手动指令去恢复
+  
+- 优化项
+
+  - [x] modify the PI by `The Ziegler–Nichols Method`
+  - [ ] 调研双闭环控制方式
   
 - 模块封装
 
@@ -202,29 +213,51 @@ For `BidirectionalDCDC_BatteryCharge` Module
 
 
 
-### Topology
+### Topology + Param
 
-![FSBB_simulation_layout.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_simulation_layout.jpg)
+**Hardware Topology**
 
-- 待调整参数 
+![双向非隔离DCDC_高斯宝.png](./docs/DC_DC/FSBB_simulation_test/双向非隔离DCDC_高斯宝.png)
 
-  >  目前不确定如何调整此参数 :question:
+**Simulation Topology**
+
+![FSBB_topology.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_topology.jpg)
+
+- Model Parameters
 
   ```shell
-  P, I  # PI 模块
-  C, L, R_L  # 电容电感参数计算
-  saturation_range  # u1, u2 控制信号饱和环接参数
-  triangular_wave_frequency  # 三角波频率
-  z1, z2  # dumping_gains
+  # FSBB param
+  wave_freq = 45e3  # 开关频率 Hz
+  mid_L = 40e-6  # 主电感 H
+  mid_R = 0.004  # 主电感旁边的电阻 Ohms
+  
+  DM_inductor1 = 2.2e-6  # 差模电感 H battery_side
+  DM_inductor2 = 2.2e-6  # ~ bus_side
+  C1 = 1440e-6  # battery side parallel capacitor (Farad)
+  C2 = 1440e-6
+  
+  # battery
+  R_battery = 0.1 # Battery_inside_resistance Ohms (connect in series)
+  
   ```
 
-- 存在问题
-
-  使用 switch 实现 if-else 的问题：咨询了一个电网里面做仿真的朋友，说这种需要切换状态的四开关buckBoost 不好实现，matlab里面仿真延迟很严重，会存在上个状态还没切换完成，实际变换到下一个状态的情况，他了解的都是把模式拆看单独看，每次只验证一种buck 或者 boost的情况。
+Gospower 硬件输入输出各8电容(160V,180UF)，开关频率 45k，电感 20uh。目前仿真内部，**使用一个电容 1440e-6 F 代替并联的 8 个电容**
 
 
 
-### 论文复现
+
+
+### Reproduce paper
+
+**Passivity Based Control of Four-Switch Buck-Boost DC-DC Converter without Operation Mode Detection**
+
+> [referenced paper](https://ieeexplore.ieee.org/document/9968779) 
+> [paper's youtube video tutorial](https://www.youtube.com/watch?v=5YT7cERlMrg) :honey_pot:
+>
+> 外环电压环输出的结果是电流环的参考值**>> 参考 **"蓄电池闭环设计":star:
+
+仿真实现简单，能够满足基本要求。但只有单个环路控制，外环输出的 `iL` 电感电流使用增加阻尼比的方式进性调节，未使用内环控制。
+
 
 仿真1.5s，$V_{in}$ 输入电压（电池一侧）初始24V，0.7s 跳变至 36V。输出参考电压 24V。负载初始 10Ω，0.4s时负载突卸，降至5Ω。
 
@@ -238,96 +271,37 @@ For `BidirectionalDCDC_BatteryCharge` Module
 
 
 
-### Constant Voltage
-
-> **负载的初始大小**对仿真结果，Vc 输出电压结果的赋值影响很大
-
-- 电池 102.5 -> 93V （0.7s）; **0.4s 负载跳变从 6Ω-> 3Ω**，Vc=96V；PI、电容等参数使用论文中的值
-  ![FSBB_PassivityBasedControl_YiDongTest_Vc96_R6.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_PassivityBasedControl_YiDongTest_Vc96_R6.jpg)
-  
-- 电池 102.5 -> 93V （0.7s）**; 0.4s 负载跳变从 3Ω-> 1.5Ω**，Vc=96V；PI、电容等参数使用论文中的值
-  ![FSBB_PassivityBasedControl_YiDongTest_Vc96_R3.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_PassivityBasedControl_YiDongTest_Vc96_R3.jpg)
-  
-  
-
-- 电容、电感更改为高斯宝提供参数
-
-  > - 高斯宝：输入输出各8电容(160V,180UF)，开关频率 45k，电感20uh；
-  > - 目前拓扑存在差异，**仅使用输出并联 8 个电容（使用一个电容 1440e-6代替），电感20uh**，开关频率使用 10k（45k仿真速度太慢）
-
-#### Sudden Load drop
-
-修改参数后，实现电压突变 < 2%
-
-```shell
-P=15, I=1000  # PI 模块
-C_motherLine=1440e-6, L=20e-6, R_L=0.004  # 电容电感参数计算
-saturation_range=None "not used"  # u1, u2 控制信号饱和环接参数
-triangular_wave_frequency=45e3  # 三角波频率
-z1=6, z2=0.08  # dumping_gains
-```
-
-
-
-**恒压放电**
-
-- 输出端仅连接负载，0.3s负载突加 6ohm -》3ohm![FSBB_constantVoltage_discharge_6-3ohm.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantVoltage_discharge_6-3ohm.jpg)
-
-- 输出端连接：SOC=80% 的电池模块
-  ![FSBB_constantVoltage_discharge_connect_output_battery.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantVoltage_discharge_connect_output_battery.jpg)
-- 输出连接电池 + 负载（0.3s 负载突加）
-  ![FSBB_constantVoltage_output_battery+6-3ohm.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantVoltage_output_battery+6-3ohm.jpg)
-
-- 输出连接 96V 电压源 + 负载（0.3s 负载突加）
-  ![FSBB_constantVoltage_output_96Vbus+6ohm.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantVoltage_output_96Vbus+6ohm.jpg)
-
-
-
 ### Constant Current
 
-目标效果：能够实现 dcdc 恒流输出，恒流给电池充电
+> - 规格书中的`电流设置精度`
+>
+>   给电池恒流充电，充电电流是50A，而我的电源检测的电流也是50A，这就是没有误差，如果我上报是51A就代表有1A的误差
+>
+> - 恒流模式下，电流纹波影响因素
+>
+>   电流纹波在电感上产生的，取决于电感电流 $\triangle{}I$ 的变化量，加大电感或者开关频率会有改善。电源规格书都没有电流纹波这个东西
+>
+> :warning: 目前需求是保持母线输出 96V，恒流模式可用于电池充电
 
-- 期望的输出电流值（恒流）i_out_ref = 15A，dcdc 恒流输出，0.3s 负载突加（6Ω，再并联一个 6Ω）
-  ![FSBB_constantCurrent_IoutRef15A_6-3ohm.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantCurrent_IoutRef15A_6-3ohm.jpg)
+- 测试目标
+  1. 能够实现 dcdc 恒流输出
+  2. 恒流给电池充电
 
-- 期望的输出电流值（恒流）i_out_ref = 30A，dcdc 恒流输出，0.3s 负载突加（6Ω，再并联一个 6Ω）
+**Lower oscillation**
 
-  给外部电池充电
-  ![FSBB_constantCurrent_IoutRef30A_6-3ohm.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantCurrent_IoutRef30A_6-3ohm.jpg)
-
-  电池 SOC 变化情况：左侧为 dcdc 内部电池，右侧为输出端连接的电池。0.3s 之前恒流充电，之后突加负载（并联一个 6ohm）
-
-  ![FSBB_constantCurrent_IoutRef30A_6-3ohm_batterySOC.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantCurrent_IoutRef30A_6-3ohm_batterySOC.jpg)
-
-
-
-- :question: 观察恒流模式下，电池电压在 0s 刚启动的时候接近 0，电流接近-8000
+- :grey_question: 电池电压在 0s 刚启动的时候接近 0，电流接近-8000
+  
+  通过设置电感初始电压解决
+  
   ![FSBB_constantCurrent_IoutRef30A_6-3ohm_Problem_initialSurge.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantCurrent_IoutRef30A_6-3ohm_Problem_initialSurge.jpg)
-
-- 规格书中的`电流设置精度`
-
-  给电池恒流充电，充电电流是50A，而我的电源检测的电流也是50A，这就是没有误差，如果我上报是51A就代表有1A的误差
-
-- :question: 恒流模式下，电流纹波太大，接近2A
-
-  电流纹波在电感上产生的，取决于电感电流 $\triangle{}I$ 的变化量，加大电感或者开关频率会有改善。电源规格书都没有电流纹波这个东西
-
-
-
-#### Lower Current oscillation
-
-**根据实际电路修改拓扑，在输入输出端增加两个$2.2e-6H$ 的差模电阻 **
+  
+  
+  
+- 根据实际电路修改拓扑，在输入输出端增加两个$2.2e-6H$ 的差模电阻 
 
 ![FSBB_constantCurrent_discharge_6-3ohm_withDMinductor_20uH_mainInductor.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantCurrent_discharge_6-3ohm_withDMinductor_20uH_mainInductor.jpg)
 
-```shell
-45e3  # 开关频率 Hz
-20e-6  # 主电感 H
-2.2e-6  # 差模电感 H
-
-```
-
-
+- 增大主电感
 
 增大主电感至 $40e-6 H$，输出电流纹波略微减小
 
@@ -341,45 +315,7 @@ z1=6, z2=0.08  # dumping_gains
 
 
 
-
-
-### Constant Power
-
-恒功率，使用电流恒流实现。对于某一时刻的电流参考值，根据当前输出电压计算出来  $I_{ref}= P / U_{out}$。
-
-```shell
-45kHz  # 开关频率
-40e-6H  # 主电感
-2.2e-6H  # 输入输出端的差模电感
-```
-
-
-
-**Battery discharge**
-
-![FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor.jpg)
-
-负载突卸时的功率曲线
-
-![FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor_LoadSuddenChange_details.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor_LoadSuddenChange_details.jpg)
-
-
-
-**charge Battery**
-
-![FSBB_constantPower_charge_6-3ohm_withDMinductor_40uH_mainInductor.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantPower_charge_6-3ohm_withDMinductor_40uH_mainInductor.jpg)
-
-
-
-
-
-### Load Test
-
-测试目标：恒流、恒功率模式下的 25%-50% 的负载跳变
-
-- FSBB DCDC 内部电路拓扑
-
-![FSBB_topology.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_topology.jpg)
+**恒流模式下，测试负载跳变**
 
 1. 在 85.85 -> 101 V 为恒流模式
 
@@ -420,48 +356,8 @@ z1=6, z2=0.08  # dumping_gains
    
       14.7000    7.3500    4.9000    3.6750
    ```
-   
-3. 恒压模式
-
-   ```
-   load_percent_list =
-   
-       0.2500    0.5000    0.7500    1.0000
-   
-   R_voltage_mode_load_change =
-   
-      12.2880    6.1440    4.0960    3.0720
-   
-   Power_voltage_mode_load_change =
-   
-            750        1500        2250        3000
-   ```
 
 
-
-**恒压模式下，测试负载跳变**
-
-> :question: 开机过冲 104V
-
-- 25% -> 50%
-
-  ![FSBB_ConstantVoltage_Discharge_Load25-50.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_ConstantVoltage_Discharge_Load25-50.jpg)
-
-- 50%-75%
-
-  ![FSBB_ConstantVoltage_Discharge_Load50-75.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_ConstantVoltage_Discharge_Load50-75.jpg)
-
-- 75%-100%
-
-  ![FSBB_ConstantVoltage_Discharge_Load75-100.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_ConstantVoltage_Discharge_Load75-100.jpg)
-
-
-
-
-
-
-
-**恒流模式下，测试负载跳变**
 
 1. 放电模式下，输出端并联 104V 电压源，再并联 6ohm 负载，在 0.5s 突加 6ohm 的负载
 
@@ -481,8 +377,6 @@ z1=6, z2=0.08  # dumping_gains
 >
 >    $iL_{ref} = (iL_{ref} - iL_{ref_{old}}) / Ts$
 >    ${Vc_{ref}}^` = (Vc - Vc_{old}) / Ts$
-
-
 
 **调节外环控制的 PI 参数**
 
@@ -534,6 +428,140 @@ zeta2 = 0.08*10;
 
 
 
+
+
+### Constant Power
+
+恒功率，使用电流恒流实现。对于某一时刻的电流参考值，根据当前输出电压计算出来  $I_{ref}= P / U_{out}$。
+
+
+
+**Battery discharge**
+
+![FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor.jpg)
+
+负载突卸时的功率曲线
+
+![FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor_LoadSuddenChange_details.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantPower_discharge_6-3ohm_withDMinductor_40uH_mainInductor_LoadSuddenChange_details.jpg)
+
+
+
+**charge Battery**
+
+![FSBB_constantPower_charge_6-3ohm_withDMinductor_40uH_mainInductor.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_constantPower_charge_6-3ohm_withDMinductor_40uH_mainInductor.jpg)
+
+
+
+
+
+### Constant Voltage :+1:
+
+- 测试目标
+  1. 放电：恒压输出 96 V，测试 25%-50%，50%-75% 的负载跳变
+
+- Parameter
+
+  ```shell
+  P = 15 * 2
+  I = 1000
+  
+  # control strategy
+  zeta1 = 6 * 4
+  zeta2 = 0.08 * 2
+  
+  # u1, u2 saturation
+  u1_saturation_range = [-3, 3]
+  u2_saturation_range = [-3, 3]
+  
+  # modify the main capacitor
+  main_L = 2 * 40e-6  # H
+  ```
+
+- :grey_question: 电池剩余电量过低，恒压到 96V 纹波太大
+  加大电容 ok
+
+
+
+**恒压模式下，测试负载跳变**
+
+各负载情况下的阻值
+$$
+P_{full\_load} = 3 kW\\
+R_{load} = \frac{U^2}{P_{full\_load} * load\_percent}
+$$
+
+```
+load_percent_list =
+
+    0.2500    0.5000    0.7500    1.0000
+
+R_voltage_mode_load_change =
+
+   12.2880    6.1440    4.0960    3.0720
+
+Power_voltage_mode_load_change =
+
+         750        1500        2250        3000
+```
+
+
+
+- empty load
+
+- 25% -> 50%
+
+  ![FSBB_VoltageMode_discharge_25-50Load.jpg](./docs/DC_DC/FSBB_simulation_test/FSBB_VoltageMode_discharge_25-50Load.jpg)
+
+
+
+### Tune PI param
+
+#### Ziegler–Nichols Method
+
+> [参考](https://www.mstarlabs.com/control/znrule.html)
+> [video tutorial](https://youtu.be/QpjsZqbXqxg?list=PLwVXzZ8GgffRfsKqOeXXCAPXCRyna-_so)
+
+The Ziegler-Nichols rule is a heuristic PID tuning rule that attempts to produce good values for the three PID gain parameters
+
+The Ziegler-Nichols rule **assumes** that the system has a transfer function of the following form 
+$$
+\frac{K*e^{-sT}}{(\alpha + s)}
+$$
+set zero to the gains and increase proportional gain until reach the `critical gain` $K_u$
+`critical gain` : the loop almost starts to oscillate with a period $T_u$
+
+| Control Type | K_p        | K_i             | K_d                |
+| ------------ | ---------- | --------------- | ------------------ |
+| P            | 0.5* K_u   |                 |                    |
+| PI           | 0.45 * K_u | 0.54 * K_u /T_u |                    |
+| PID          | 0.6 * K_u  | 1.2 * K_u / T_u | 3 * K_u * T_u / 40 |
+
+
+
+寻找 V_out 震荡幅度 0.2-0.3 的边界时候的 P 值
+
+```shell
+#P=60  deta_v = (0.2, 0.05)
+#P=65 delta_v = (0.35)
+K_u = 65
+T_u = 0.00028612 # 286.12 * 10 ** -6
+# 200.026 * 10 ** -6
+P_value = 0.45 * K_u = 29.25
+I_value = 122675.8  # 175477.1
+
+# great oscillation
+K_u = 300
+T_u = 4 * 10 ** (-3)  # 4ms
+P = 135
+I = 40500
+```
+
+
+
+
+
+### Additional Module
+
 **过压保护、过流保护**
 
 > [参考](https://zhuanlan.zhihu.com/p/395681264)
@@ -542,46 +570,8 @@ zeta2 = 0.08*10;
 
 
 
+## QA
 
-
-
-
-## Later improvement
-
-该部分锂电池模块，目前实现了基本充放电需求。待连入整体微电网结构，进一步优化，**主要分为两方面的优化：控制策略、拓扑结构**
-
-- 控制策略：目前使用 PI 控制
-  - 模糊 PI
-  - SMC 滑模控制
-- 拓扑结构：目前使用非隔离双向DCDC，更新为隔离型DCDC
-- **充放电切换逻辑：目前为手动模式**，后续与风力发电整体进行联调，修改其切换策略，有了大的整体系统在进行修改。
-
-
-
-### QA
-
-- 恒压无法稳定在参考值？
-  调整电池串联的电阻，或者母线电压源串联的电阻，电阻太小分压不够
-
-- DCDC 电路里面，电容、电感的值如何选取：**参数根据波形调试**
-
-
-- `BatteryController` 控制部分
-
-  - **母线电压控制**：输入 96V 期望值，与实际采集到的母线电压，计算误差作为输入
-
-    - PI 控制器参数(经验值)：P 调节快速性（跟踪速度）；I 调节超调量（稳定性）
-
-  - 电流控制：输入蓄电池的电流 Isc，实现电池恒流的要求（否则电池就炸了）
-
-    > :question: 为啥电压误差过 PI 控制的结果，直接可以和 Isc 电池电压比较呢
-    >
-    > **外环电压环输出的结果是电流环的参考值**>> 参考 **"蓄电池闭环设计"**:star:
-
-  - `PWM` 控制模块：产生高低频脉冲，提供给 DCDC >>`IGBT` 实现充放电
-    `Single-phaseHalfBridge(2pulses)`
-
-  
 
 - if-Block
 
@@ -659,3 +649,5 @@ zeta2 = 0.08*10;
     - 标称电压 Nominal_Voltage
     
       理论标称电压为 102.4V，但初始 SOC 设置为 80%，要调整一下。
+  
+  

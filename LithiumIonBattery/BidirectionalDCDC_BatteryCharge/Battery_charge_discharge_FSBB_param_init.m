@@ -20,7 +20,7 @@ clear;clc;close all;
 %     floor(BusVoltageReference * BusVoltageErrorRange); % <5%
 
 %% 2. control module param
-wave_freq = 2 * 45e3;  % 方波频率
+wave_freq = 45e3;  % 方波频率
 time_step = 1 / wave_freq;  %时间常数>>求导
 
 fprintf("FSBB initialize success!")
