@@ -187,10 +187,13 @@ For `BidirectionalDCDC_BatteryCharge` Module
   
     - [ ] 空载，满载切换，电压跳变太大
   
-      - [ ] 测试 PI 参数
-      - [ ] 测试阻尼比
+      - [x] 测试 PI 参数
+      - [x] 测试阻尼比
       - [ ] 检测负载跳变，加入优化条件：增加一个gain
-      - [ ] 更换控制方式
+  
+    - [ ] 更换控制方式
+  
+      - [ ] 模型选型
   
   - [ ] 充放电切换测试
   
@@ -245,11 +248,35 @@ Gospower 硬件输入输出各8电容(160V,180UF)，开关频率 45k，电感 20
 
 
 
+### model selection
+
+1. Passivity Based Control of Four-Switch Buck-Boost DC-DC Converter without Operation Mode Detection
+
+For single loop module controlling the output voltage, the mid_inductor's current can not balance well. And this cause the giant voltage ripple in changing from 0->100% load.
+选择双闭环结构模型，对内环电感电流进行控制。
+
+1. [Four-Switch Buck–Boost Converter Based on Model Predictive Control With Smooth Mode Transition Capability](https://ieeexplore.ieee.org/document/9219154)
+
+
+
 
 
 ### Reproduce paper
 
+> - KCL(Kirchhoff's Current Law)
+>
+>   Total current entering a junction is equal to total current leaving it
+>
+> - KVL(Kirchhoff's Voltage Law)
+>
+>   Algebraic sum of voltages around a loop equals to zero.
+
 **Passivity Based Control of Four-Switch Buck-Boost DC-DC Converter without Operation Mode Detection**
+
+- **The passivity based control** is formulated  that targets to drive the inductor current and capacitor voltage to  their reference values.
+- eliminates the need for  using a buck or boost mode detection algorithm
+
+**The control input equations are  determined separately so as to obtain the duty cycle** of buck and  boost stages. The approximate values of damping gains are  determined analytically which are useful in designing the  converter for different operating points. While the load voltage  (capacitor voltage) is controlled by a PI regulator, the passivity  based control achieves the control of inductor current. The  switching signals are produced by comparing the duty cycles  with a triangular carrier. **An important advantage of the  proposed control approach is that it does not need any mode  transition (or detection) algorithm which leads to simplicity  compared with the existing control approaches.**
 
 > [referenced paper](https://ieeexplore.ieee.org/document/9968779) 
 > [paper's youtube video tutorial](https://www.youtube.com/watch?v=5YT7cERlMrg) :honey_pot:
@@ -514,7 +541,9 @@ Power_voltage_mode_load_change =
 
 
 
-### Tune PI param
+### Tune param
+
+**Tune PI**
 
 #### Ziegler–Nichols Method
 
@@ -554,7 +583,18 @@ K_u = 300
 T_u = 4 * 10 ** (-3)  # 4ms
 P = 135
 I = 40500
+
+# after tune the zeta
+K_u = 100;
+T_u = 404.155e-6;
+# 45, 1.3361e+05
+
+K_u = 170
+T_u = 418.688e-6
+# 76.5, 2.1926e+05
 ```
+
+
 
 
 
