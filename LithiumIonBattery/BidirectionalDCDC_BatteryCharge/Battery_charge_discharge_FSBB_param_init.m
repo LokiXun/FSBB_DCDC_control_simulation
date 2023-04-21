@@ -79,3 +79,5 @@ for i=1:length(load_percent_list)-1
     Power_voltage_mode_load_change(i) = P_100 * Load_percent;
 end
 
+% u1 == 1  & u4 > 10  & (u2>=87.9 & u2 <= 119)
+% u1 == 0 & (u3>=85.5 & u3 <= 116.15) & u4 < 95
