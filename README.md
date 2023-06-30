@@ -10,7 +10,7 @@ Author `Loki Xun`
 
   - 电池组模块： 100ah, 电压范围 85-119V，可实现 SOC 输出
 
-  - 双向非隔离 DC/DC：DC/DC 结构参考高斯宝硬件电路 ，四开关 Buck-Boost，输入输出各8电容(160V,180UF)，开关频率 45k，电感20uh
+  - 双向非隔离 DC/DC：DC/DC 结构参考高斯宝硬件电路 ，四开关 Buck-Boost，输入输出各8电容(160V,180UF)，开关频率 45k，电感 20uh
 
 
 - 控制 dcdc 输出电压，维持电池模块（电池+dcdc）的输出功率恒定3kw
@@ -196,16 +196,16 @@ For `BidirectionalDCDC_BatteryCharge` Module
     - [x] 放电：恒压放电
     - [x] 恒流充电，电池内阻在充电过程中内阻变化太快。
       - [x] 修改控制目标，直接恒流控制
-    - [ ] 实现恒流、恒压模式切换
+    - [x] 实现恒流、恒压模式切换
   
-  - [ ] 实现过压、欠压保护
+  - [x] 实现过压、欠压保护
   
     （硬件实现）电流过大，I = U/R, 降低电压，如果电压低于保护点，把 4 个驱动输出 0 （驱动直接关掉），然后需要手动指令去恢复
   
 - 优化项
 
   - [x] modify the PI by `The Ziegler–Nichols Method`
-  - [ ] 调研双闭环控制方式
+  - [x] 调研双闭环控制方式
   
 - 模块封装
 
@@ -615,15 +615,17 @@ T_u = 0.001
 
 
 
-### Additional Module
+### Current- Voltage Protection Module
 
-**过压保护、过流保护**
+**欠压保护**
 
 > [参考](https://zhuanlan.zhihu.com/p/395681264)
 
 如果电源输出端子上的电压超过 OVP 设置，那么**电源输出就会关闭**，从而保护器件不会因为电压过高而损坏。
 
+![FSBB_Battery_lack_voltage_protection_battery_SOC_Switch.png](./docs/DC_DC/FSBB_simulation_test//FSBB_Battery_lack_voltage_protection_battery_SOC_Switch.png)
 
+![FSBB_Battery_lack_voltage_protection_battery_current_input_voltage.png](./docs/DC_DC/FSBB_simulation_test/FSBB_Battery_lack_voltage_protection_battery_current_input_voltage.png)
 
 
 
