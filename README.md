@@ -629,9 +629,7 @@ T_u = 0.001
 
 
 
-
-
-## QA
+### QA
 
 
 - if-Block
@@ -711,4 +709,10 @@ T_u = 0.001
     
       理论标称电压为 102.4V，但初始 SOC 设置为 80%，要调整一下。
   
-  
+
+
+
+## PlatformNo11
+
+> [引用现有模型](https://ww2.mathworks.cn/help/simulink/ug/create-a-referenced-model-1.html)
+> [SimulationPlatform_11/README.md](./SimulationPlatform_11/README.md)

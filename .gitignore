@@ -14,6 +14,8 @@ PV_wind_simple_module/
 **/slprj/
 *.autosave
 
+SimulationPlatform_11/simulation_platform11.slx
+
 
 
 # large-file
