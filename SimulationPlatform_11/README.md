@@ -47,8 +47,6 @@
 
 **Battery + PV + motor**
 
-![platform11_battery_PV_motor_eeror_info.png](./docs/platform11_battery_PV_motor_eeror_info.png)
-
 ![platform_11_battery_PV_motors_result.png](./docs/platform_11_battery_PV_motors_result.png)
 
 
